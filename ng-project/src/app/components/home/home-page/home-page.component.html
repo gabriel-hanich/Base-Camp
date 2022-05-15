@@ -1,8 +1,8 @@
 <div class="page-container">
-    <div class="welcome-container">
-        <app-welcome></app-welcome>
-    </div>
-    <div class="menu-container">
-        <app-sidebar-toggle></app-sidebar-toggle>
+    <div class="heading-component-container">
+        <app-heading-component 
+            line1Text="{{ greetingText }} {{ userName }}"
+            line2Text="{{ timeText }}">
+        </app-heading-component>
     </div>
 </div>

@@ -28,9 +28,9 @@
     &-container{
         width: 100%;
         height: fit-content;
-        margin-top: 50px;
         display: flex;
         align-items: center;
+        gap: 0px;
     }
 
     &-item{
@@ -44,6 +44,7 @@
             align-items: center;
             flex-direction: row;
             background-color: none;
+
 
             box-shadow: inset 0 0 0 0.009px var(--top-bg-color);    
             &:hover{

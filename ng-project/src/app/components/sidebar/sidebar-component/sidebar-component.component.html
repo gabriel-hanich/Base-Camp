@@ -1,4 +1,4 @@
-<div class="sidebar-container" id="sideBar">
+<div class="sidebar-container sidebar-retracted" id="sideBar">
     <div class="toggle-container">
         <app-sidebar-toggle></app-sidebar-toggle>
     </div>
@@ -8,9 +8,27 @@
     </div>
 
     <div class="options-container">
-        <div class="options-item-container">
+        <div class="options-item-container" (click)="showScreen('')">
+            <img src="../../../../assets/home.svg" alt="Timetable Icon" class="options-img white">
+            <h3 class="options-text heading-text">Home</h3>
+        </div>
+    </div>
+    <div class="options-container">
+        <div class="options-item-container" (click)="showScreen('news')">
+            <img src="../../../../assets/news.svg" alt="News Icon" class="options-img white">
+            <h3 class="options-text heading-text">News</h3>
+        </div>
+    </div>
+    <div class="options-container">
+        <div class="options-item-container" (click)="showScreen('timetable')">
             <img src="../../../../assets/table.svg" alt="Timetable Icon" class="options-img white">
             <h3 class="options-text heading-text">Timetable</h3>
+        </div>
+    </div>
+    <div class="options-container">
+        <div class="options-item-container" (click)="showScreen('settings')">
+            <img src="../../../../assets/settings.svg" alt="Timetable Icon" class="options-img white">
+            <h3 class="options-text heading-text">Settings</h3>
         </div>
     </div>
 </div>

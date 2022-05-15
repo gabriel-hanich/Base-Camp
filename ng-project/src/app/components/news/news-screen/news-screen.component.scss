@@ -1,0 +1,36 @@
+.news{
+    &-list{
+        &-container{
+            width: 75%;
+            margin: auto;
+            margin-top: 150px;
+            animation: scale-in-center 1.2s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+    }
+    &-item{
+        animation: scale-in-center 1.2s ease;
+        width: 100%;
+        height: 200px;
+        display: flex;
+        flex-direction: row;
+
+        &-img{
+            margin-top: 7.5%;
+            margin-left: 3%;
+            width: auto;
+            height: 85%;
+
+            border-radius: 10px 0px 10px 0px;
+        }
+
+        &-text{
+            &-container{
+                margin-left: 35px;
+            }
+        }
+    }
+}
