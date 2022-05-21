@@ -1,0 +1,8 @@
+<div class="steps-container">
+    <div class="form-container">
+        <form (submit)="updateAddress($event)" class="form">
+            <input type="text" [value]="currentAdress" class="form-input" id="addressInput">
+            <button class="form-btn">{{ submitText }}</button>
+        </form>
+    </div>
+</div>

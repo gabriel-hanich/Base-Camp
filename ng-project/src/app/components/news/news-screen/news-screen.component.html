@@ -5,6 +5,10 @@
     </app-heading-component>
 </div>
 
+<div class="loading-container" id="loadingWheel">
+    <app-loading-wheel></app-loading-wheel>
+</div>
+
 <div class="news-list-container">
     <div class="news-item component-container" *ngFor="let article of articleList">
         <a href="{{article['link']}}" class="news-item-link" target="_blank">

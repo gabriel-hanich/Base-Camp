@@ -15,8 +15,8 @@
     &-item{
         &-container{
             width: 30%;
-            min-width: 500px;
-            height: 500px;
+            min-width: 300px;
+            height: 350px;
             transition: all 1s ease;
         }
     }
@@ -104,5 +104,12 @@
 
     100% {
         opacity: 100%;
+    }
+}
+
+@media screen and(max-width: 500px){
+    .heading-component-container{
+        width: 95%;
+        margin-top: 100px;
     }
 }

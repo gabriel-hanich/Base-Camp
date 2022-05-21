@@ -1,3 +1,14 @@
+.loading{
+    &-container{
+        width: 5%;
+        aspect-ratio: 1/1;
+        margin: auto;
+        margin-top: 50px;
+    }
+}
+.hide{
+    display: none;
+}
 .news{
     &-list{
         &-container{
@@ -17,6 +28,7 @@
         height: 200px;
         display: flex;
         flex-direction: row;
+        transition: all 1s ease;
 
         &-img{
             margin-top: 7.5%;
@@ -30,6 +42,35 @@
         &-text{
             &-container{
                 margin-left: 35px;
+            }
+        }
+    }
+}
+
+@media screen and(max-width: 500px){
+    .loading-container{
+            width: 35%;
+        }
+    .news{
+        &-list{
+            &-container{
+                width: 100%;
+            }
+        }
+        &-item{
+            &-img{
+                width: 100px;
+                // border-radius: 100%;
+                height: auto;
+                margin-top: 10%;
+            }
+            &-text{
+                &-headline{
+                    font-size: 0.85rem;
+                }
+                &-byline{
+                    font-size: 0.75rem;
+                }
             }
         }
     }

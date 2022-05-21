@@ -6,6 +6,7 @@ import { Component, HostListener, OnInit } from '@angular/core';
   styleUrls: ['./settings-screen.component.scss']
 })
 export class SettingsScreenComponent implements OnInit {
+  public screenWidth: number = screen.width;
 
   constructor() { }
 
@@ -14,12 +15,13 @@ export class SettingsScreenComponent implements OnInit {
   
   @HostListener('document:click', ['$event'])
   onClickHandler(event: MouseEvent){
-    console.log(event.pageX / window.innerWidth);
     if(event.pageX / window.innerWidth < 0.1 || event.pageX / window.innerWidth > 0.9){
-      this.closeCurrentPopup();
+      if((event.target as unknown as HTMLElement).id == "background"){
+        this.closeCurrentPopup();
+        console.log(event)
+      }
     }
   }
-
   
   @HostListener('document:keydown', ['$event'])
   onKeydownHandler(event: KeyboardEvent) {
