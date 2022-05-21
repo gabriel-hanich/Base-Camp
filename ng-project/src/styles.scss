@@ -142,9 +142,16 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 
+@media screen and(max-width: 1600px){
+    .heading-component-container{
+        width: 55%;
+    }
+}
 @media screen and(max-width: 500px){
     .heading-component-container{
         width: 95%;
+        height: 200px;
+        padding-bottom: 50px;
         margin-top: 100px;
     }
 }

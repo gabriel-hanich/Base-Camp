@@ -2,12 +2,17 @@ const express = require("express");
 import Parser from 'rss-parser';
 import { article, rssReply } from './models';
 const fs = require("fs");
+const path = require('path');
 
 let rawOutletData = fs.readFileSync("./outletData.json");
 const outlets = JSON.parse(rawOutletData);
 
 const app = express();
 const port: number = 3000;
+
+
+app.use(express.static('../public/index.html'))//set the static path 
+
 
 type CustomFeed = {foo: string};
 const rssParser: Parser<CustomFeed, rssReply[]> = new Parser(); // Used to get rss feed data
@@ -39,7 +44,7 @@ app.use((req: any, res: any, next: any) => {
 });
 
 
-app.get("/", async (req: any, res: any)=>{
+app.get("/newsData", async (req: any, res: any)=>{
     let totalOutletData: article[] = [];
     for(var i=0; i<outlets.length; i++){
         console.log((i + 1)+ "/" + outlets.length)
@@ -51,6 +56,14 @@ app.get("/", async (req: any, res: any)=>{
     console.log(totalOutletData.length);
     res.send(totalOutletData);
 })
+
+
+app.use(express.static(path.join(__dirname, '../public')));
+ 
+// all get requests will point to angular's index.html in dist folder
+app.get('/*', async (req: any, res: any) => {
+    res.sendFile(path.resolve(__dirname, '../public', 'index.html'));
+});
 
 app.listen(port, ()=>{
     console.log("Listening :)")
