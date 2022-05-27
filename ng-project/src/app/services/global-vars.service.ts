@@ -15,12 +15,12 @@ export class GlobalVarsService {
     }
   }
   
-  setDefaultVals(){
+  private setDefaultVals(){
     this.setVar("userName", "Gabriel");
     this.setVar("newsAdress", "http://localhost:3000/")
   }
 
-  saveVars(){
+  private saveVars(){
     localStorage.setItem("globals", JSON.stringify(Array.from(this.globalVars.entries())));
     console.log("SAVING")
     console.log(this.globalVars);

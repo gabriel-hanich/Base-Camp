@@ -16,6 +16,7 @@ import { LoadingWheelComponent } from './components/loading-wheel/loading-wheel.
 import { IpChangerComponent } from './components/settings/ip-changer/ip-changer.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { SetupTimetableScreenComponent } from './components/setup-timetable/setup-timetable-screen/setup-timetable-screen.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +29,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     NewFileComponent,
     NewsScreenComponent,
     LoadingWheelComponent,
-    IpChangerComponent
+    IpChangerComponent,
+    SetupTimetableScreenComponent
   ],
   imports: [
     BrowserModule,

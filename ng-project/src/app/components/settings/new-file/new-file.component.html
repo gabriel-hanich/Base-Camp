@@ -21,7 +21,7 @@
                 <h3 class="heading-text">Upload the file below</h3>
             </div>
             <form action="" class="steps-item-form">
-                <input type="file" accept=".ical" class="steps-item-form-input"> 
+                <input type="file" accept=".ics" class="steps-item-form-input" (change)="onFileUpload($event)"> 
             </form>
         </div>
     </div>
