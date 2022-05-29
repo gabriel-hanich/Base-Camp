@@ -1,0 +1,15 @@
+<div class="table-container">
+    <div class="table-box">
+        <h1 class="table-text table-text-heading">{{ dayNames[timetableData[0].startDate.getDay()] }}</h1>
+    </div>
+    <div class="table-row" *ngFor="let period of timetableData">
+        <div class="table-box table-box-period" >
+            <h1>{{ period.period[0] }}</h1>
+        </div>
+        <div class="table-box table-box-contents">
+            <h4 class="table-text table-text-classname">{{ period.classname }}</h4>
+            <h4 class="table-text table-text-location">{{ period.location }}</h4>
+            <h4 class="table-text table-text-teacher">{{ period.teacher.toLowerCase() }}</h4>
+        </div>
+    </div>
+</div>

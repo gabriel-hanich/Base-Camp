@@ -17,6 +17,7 @@ import { IpChangerComponent } from './components/settings/ip-changer/ip-changer.
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { SetupTimetableScreenComponent } from './components/setup-timetable/setup-timetable-screen/setup-timetable-screen.component';
+import { TimetableDayComponent } from './components/timetable-day/timetable-day.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +31,8 @@ import { SetupTimetableScreenComponent } from './components/setup-timetable/setu
     NewsScreenComponent,
     LoadingWheelComponent,
     IpChangerComponent,
-    SetupTimetableScreenComponent
+    SetupTimetableScreenComponent,
+    TimetableDayComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { article } from 'src/app/models';
+import { Article } from 'src/models';
 import { GetNewsDataService } from 'src/app/services/getNewsData/get-news-data.service';
 import { GlobalVarsService } from 'src/app/services/global-vars.service';
 
@@ -10,7 +10,7 @@ import { GlobalVarsService } from 'src/app/services/global-vars.service';
 })
 export class NewsScreenComponent implements OnInit {
 
-  public articleList: article[] = [];
+  public articleList: Article[] = [];
 
   constructor(private newsData: GetNewsDataService, private globalVars: GlobalVarsService) { }
 
