@@ -10,25 +10,38 @@ import { Period } from "src/models"
 })
 export class SetupTimetableScreenComponent implements OnInit {
   public calibrationData: Period[] = [];
-  public displayCalibration: boolean = false; 
+  public defaultCalibrationOption: "label1" | "label2" | "none"; 
+  
+  public currentWeekOption: "label1" | "label2" | "none"; 
 
   constructor(private globalVars: GlobalVarsService,
               private router: Router) { }
 
   ngOnInit(): void {
-    if(this.globalVars.getVar("timetableData") == "empty"){ // If user has no currently stored timetable data
+    if(this.globalVars.getVar("wk1Data") == "empty"){ // If user has no currently stored timetable data
       if(this.globalVars.getVar("timetableRaw") == "empty"){ // If user has not uploaded file
         this.router.navigate(["settings"]);
       }
       this.cleanData(); // Convert raw text file into timetable data
-      
-
     }else{ 
-
+      // Init calibration data
+      this.initCalibrationData();
+      if(this.globalVars.getVar("wk1IsWkA") == "true"){
+        this.defaultCalibrationOption = "label1";
+      }else if(this.globalVars.getVar("wk1IsWkA") == "false"){
+        this.defaultCalibrationOption = "label2";
+      }
+      // Init current week letter and number
+      if(this.globalVars.getVar("weekLetter") === "a"){
+        this.currentWeekOption = "label1";
+      }else if(this.globalVars.getVar("weekLetter") === "b"){
+        this.currentWeekOption = "label2";
+      }
     }
   }
 
   cleanData():void{
+    console.log("CLEANING")
     // Split the data into individual lines
     var inputData = this.globalVars.getVar("timetableRaw");
     var dataList: String[] = inputData.split("\n"); // Get an array of strings were each element is a new line in the .ical file
@@ -104,29 +117,45 @@ export class SetupTimetableScreenComponent implements OnInit {
     // All the data for the possible weeks (At this stage it is still unknown whether wk 1 is A or B)
     var wk1Data = periodsList.slice(wk1StartIndex, wk2StartIndex);
     var wk2Data = periodsList.slice(wk2StartIndex, wk2EndIndex + 1);   
-    
+  
+    this.globalVars.setVar("wk1Data", JSON.stringify(wk1Data));
+    this.globalVars.setVar("wk2Data", JSON.stringify(wk2Data));
+    this.globalVars.setVar("wk1IsWkA", "unknown");
+    this.initCalibrationData();
+  }
+
+  initCalibrationData():void{
+    let wk1Data: Period[] = JSON.parse(this.globalVars.getVar("wk1Data"));
     for(var i=0; i<wk1Data.length; i++){
-      if(wk1Data[i].startDate.getDay() == 1){
+      wk1Data[i]["startDate"] = new Date(wk1Data[i]["startDate"])
+    }
+    for(var i=0; i<wk1Data.length; i++){
+      if(wk1Data[i]["startDate"].getDay() == 1){
         this.calibrationData.push(wk1Data[i]);
       }
     }
+  }
 
-    this.displayCalibration = true;
+  updateCalibration(selectedWeek: String){
+    if(selectedWeek === "Week A"){
+      this.globalVars.setVar("wk1IsWkA", "true");
+    }else if(selectedWeek === "Week B"){
+      this.globalVars.setVar("wk1IsWkA", "false");
+    }
+
+  }
+
+  updateWeekLetter(selectedLetter: String){
+    if(selectedLetter === "Week A"){
+      this.globalVars.setVar("weekLetter", "a");
+    }else if(selectedLetter === "Week B"){
+      this.globalVars.setVar("weekLetter", "b");
+    }
+  }
+
+  updateWeekNumber(event: Event):void{
+    event.preventDefault();
+    console.log((document.getElementById("weekNumberInput") as HTMLInputElement).value);
   }
 }
-      
-            
-            
-
-
-
-      
-
-      
-  //     }
-
-
-  // }
-  // }
-
 

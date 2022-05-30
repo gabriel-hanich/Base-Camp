@@ -23,8 +23,6 @@ export class GlobalVarsService {
   private saveVars(){
     localStorage.setItem("globals", JSON.stringify(Array.from(this.globalVars.entries())));
     console.log("SAVING")
-    console.log(this.globalVars);
-    console.log(JSON.stringify(this.globalVars));
   }
 
   setVar(key: string, val: string){
