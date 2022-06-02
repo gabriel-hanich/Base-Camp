@@ -8,12 +8,12 @@
 </div>
 
 <div class="options-container">
-    <div class="options-item-container component-container" *ngIf="screenWidth > 500" id="fileOption" (click)="expandPopUp('fileOption')">
+    <div class="options-item-container component-container expanded" *ngIf="screenWidth > 500" id="fileOption" (click)="expandPopUp('fileOption')">
         <div class="heading-container ">
-            <h2 class="heading-text">Upload New .ical file</h2>
+            <h2 class="heading-text">Timetable Settings</h2>
         </div>
         <div class="thumbnail-container">
-            <img src="../../../../assets//new-file.svg" alt="" class="thumbnail-img white">
+            <img src="../../../../assets/table.svg" alt="" class="thumbnail-img white">
         </div>
         <div class="content-container">
             <app-new-file></app-new-file>

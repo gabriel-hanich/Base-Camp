@@ -15,4 +15,5 @@ export interface Period{
     period: string;
     classname: string;
     location: string;
+    isCurrent?: boolean;
 }

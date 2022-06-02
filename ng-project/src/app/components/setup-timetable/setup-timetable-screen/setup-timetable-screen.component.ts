@@ -11,8 +11,8 @@ import { Period } from "src/models"
 export class SetupTimetableScreenComponent implements OnInit {
   public calibrationData: Period[] = [];
   public defaultCalibrationOption: "label1" | "label2" | "none"; 
-  
   public currentWeekOption: "label1" | "label2" | "none"; 
+  public currentWeek: number;
 
   constructor(private globalVars: GlobalVarsService,
               private router: Router) { }
@@ -37,6 +37,8 @@ export class SetupTimetableScreenComponent implements OnInit {
       }else if(this.globalVars.getVar("weekLetter") === "b"){
         this.currentWeekOption = "label2";
       }
+      this.currentWeek = parseInt(this.globalVars.getVar("weekNumber"));
+      console.log(this.currentWeek)
     }
   }
 
@@ -115,25 +117,63 @@ export class SetupTimetableScreenComponent implements OnInit {
         }
       }
     // All the data for the possible weeks (At this stage it is still unknown whether wk 1 is A or B)
-    var wk1Data = periodsList.slice(wk1StartIndex, wk2StartIndex);
-    var wk2Data = periodsList.slice(wk2StartIndex, wk2EndIndex + 1);   
+    var wk1Data: Period[] = periodsList.slice(wk1StartIndex, wk2StartIndex);
+    var wk2Data: Period[] = periodsList.slice(wk2StartIndex, wk2EndIndex + 1);   
   
-    this.globalVars.setVar("wk1Data", JSON.stringify(wk1Data));
-    this.globalVars.setVar("wk2Data", JSON.stringify(wk2Data));
+    // Seperate periods into an array, were each elem is a list containing all the subjects on a given day
+    var sortedWk1Data: Array<Period[]> = [];
+    var sortedWk2Data: Array<Period[]> = [];
+
+    let thisDayList: Period[] = [];
+    let lastDayIndex: number = new Date(wk1Data[0]["startDate"]).getDay();
+    for(var i=0; i< wk1Data.length; i++){
+      if(i == wk1Data.length - 1){ // If it is the final period in the array 
+        thisDayList.push(wk1Data[i]);
+        sortedWk1Data.push(thisDayList);
+        break
+      }
+
+      if(wk1Data[i].startDate.getDay() == lastDayIndex){
+        thisDayList.push(wk1Data[i]);
+      }else{ // IF this period is the first period of the next day
+        lastDayIndex = wk1Data[i].startDate.getDay();
+        sortedWk1Data.push(thisDayList);
+        thisDayList = [];
+        thisDayList.push(wk1Data[i]);
+      }
+    } 
+
+    // Do the same for week 2
+    thisDayList = [];
+    lastDayIndex = new Date(wk2Data[0].startDate).getDay();
+    for(var i=0; i< wk2Data.length; i++){
+      if(i == wk2Data.length - 1){
+        thisDayList.push(wk2Data[i]);
+        sortedWk2Data.push(thisDayList);
+        break
+      }
+
+      if(wk2Data[i].startDate.getDay() == lastDayIndex){
+        thisDayList.push(wk2Data[i]);
+      }else{
+        lastDayIndex = wk2Data[i].startDate.getDay();
+        sortedWk2Data.push(thisDayList);
+        thisDayList = [];
+        thisDayList.push(wk2Data[i]);
+      }
+    }
+    this.globalVars.setVar("wk1Data", JSON.stringify(sortedWk1Data));
+    this.globalVars.setVar("wk2Data", JSON.stringify(sortedWk2Data));
     this.globalVars.setVar("wk1IsWkA", "unknown");
     this.initCalibrationData();
   }
 
   initCalibrationData():void{
-    let wk1Data: Period[] = JSON.parse(this.globalVars.getVar("wk1Data"));
-    for(var i=0; i<wk1Data.length; i++){
-      wk1Data[i]["startDate"] = new Date(wk1Data[i]["startDate"])
+    let wk1Data: Array<Period[]> = JSON.parse(this.globalVars.getVar("wk1Data"));
+    for(var i=0; i<wk1Data[0].length; i++){
+      wk1Data[0][i]["startDate"] = new Date(wk1Data[0][i]["startDate"]);
     }
-    for(var i=0; i<wk1Data.length; i++){
-      if(wk1Data[i]["startDate"].getDay() == 1){
-        this.calibrationData.push(wk1Data[i]);
-      }
-    }
+    this.calibrationData = wk1Data[0];
   }
 
   updateCalibration(selectedWeek: String){
@@ -155,7 +195,7 @@ export class SetupTimetableScreenComponent implements OnInit {
 
   updateWeekNumber(event: Event):void{
     event.preventDefault();
-    console.log((document.getElementById("weekNumberInput") as HTMLInputElement).value);
+    this.globalVars.setVar("weekNumber", (document.getElementById("weekNumberInput") as HTMLInputElement).value.toString());
   }
 }
 

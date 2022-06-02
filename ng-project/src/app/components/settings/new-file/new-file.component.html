@@ -1,31 +1,12 @@
-<div class="steps-container" (scroll)="onElemScroll()">
-    <div class="heading-container">
-        <h2 class="heading-text">How to get your iCal file</h2>
+<div class="steps-container" >
+    <div class="item-container">
+        <h3 class="heading-text">Edit Existing Data</h3>
+        <button class="item-btn" (click)="openTimetablePage()">Edit</button>
     </div>
-    <div class="steps-container-inner">
-        <div class="component-container steps-item-container">
-            <div class="heading-container">
-                <h3 class="heading-text">Navigate to your Sentral Page</h3>
-            </div>
-            <a href="https://smithshill-h.sentral.com.au/portal2/#!/login" target="_blank">
-                <button class="steps-item-button">Sentral</button>
-            </a>
-        </div>
-        <div class="component-container steps-item-container">
-            <div class="heading-container">
-                <h3 class="heading-text">Navigate to "My Timetable" and select "Export as iCal"</h3>
-            </div>
-        </div>
-        <div class="component-container steps-item-container upload-container">
-            <div class="heading-container steps-item-text">
-                <h3 class="heading-text">Upload the file below</h3>
-            </div>
-            <form action="" class="steps-item-form">
-                <input type="file" accept=".ics" class="steps-item-form-input" (change)="onFileUpload($event)"> 
-            </form>
-        </div>
-    </div>
-    <div class="scroll-container" id="scrollIco">
-        <img src="../../../../assets/scroll.svg" alt="Scroll icon" class="scroll-img white">
+    <div class="item-container">
+        <h3 class="heading-text">Upload your ical file from Sentral Below</h3>
+        <form action="" class="item-form">
+            <input type="file" accept=".ics" class="steps-item-form-input" (change)="onFileUpload($event)"> 
+        </form>
     </div>
 </div>

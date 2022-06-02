@@ -36,11 +36,12 @@
     }
     
     &-text{
-        width: 35%;
+        width: 100%;
         margin-top: 15px;
         margin-left: 5px;
         text-align: center;
         text-transform: capitalize;
+        overflow-x: hidden;
 
         &-heading{
             margin: auto;
@@ -53,4 +54,8 @@
         }
 
     }
+}
+
+.highlight{
+    background-color: var(--mid-bg-color);
 }

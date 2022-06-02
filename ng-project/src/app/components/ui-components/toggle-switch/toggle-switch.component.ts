@@ -25,7 +25,7 @@ export class ToggleSwitchComponent implements OnInit {
       }else if(this.defaultVal == "label2"){
         document.getElementById(this.elemID + "rightLabel")?.classList.add("clicked");
       }
-    }, 150);
+    }, 350);
   }
   
   updateState(val: "label1" | "label2"){

@@ -16,7 +16,6 @@ export class NewFileComponent implements OnInit {
   }
 
   onElemScroll():void{
-    document.getElementById('scrollIco')?.classList.add('fade')
   }
 
   onFileUpload(event: Event):void{
@@ -26,9 +25,12 @@ export class NewFileComponent implements OnInit {
     var reader = new FileReader();
     reader.addEventListener('load', function(event){
         globals.setVar("timetableRaw", reader.result as string);
-        router.navigate(["upload_timetable_file"])
-    });
-    reader.readAsText(file[0])
+        router.navigate(["upload_timetable_file"]);
+      });
+      reader.readAsText(file[0])
+    }
 
+  openTimetablePage(): void{
+    this.router.navigate(["upload_timetable_file"]);
   }
 }
