@@ -4,6 +4,9 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { KtdGridModule } from '@katoid/angular-grid-layout';
+import { MatSelectModule } from '@angular/material/select';
+
 import { HomePageComponent } from './components/home/home-page/home-page.component';
 import { SidebarComponentComponent } from './components/ui-components/sidebar/sidebar-component/sidebar-component.component';
 import { SidebarToggleComponent } from './components/ui-components/sidebar/sidebar-toggle/sidebar-toggle.component';
@@ -14,11 +17,13 @@ import { NewFileComponent } from './components/settings/new-file/new-file.compon
 import { NewsScreenComponent } from './components/news/news-screen/news-screen.component';
 import { LoadingWheelComponent } from './components/ui-components/loading-wheel/loading-wheel.component';
 import { IpChangerComponent } from './components/settings/ip-changer/ip-changer.component';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations' ;
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { SetupTimetableScreenComponent } from './components/setup-timetable/setup-timetable-screen/setup-timetable-screen.component';
 import { TimetableDayComponent } from './components/timetable/timetable-day/timetable-day.component';
 import { ToggleSwitchComponent } from './components/ui-components/toggle-switch/toggle-switch.component';
+import { TimetableColumnComponent } from './components/widgets/timetable-column/timetable-column.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,14 +39,17 @@ import { ToggleSwitchComponent } from './components/ui-components/toggle-switch/
     IpChangerComponent,
     SetupTimetableScreenComponent,
     TimetableDayComponent,
-    ToggleSwitchComponent
+    ToggleSwitchComponent,
+    TimetableColumnComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     NoopAnimationsModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatSelectModule,
+    KtdGridModule
   ],
   providers: [],
   bootstrap: [AppComponent]

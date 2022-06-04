@@ -1,4 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { GlobalVarsService } from 'src/app/services/global-vars.service';
 
 @Component({
   selector: 'app-settings-screen',
@@ -7,10 +8,12 @@ import { Component, HostListener, OnInit } from '@angular/core';
 })
 export class SettingsScreenComponent implements OnInit {
   public screenWidth: number = screen.width;
+  public hasSettings: boolean = true;
 
   constructor() { }
 
   ngOnInit(): void {
+  
   }
   
   @HostListener('document:click', ['$event'])

@@ -9,15 +9,16 @@ import { GlobalVarsService } from 'src/app/services/global-vars.service';
   styleUrls: ['./new-file.component.scss']
 })
 export class NewFileComponent implements OnInit {
+  public hasTimetable: boolean = false;
 
   constructor(private globalVars: GlobalVarsService, private router: Router) { }
 
   ngOnInit(): void {
+    console.log(this.globalVars.getVar("wk1Data"))
+    if(this.globalVars.getVar("wk1Data") != "empty"){
+      this.hasTimetable = true;
+    }
   }
-
-  onElemScroll():void{
-  }
-
   onFileUpload(event: Event):void{
     let globals = this.globalVars
     let router = this.router

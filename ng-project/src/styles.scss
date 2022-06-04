@@ -112,6 +112,23 @@ h3.heading-text{
     }
 }
 
+.animated-hover{
+    transition: all 0.25s ease !important;
+    cursor: pointer;
+
+    &:hover{
+        transform: translateX(-2px) translateY(-2px);
+        box-shadow: 4px 4px 4px #000;
+    }
+}
+.mat-option{
+    background-color: var(--mid-bg-color) !important;
+    transition: all 0.5s ease;
+    box-shadow: inset 0 0 0 0.009px var(--top-bg-color);    
+    &:hover{
+        box-shadow: inset 220px 0 0 0 var(--top-bg-color);
+    }
+}
 
 @keyframes scale-in-center {
     0% {

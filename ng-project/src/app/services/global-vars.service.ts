@@ -17,7 +17,8 @@ export class GlobalVarsService {
   
   private setDefaultVals(){
     this.setVar("userName", "Gabriel");
-    this.setVar("newsAdress", "http://localhost:3000/")
+    this.setVar("newsAdress", "http://localhost:3000/");
+    this.setVar("widgetsLayout", JSON.stringify([{"id": 1, "x": 0, "y": 0, "height": 2, "width": 1, "presetType": "timetableDay"}]));
   }
 
   private saveVars(){
@@ -29,7 +30,7 @@ export class GlobalVarsService {
     this.globalVars.set(key, val);
     setTimeout(()=>{
       this.saveVars();
-    }, 150)
+    }, 50)
   }
 
   getVar(key: string): string {

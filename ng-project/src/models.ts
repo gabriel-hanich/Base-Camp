@@ -17,3 +17,13 @@ export interface Period{
     location: string;
     isCurrent?: boolean;
 }
+
+export interface widget{
+    id: number;
+    x: number;
+    y: number;
+    height: number;
+    width: number;
+    presetType: "timetableDay" | "news" | "note" | "studyNote";
+    additionalData?: Map<String, String>;
+}

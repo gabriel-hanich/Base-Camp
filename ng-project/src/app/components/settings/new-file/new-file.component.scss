@@ -4,7 +4,7 @@
         height: 100%;
 
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         gap: 15px;
         align-items: center;
     }
@@ -13,28 +13,28 @@
 .item{
     &-container{
         width: 50%;
-        height: 150px;
-        background-color: var(--mid-bg-color);
+        height: 85%;
+        background-color: rgba(0, 0, 0, 0.3);
         border-radius: 15px 0px 15px 0px;
         display: flex;
         flex-direction: column;
         align-items: center;
         box-shadow: 5px 5px 5px #031c35;
     }
+    &-img{
+        height: 25%;
+        margin-bottom: 40px;
+    }
+
     &-btn{
-        width: 10%;
-        height: 35px;
+        width: 20%;
+        aspect-ratio: 3/1;
         margin-top: 0px;
         background-color: var(--top-bg-color);
         border: none;
         border-radius: 15px 0px 15px 0px;
         cursor: pointer;
         transition: all 0.25s ease;
-        &:hover{
-            transform: translateX(-2px) translateY(-2px);
-            box-shadow: 2px 2px 2px #000;
-            
-        }
     }
     &-form{
         width: 50%;
@@ -48,5 +48,14 @@
 .heading{
     &-text{
         text-align: center;
+    }
+}
+
+.disable{
+    cursor: default;
+    opacity: 0.3;
+    &:hover{
+        transform: translate(0px);
+        box-shadow: none;
     }
 }
