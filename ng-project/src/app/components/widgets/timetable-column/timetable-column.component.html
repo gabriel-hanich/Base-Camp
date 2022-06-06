@@ -3,7 +3,7 @@
         <div class="title-text">Displayed Date</div>
         <mat-form-field appearance="fill" class="adjust-new-field">
             <mat-label>Day</mat-label>
-            <mat-select class="adjust-new-select" [(value)]="currentDate">
+            <mat-select class="adjust-new-select" [(value)]="currentDate" (valueChange)="updateDate()">
                 <mat-option [value]="'today'" class="mat-option">Today</mat-option>
                 <mat-option [value]="'tomorrow'" class="mat-option">Tomorrow</mat-option>
                 <mat-option [value]="'monA'" class="mat-option">Monday A</mat-option>
@@ -19,12 +19,7 @@
             </mat-select>
         </mat-form-field>
     </div>
-</div>
-
-<!-- <div class="title-container">
-    <h2 class="title">Day to be shown</h2>
-    <div class="adjust-new-container">
-        
-        <button class="adjust-new-btn animated-hover" (click)="addNewWidget()">Add</button>
+    <div class="content-container" *ngIf="timetableData.length > 0">
+        <app-timetable-day [timetableData]="timetableData" [isCurrentWeek]="isCurrentWeek" titleText="{{titleText}}"></app-timetable-day>
     </div>
-</div> -->
+</div>

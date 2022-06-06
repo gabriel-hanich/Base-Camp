@@ -109,6 +109,7 @@ export class HomePageComponent implements OnInit {
       window.location.reload();
     }, 100);
   }
+
   deleteWidget(id: number){
     let newLayout: widget[] = [];
     for(var i=0; i<this.layoutData.length; i++){
@@ -121,8 +122,23 @@ export class HomePageComponent implements OnInit {
       window.location.reload();
     }, 100);
   }
+
   toggleWidgetEditing():void{
     this.editableWidgets = !this.editableWidgets;
     this.document.getElementById("adjustContainer")?.classList.toggle('pulledUp');
+  }
+
+  saveLayout(currentLayout: KtdGridLayout):void{
+    setTimeout(()=>{
+      for(var i=0; i<currentLayout.length; i++){
+        this.layoutData[i].x = currentLayout[i].x;
+        this.layoutData[i].y = currentLayout[i].y;
+        this.layoutData[i].height = currentLayout[i].h;
+        this.layoutData[i].width = this.layout[i].w;
+      }
+      this.globalVars.setVar("widgetsLayout", JSON.stringify(this.layoutData));
+      console.log(this.layoutData);
+      console.log(this.layout);
+    }, 150)
   }
 }

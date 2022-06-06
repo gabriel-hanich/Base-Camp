@@ -43,6 +43,7 @@
         text-transform: capitalize;
         overflow-x: hidden;
 
+
         &-heading{
             margin: auto;
             margin-top: 5%;
@@ -59,3 +60,16 @@
 .highlight{
     background-color: var(--mid-bg-color);
 }
+
+.heading{
+    &-box{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    &-text{
+        margin: 0px !important;
+        font-size: 2rem;
+    }
+}
+

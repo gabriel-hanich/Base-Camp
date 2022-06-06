@@ -8,6 +8,7 @@ import { GlobalVarsService } from 'src/app/services/global-vars.service';
 })
 export class IpChangerComponent implements OnInit {
   public currentAdress: string;
+  public currentKey: string;
   public submitText: string = "Submit";
 
   constructor(private globalVars: GlobalVarsService) {  }
@@ -18,12 +19,15 @@ export class IpChangerComponent implements OnInit {
   
   updateSetAdress():void{
     this.currentAdress = this.globalVars.getVar("newsAdress");
+    this.currentKey = this.globalVars.getVar("tinyKey");
   }
   
   updateAddress(event: Event){
     event.preventDefault();
     let enteredAdress: string = (document.getElementById("addressInput") as HTMLInputElement).value as string;
+    let tinyKey: string = (document.getElementById("keyInput") as HTMLInputElement).value as string;
     this.globalVars.setVar("newsAdress", enteredAdress);
+    this.globalVars.setVar("tinyKey", tinyKey);
     this.updateSetAdress();
     this.submitText = "Submitted :)"
     setTimeout(()=>{

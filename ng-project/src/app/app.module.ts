@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { KtdGridModule } from '@katoid/angular-grid-layout';
 import { MatSelectModule } from '@angular/material/select';
+import { EditorModule } from "@tinymce/tinymce-angular";
 
 import { HomePageComponent } from './components/home/home-page/home-page.component';
 import { SidebarComponentComponent } from './components/ui-components/sidebar/sidebar-component/sidebar-component.component';
@@ -23,6 +24,7 @@ import { SetupTimetableScreenComponent } from './components/setup-timetable/setu
 import { TimetableDayComponent } from './components/timetable/timetable-day/timetable-day.component';
 import { ToggleSwitchComponent } from './components/ui-components/toggle-switch/toggle-switch.component';
 import { TimetableColumnComponent } from './components/widgets/timetable-column/timetable-column.component';
+import { NotesInputComponent } from './components/ui-components/notes-input/notes-input.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,8 @@ import { TimetableColumnComponent } from './components/widgets/timetable-column/
     SetupTimetableScreenComponent,
     TimetableDayComponent,
     ToggleSwitchComponent,
-    TimetableColumnComponent
+    TimetableColumnComponent,
+    NotesInputComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +52,8 @@ import { TimetableColumnComponent } from './components/widgets/timetable-column/
     NoopAnimationsModule,
     MatFormFieldModule,
     MatSelectModule,
-    KtdGridModule
+    KtdGridModule,
+    EditorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

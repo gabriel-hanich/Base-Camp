@@ -25,5 +25,5 @@ export interface widget{
     height: number;
     width: number;
     presetType: "timetableDay" | "news" | "note" | "studyNote";
-    additionalData?: Map<String, String>;
+    additionalData?: String;
 }

@@ -13,9 +13,10 @@
         [compactType]="compactType"
         [preventCollision]="'True'"
         [scrollableParent]="'True' ? document : null"
+        (layoutUpdated)="saveLayout($event)"
         scrollSpeed="4"
         class="widgets-grid"> 
-        <ktd-grid-item *ngFor="let item of layoutData" [id]="item.id.toString()" class="widgets-item" draggable="{{editableWidgets}}" resizable="{{editableWidgets}}">            <!--  -->
+        <ktd-grid-item *ngFor="let item of layoutData" [id]="item.id.toString()" class="widgets-item" draggable="{{editableWidgets}}" resizable="{{false}}">
             <!-- CODE FOR WIDGET CONTENT -->
             <div class="close-container" *ngIf="editableWidgets">
                 <img src="../../../../assets/close.svg" alt="Settings" class="white edit-img" (click)="deleteWidget(item.id)"> 
@@ -23,11 +24,6 @@
             <div class="widgets-content-container">
                 <app-timetable-column [displaySettings]="editableWidgets" [id]=item.id></app-timetable-column>
             </div>
-
-
-
-
-
         </ktd-grid-item>
     </ktd-grid>
         <div class="edit-container">

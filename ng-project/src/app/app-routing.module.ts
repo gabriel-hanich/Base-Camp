@@ -5,6 +5,7 @@ import { NewsScreenComponent } from './components/news/news-screen/news-screen.c
 import { SettingsScreenComponent } from './components/settings/settings-screen/settings-screen.component';
 import { SetupTimetableScreenComponent } from './components/setup-timetable/setup-timetable-screen/setup-timetable-screen.component';
 import { TimetableTableComponent } from './components/timetable/timetable-table/timetable-table.component';
+import { NotesInputComponent } from './components/ui-components/notes-input/notes-input.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     "path": "timetable",
     "component": TimetableTableComponent
+  },
+  {
+    "path": "notes",
+    "component": NotesInputComponent
   },
   {
     "path": "upload_timetable_file",

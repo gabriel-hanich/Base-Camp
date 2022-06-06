@@ -9,6 +9,7 @@ import { Period } from 'src/models';
 export class TimetableDayComponent implements OnInit {
   @Input() timetableData: Period[]; 
   @Input() isCurrentWeek: boolean;
+  @Input() titleText: String;
   public dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   public dayName: string; 
   public isToday: boolean = false;
