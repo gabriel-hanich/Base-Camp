@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NotesInputComponent } from './notes-input.component';
+import { NotesScreenComponent } from './notes-screen.component';
 
-describe('NotesInputComponent', () => {
-  let component: NotesInputComponent;
-  let fixture: ComponentFixture<NotesInputComponent>;
+describe('NotesScreenComponent', () => {
+  let component: NotesScreenComponent;
+  let fixture: ComponentFixture<NotesScreenComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NotesInputComponent ]
+      declarations: [ NotesScreenComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NotesInputComponent);
+    fixture = TestBed.createComponent(NotesScreenComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

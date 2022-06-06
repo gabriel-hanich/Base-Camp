@@ -1,0 +1,56 @@
+.newNote{
+    &-container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+
+        height: 85px;
+        width: 55vw;
+        margin: auto;
+
+        transition: all 0.5s ease;
+
+        overflow-y: hidden;
+        margin-top: 75px;
+    }
+    &-span{
+        display: flex;
+        flex-direction: row;
+        gap: 15px;
+        width: 50vw;
+
+        align-items: center;
+    }
+
+    &-input{
+        flex: 0.9;
+
+        height: 75px;
+        width: 100%;
+        background-color: var(--bottom-bg-color);
+        border: none;
+        margin-top: 5px;
+        margin-bottom: 15px;
+
+        font-size: 2rem;
+    }
+
+    &-btn{
+        flex: 0.05;
+        height: 55px;
+        width: auto;
+
+        background-color: var(--mid-bg-color);
+        border-radius: 15px 0px 15px 0px;
+
+        transform: translateY(-5px);
+
+        border: none;
+
+    }
+}
+
+.extended{
+    height: 500px;
+}

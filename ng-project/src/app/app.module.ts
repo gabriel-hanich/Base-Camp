@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { KtdGridModule } from '@katoid/angular-grid-layout';
 import { MatSelectModule } from '@angular/material/select';
-import { EditorModule } from "@tinymce/tinymce-angular";
+import { TINYMCE_SCRIPT_SRC, EditorModule } from "@tinymce/tinymce-angular";
 
 import { HomePageComponent } from './components/home/home-page/home-page.component';
 import { SidebarComponentComponent } from './components/ui-components/sidebar/sidebar-component/sidebar-component.component';
@@ -24,7 +24,8 @@ import { SetupTimetableScreenComponent } from './components/setup-timetable/setu
 import { TimetableDayComponent } from './components/timetable/timetable-day/timetable-day.component';
 import { ToggleSwitchComponent } from './components/ui-components/toggle-switch/toggle-switch.component';
 import { TimetableColumnComponent } from './components/widgets/timetable-column/timetable-column.component';
-import { NotesInputComponent } from './components/ui-components/notes-input/notes-input.component';
+import { RichTextInputComponent } from './components/ui-components/rich-text-input/rich-text-input.component';
+import { NotesScreenComponent } from './components/notes/notes-screen/notes-screen.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { NotesInputComponent } from './components/ui-components/notes-input/note
     TimetableDayComponent,
     ToggleSwitchComponent,
     TimetableColumnComponent,
-    NotesInputComponent
+    RichTextInputComponent,
+    NotesScreenComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +57,7 @@ import { NotesInputComponent } from './components/ui-components/notes-input/note
     KtdGridModule,
     EditorModule
   ],
-  providers: [],
+  providers: [{ provide: TINYMCE_SCRIPT_SRC, useValue: 'tinymce/tinymce.min.js'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
