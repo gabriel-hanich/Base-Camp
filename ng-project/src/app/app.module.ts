@@ -24,8 +24,8 @@ import { SetupTimetableScreenComponent } from './components/setup-timetable/setu
 import { TimetableDayComponent } from './components/timetable/timetable-day/timetable-day.component';
 import { ToggleSwitchComponent } from './components/ui-components/toggle-switch/toggle-switch.component';
 import { TimetableColumnComponent } from './components/widgets/timetable-column/timetable-column.component';
-import { RichTextInputComponent } from './components/ui-components/rich-text-input/rich-text-input.component';
 import { NotesScreenComponent } from './components/notes/notes-screen/notes-screen.component';
+import { TextInputComponent } from './components/ui-components/text-input/text-input.component';
 
 @NgModule({
   declarations: [
@@ -44,8 +44,8 @@ import { NotesScreenComponent } from './components/notes/notes-screen/notes-scre
     TimetableDayComponent,
     ToggleSwitchComponent,
     TimetableColumnComponent,
-    RichTextInputComponent,
-    NotesScreenComponent
+    NotesScreenComponent,
+    TextInputComponent
   ],
   imports: [
     BrowserModule,

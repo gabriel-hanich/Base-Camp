@@ -14,6 +14,25 @@
         overflow-y: hidden;
         margin-top: 75px;
     }
+    &-categories{
+        margin-top: 15px;
+        margin-bottom: 15px;
+        width: 50vw;
+        height: 25px;
+
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 5px;
+
+        &-img{
+            height: 25px;
+            width: auto;
+            transform: rotate(45deg);
+        }
+
+    }
+    
     &-span{
         display: flex;
         flex-direction: row;
@@ -30,8 +49,11 @@
         width: 100%;
         background-color: var(--bottom-bg-color);
         border: none;
-        margin-top: 5px;
+        margin-top: 15px;
         margin-bottom: 15px;
+
+        margin-left: 15px;
+        border-radius: 15px 0px 15px 0px;
 
         font-size: 2rem;
     }
@@ -49,6 +71,75 @@
         border: none;
 
     }
+}
+
+.noteList{
+    &-container{
+        width: 80%;
+        height: fit-content;
+        margin: auto;
+        margin-top: 100px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 35px;
+    }
+    &-item{
+        &-container{
+            width: fit-content;
+            height: fit-content;
+            background-color: var(--bottom-bg-color);
+            border-radius: 15px 0px 15px 0px;
+
+            padding: 10px 20px;
+            min-width: 400px;
+            box-shadow: 5px 5px 5px #000;
+        }
+
+        &-heading{
+            text-align: center;
+            background-color: rgba($color: #ffffff, $alpha: 0.15);
+            margin: auto;
+            padding: 10px 30px !important;
+        }
+        
+        &-date{
+            text-align: center;
+            
+        }
+    }
+
+}
+
+.tag{
+    background-color: rgba($color: #ffffff, $alpha: 0.15);
+    width: fit-content;
+    padding: 10px 5px;
+    border-radius: 50px;
+    height: fit-content;
+    width: fit-content;
+    min-width: 100px;
+    text-align: center;
+
+}
+
+.addTag{
+    background-color: var(--mid-bg-color);
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.categoryTag{
+    height: 25px;
+    padding: 0px !important;
+}
+
+.tagText{
+    margin-top: 0px;
 }
 
 .extended{

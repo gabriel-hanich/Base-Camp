@@ -27,3 +27,10 @@ export interface widget{
     presetType: "timetableDay" | "news" | "note" | "studyNote";
     additionalData?: String;
 }
+
+export interface Note{
+    title: String;
+    content: String;
+    isArchived: Boolean;
+    timeCreated: number;
+}

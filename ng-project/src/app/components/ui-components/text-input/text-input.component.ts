@@ -2,13 +2,12 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { EventObj } from '@tinymce/tinymce-angular/editor/Events';
 import { GlobalVarsService } from 'src/app/services/global-vars.service';
 
-
 @Component({
-  selector: 'app-notes-input',
-  templateUrl: './rich-text-input.component.html',
-  styleUrls: ['./rich-text-input.component.scss']
+  selector: 'app-text-input',
+  templateUrl: './text-input.component.html',
+  styleUrls: ['./text-input.component.scss']
 })
-export class RichTextInputComponent implements OnInit {
+export class TextInputComponent implements OnInit {
   @Input() initText: string;
   @Output() userInput: EventEmitter<String> = new EventEmitter<String>();
 
@@ -20,7 +19,7 @@ export class RichTextInputComponent implements OnInit {
   }
 
   initEditor(event: EventObj<Event>){
-    if(this.initText.length > 0){
+    if(this.initText){
       event.editor.setContent(this.initText);
     }
 
@@ -31,3 +30,4 @@ export class RichTextInputComponent implements OnInit {
   }
 
 }
+
