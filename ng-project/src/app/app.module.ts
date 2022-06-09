@@ -26,6 +26,7 @@ import { ToggleSwitchComponent } from './components/ui-components/toggle-switch/
 import { TimetableColumnComponent } from './components/widgets/timetable-column/timetable-column.component';
 import { NotesScreenComponent } from './components/notes/notes-screen/notes-screen.component';
 import { TextInputComponent } from './components/ui-components/text-input/text-input.component';
+import { CategoriesListComponent } from './components/ui-components/categories-list/categories-list.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { TextInputComponent } from './components/ui-components/text-input/text-i
     ToggleSwitchComponent,
     TimetableColumnComponent,
     NotesScreenComponent,
-    TextInputComponent
+    TextInputComponent,
+    CategoriesListComponent
   ],
   imports: [
     BrowserModule,

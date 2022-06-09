@@ -1,0 +1,9 @@
+<div class="categories">
+    <div class="tag addTag">
+        <img src="../../../../assets/close.svg" alt="Add New tag" class="categories-img-del white" (click)="removeTag()">
+        <img src="../../../../assets/close.svg" alt="Add New tag" class="categories-img white" (click)="addTag()">
+    </div>
+    <div class="tag categoryTag" *ngFor="let category of tagList">
+        <p class="tagText newCategoryText" [contentEditable]="true">{{defaultText}}</p>
+    </div>
+</div>

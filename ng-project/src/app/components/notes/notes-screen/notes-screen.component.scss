@@ -1,11 +1,8 @@
 .newNote{
     &-container{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
         gap: 15px;
 
-        height: 85px;
+        height: 95px;
         width: 55vw;
         margin: auto;
 
@@ -13,24 +10,6 @@
 
         overflow-y: hidden;
         margin-top: 75px;
-    }
-    &-categories{
-        margin-top: 15px;
-        margin-bottom: 15px;
-        width: 50vw;
-        height: 25px;
-
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: 5px;
-
-        &-img{
-            height: 25px;
-            width: auto;
-            transform: rotate(45deg);
-        }
-
     }
     
     &-span{
@@ -40,11 +19,17 @@
         width: 50vw;
 
         align-items: center;
+        justify-content: center;
+    }
+
+    &-categories{
+        width: 50vw;
+        height: 25px;
+        margin-bottom: 10px;
     }
 
     &-input{
-        flex: 0.9;
-
+        flex: 0.85;
         height: 75px;
         width: 100%;
         background-color: var(--bottom-bg-color);
@@ -57,11 +42,16 @@
 
         font-size: 2rem;
     }
+    &-rich{
+        margin-top: 15px !important;
+        height: 300px !important; 
+        z-index: 4 !important;
+    }
 
     &-btn{
-        flex: 0.05;
+        flex: 0.1;
         height: 55px;
-        width: auto;
+        width: 100%;
 
         background-color: var(--mid-bg-color);
         border-radius: 15px 0px 15px 0px;
@@ -75,15 +65,17 @@
 
 .noteList{
     &-container{
-        width: 80%;
+        width: 95%;
         height: fit-content;
         margin: auto;
         margin-top: 100px;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        justify-content: center;
+        // justify-content: center;
         gap: 35px;
+
+        padding-bottom: 150px;
     }
     &-item{
         &-container{
@@ -94,7 +86,10 @@
 
             padding: 10px 20px;
             min-width: 400px;
+            max-width: 45%;
             box-shadow: 5px 5px 5px #000;
+
+            transition: all 0.5s ease;
         }
 
         &-heading{
@@ -103,45 +98,77 @@
             margin: auto;
             padding: 10px 30px !important;
         }
-        
-        &-date{
-            text-align: center;
-            
+        &-tags{
+            &-container{
+                width: 100%;
+                margin: auto;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                align-items: left;
+                gap: 10px;
+            }
         }
+        &-bottomBar{
+            height: 50px;
+            transition: all 0.5s ease;
+            
+            margin-top: 50px;
+
+            display: flex;
+            flex-direction: row;
+            gap: 5px;
+            align-items: center;
+    
+            &:hover{
+                background-color: rgba($color: #000000, $alpha: 0.25);
+            }
+    
+            &-img{
+                height: 65%;
+                width: auto;
+                cursor: pointer;
+                margin-left: 15px;
+            }
+    }
     }
 
 }
 
-.tag{
-    background-color: rgba($color: #ffffff, $alpha: 0.15);
-    width: fit-content;
-    padding: 10px 5px;
-    border-radius: 50px;
-    height: fit-content;
-    width: fit-content;
-    min-width: 100px;
-    text-align: center;
+.noteContentContainer {
+    ::ng-deep {
+        img{
+            width: 100%;
+            height: auto;
+            max-height: 350px;
+        }
+        table{
+            border: none !important;    
+        }
+        tr:nth-child(even) {
+            background-color: rgba($color: #000000, $alpha: 0.15);
+        }
+        td, th{
+            width: fit-content;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-left: 50px;
+            padding-right: 50px;
 
+            border: 1px black solid;
+        }
+        p{
+            font-size: 1.2rem;
+        }
+    }
 }
 
-.addTag{
-    background-color: var(--mid-bg-color);
-    cursor: pointer;
+.heading-tag{
+    height: 35px !important;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.categoryTag{
-    height: 25px;
-    padding: 0px !important;
-}
-
-.tagText{
-    margin-top: 0px;
 }
 
 .extended{
-    height: 500px;
+    height: 550px;
+    padding-bottom: 15px;
 }

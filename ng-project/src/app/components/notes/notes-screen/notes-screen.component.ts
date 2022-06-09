@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { GlobalVarsService } from 'src/app/services/global-vars.service';
 import { Note } from 'src/models';
+import { CategoriesListComponent } from '../../ui-components/categories-list/categories-list.component';
+import { TextInputComponent } from '../../ui-components/text-input/text-input.component';
 
 @Component({
   selector: 'app-notes-screen',
@@ -10,9 +12,11 @@ import { Note } from 'src/models';
 export class NotesScreenComponent implements OnInit {
   public currentNoteTitle: String = "";
   public currentNoteContent: String = "";
-  public currentCategoryCount: number[] = [];
   public noteList: Note[];
   
+  @ViewChild(TextInputComponent) textInput:TextInputComponent;
+  @ViewChild(CategoriesListComponent) categoryInput:CategoriesListComponent;
+
   private currentCategoryList: String[] = [];
   constructor(private globalVar: GlobalVarsService) { }
   
@@ -22,21 +26,10 @@ export class NotesScreenComponent implements OnInit {
 
   setNotesList(): void{
     this.noteList = JSON.parse(this.globalVar.getVar("noteList"));
-    
-  }
-  updateTagList():void{
-    // Compute existing tags
-    let tags = document.getElementsByClassName("newCategoryText");
-    for(var i=0; i<tags.length; i++){
-      this.currentCategoryList[i] = tags[i].textContent as string;
-    }
   }
 
-  addTag():void{
-    this.updateTagList();
-    this.currentCategoryCount.push(0);
-    this.currentCategoryList.push("New Tag");
-    console.log(this.currentCategoryList);
+  updateCategoryList(event: String[]):void{
+    this.currentCategoryList = event;
   }
 
   updateNoteContent(event: String): void{
@@ -50,12 +43,37 @@ export class NotesScreenComponent implements OnInit {
       this.noteList.push({
         "title": this.currentNoteTitle,
         "content": this.currentNoteContent,
+        "author": this.globalVar.getVar('userName'),
         "isArchived": false,
-        "timeCreated": new Date().getTime()
+        "timeCreated": new Date().getTime(),
+        "categoryList": this.currentCategoryList
       });
       this.globalVar.setVar("noteList", JSON.stringify(this.noteList));
       console.log(this.noteList);
     }, 50)
+  }
+
+  deleteNote(note: Note){
+    for(var i=0; i<this.noteList.length; i++){
+      if(this.noteList[i] == note){
+        this.noteList.splice(i, 1);
+        this.globalVar.setVar("noteList", JSON.stringify(this.noteList));
+        break;
+      }
+    }
+  }
+  editNote(note: Note){
+
+    document.getElementById('newNoteContainer')?.classList.add('extended');
+    (document.getElementById('newNoteTitle') as HTMLInputElement).value = (note.title as string);
+    this.textInput.setContent(note.content);
+    this.categoryInput.setTaglist(note.categoryList);
+    window.scroll({top: 0, left: 0, behavior: "smooth"});
+    setTimeout(()=>{
+      this.deleteNote(note);
+
+    }, 150)
+
   }
 
 }

@@ -4,7 +4,7 @@
     </app-heading-component>
 </div>
 
-<div class="newNote-container extended" #newNoteContainer>
+<div class="newNote-container" #newNoteContainer id="newNoteContainer">
     <form action="">
         <span class="newNote-span">
             <input class="newNote-input" 
@@ -20,22 +20,25 @@
                 newNoteTitle.placeholder='Take a note...';
                 ">Save</button>
         </span>
-        <span class="newNote-categories">
-            <div class="tag categoryTag addTag" (click)="addTag()">
-                <img src="../../../../assets/close.svg" alt="Add New tag" class="newNote-categories-img white">
-            </div>
-            <div class="tag categoryTag" *ngFor="let category of currentCategoryCount">
-                <p class="tagText newCategoryText" [contentEditable]="true">New Tag</p>
-            </div>
-        </span>
-        <app-text-input (userInput)="updateNoteContent($event)"></app-text-input>
+        <app-categories-list class="newNote-categories" [defaultText]="'New Tag'" (categoryList)="updateCategoryList($event)"></app-categories-list>
+        <app-text-input (userInput)="updateNoteContent($event)" class="newNote-rich"></app-text-input>
     </form>
 </div>
 
 <div class="noteList-container">
     <div class="noteList-item-container" *ngFor="let note of noteList">
-        <h1 class="noteList-item-heading tag">{{note.title}}</h1>
-        <p class="noteList-item-date tag">{{note.timeCreated | date}}</p>
-        <div class="noteList-item-content" [outerHTML]="note.content"></div>
+        <h1 class="noteList-item-heading tag heading-tag">{{note.title}}</h1>
+        <div class="noteList-item-tags-container">
+            <p class="tag">{{note.timeCreated | date}}</p>
+            <p class="tag">By {{note.author}}</p>
+            <p class="tag" *ngFor="let tag of note.categoryList">{{tag}}</p>
+        </div>
+        <div class="noteContentContainer" [innerHTML]="note.content">
+        </div>
+        <div class="noteList-item-bottomBar">
+            <img src="../../../../assets/close.svg" alt="Delete Note" class="noteList-item-bottomBar-img white" (click)="deleteNote(note)">
+            <img src="../../../../assets/edit.svg" alt="Edit Note" class="noteList-item-bottomBar-img white" (click)="editNote(note)">
+        </div>
+
     </div>
 </div>
