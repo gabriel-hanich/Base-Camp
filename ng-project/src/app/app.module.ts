@@ -20,13 +20,15 @@ import { LoadingWheelComponent } from './components/ui-components/loading-wheel/
 import { IpChangerComponent } from './components/settings/ip-changer/ip-changer.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations' ;
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { SetupTimetableScreenComponent } from './components/setup-timetable/setup-timetable-screen/setup-timetable-screen.component';
+import { SetupTimetableScreenComponent } from './components/timetable/setup-timetable-screen/setup-timetable-screen.component';
 import { TimetableDayComponent } from './components/timetable/timetable-day/timetable-day.component';
 import { ToggleSwitchComponent } from './components/ui-components/toggle-switch/toggle-switch.component';
 import { TimetableColumnComponent } from './components/widgets/timetable-column/timetable-column.component';
 import { NotesScreenComponent } from './components/notes/notes-screen/notes-screen.component';
 import { TextInputComponent } from './components/ui-components/text-input/text-input.component';
 import { CategoriesListComponent } from './components/ui-components/categories-list/categories-list.component';
+import { DaySpinnerComponent } from './components/widgets/day-spinner/day-spinner.component';
+import { NoteWidgetComponent } from './components/widgets/note-widget/note-widget.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,9 @@ import { CategoriesListComponent } from './components/ui-components/categories-l
     TimetableColumnComponent,
     NotesScreenComponent,
     TextInputComponent,
-    CategoriesListComponent
+    CategoriesListComponent,
+    DaySpinnerComponent,
+    NoteWidgetComponent
   ],
   imports: [
     BrowserModule,

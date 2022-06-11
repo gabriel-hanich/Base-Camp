@@ -24,7 +24,7 @@ export interface widget{
     y: number;
     height: number;
     width: number;
-    presetType: "timetableDay" | "news" | "note" | "studyNote";
+    presetType: "timetableDay" | "news" | "note" | "studyNote" | "timeBtn";
     additionalData?: String;
 }
 

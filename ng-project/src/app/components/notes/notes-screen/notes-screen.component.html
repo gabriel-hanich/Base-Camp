@@ -20,13 +20,28 @@
                 newNoteTitle.placeholder='Take a note...';
                 ">Save</button>
         </span>
-        <app-categories-list class="newNote-categories" [defaultText]="'New Tag'" (categoryList)="updateCategoryList($event)"></app-categories-list>
+        <app-categories-list class="newNote-categories" [defaultText]="'New Tag'" (categoryList)="updateCategoryList($event)" [id]="'newNote'"></app-categories-list>
         <app-text-input (userInput)="updateNoteContent($event)" class="newNote-rich"></app-text-input>
     </form>
 </div>
 
+<div class="search-container">
+    <h1 class="search-heading">Search your Notes</h1>
+    <input class="newNote-input search-input"
+        #searchInput
+        (keyup)="updateSearchString(searchInput)" 
+        type="text" 
+        placeholder="Search" 
+        autocomplete="off"
+        id="searchInput">
+    <app-categories-list class="newNote-categories search-categories" 
+        [defaultText]="'Search Tag'" 
+        (categoryList)="updateSearchCategories($event)"
+        [id]="'searchList'"></app-categories-list>
+</div>
+
 <div class="noteList-container">
-    <div class="noteList-item-container" *ngFor="let note of noteList">
+    <div class="noteList-item-container" *ngFor="let note of displayNoteList">
         <h1 class="noteList-item-heading tag heading-tag">{{note.title}}</h1>
         <div class="noteList-item-tags-container">
             <p class="tag">{{note.timeCreated | date}}</p>

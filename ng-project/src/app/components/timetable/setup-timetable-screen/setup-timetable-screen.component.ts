@@ -38,7 +38,6 @@ export class SetupTimetableScreenComponent implements OnInit {
         this.currentWeekOption = "label2";
       }
       this.currentWeek = parseInt(this.globalVars.getVar("weekNumber"));
-      console.log(this.currentWeek)
     }
   }
 

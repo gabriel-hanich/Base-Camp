@@ -14,12 +14,12 @@ export class NewFileComponent implements OnInit {
   constructor(private globalVars: GlobalVarsService, private router: Router) { }
 
   ngOnInit(): void {
-    console.log(this.globalVars.getVar("wk1Data"))
     if(this.globalVars.getVar("wk1Data") != "empty"){
       this.hasTimetable = true;
     }
   }
   onFileUpload(event: Event):void{
+    // Declare globals within local scope so they can be accessed in the reader EventListener
     let globals = this.globalVars
     let router = this.router
     var file = (event.target as unknown as HTMLInputElement).files as FileList;

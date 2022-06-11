@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit } from '@angular/core';
 import { GlobalVarsService } from 'src/app/services/global-vars.service';
 import { Period, widget } from 'src/models';
 
@@ -10,6 +10,7 @@ import { Period, widget } from 'src/models';
 export class TimetableColumnComponent implements OnInit {
   @Input() displaySettings: boolean;
   @Input() id: number;
+  @Input() toggleEmitter: EventEmitter<String>;
 
   public currentDate = "today";
   public timetableData: Period[] = [];
@@ -48,7 +49,6 @@ export class TimetableColumnComponent implements OnInit {
   updateGlobalScope():void{
     let totalWidgetData: widget[] = JSON.parse(this.globalVars.getVar("widgetsLayout"));
     this.widgetData.additionalData = JSON.stringify(Array.from(this.additionalData.entries()));
-    console.log(this.widgetData.additionalData)
     totalWidgetData[this.widgetIndex] = this.widgetData;
 
     this.globalVars.setVar("widgetsLayout", JSON.stringify(totalWidgetData));

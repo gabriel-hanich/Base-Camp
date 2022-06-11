@@ -1,6 +1,6 @@
 <div class="row-container">
     <div class="settings-container" [ngClass]="{cover: displaySettings}">
-        <div class="title-text">Displayed Date</div>
+        <h4 class="title-text">Displayed Date</h4>
         <mat-form-field appearance="fill" class="adjust-new-field">
             <mat-label>Day</mat-label>
             <mat-select class="adjust-new-select" [(value)]="currentDate" (valueChange)="updateDate()">
@@ -20,6 +20,6 @@
         </mat-form-field>
     </div>
     <div class="content-container" *ngIf="timetableData.length > 0">
-        <app-timetable-day [timetableData]="timetableData" [isCurrentWeek]="isCurrentWeek" titleText="{{titleText}}"></app-timetable-day>
+        <app-timetable-day [timetableData]="timetableData" [isCurrentWeek]="isCurrentWeek" titleText="{{titleText}}" [displayEmitter]="toggleEmitter"></app-timetable-day>
     </div>
 </div>

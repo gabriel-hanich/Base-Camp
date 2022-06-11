@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit } from '@angular/core';
 import { GlobalVarsService } from 'src/app/services/global-vars.service';
 import { Period } from 'src/models';
 
@@ -17,11 +17,12 @@ export class TimetableTableComponent implements OnInit {
   public isWeekA = this.currentWeek == "A";
   public isWeekB = this.currentWeek == "B";
 
+  public timeEmitter: EventEmitter<String> = new EventEmitter<String>();
+
   constructor(private globalVars: GlobalVarsService) { }
 
   ngOnInit(): void {
     // Get the timetable data
-    console.log(this.currentWeek);
     // Determine whether wk1 is A or B
     if(this.globalVars.getVar("wk1IsWkA") == "true"){
       this.weekAData = JSON.parse(this.globalVars.getVar("wk1Data"));
@@ -45,4 +46,10 @@ export class TimetableTableComponent implements OnInit {
     }
   }
 
+  
+  showTimes():void{
+    this.timeEmitter.emit("WOOO");
+  }
+
 }
+

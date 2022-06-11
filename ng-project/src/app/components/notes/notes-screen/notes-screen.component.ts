@@ -10,14 +10,21 @@ import { TextInputComponent } from '../../ui-components/text-input/text-input.co
   styleUrls: ['./notes-screen.component.scss']
 })
 export class NotesScreenComponent implements OnInit {
+  // Current note vars
   public currentNoteTitle: String = "";
   public currentNoteContent: String = "";
-  public noteList: Note[];
+  private currentCategoryList: String[] = [];
   
+  // Search input vars
+  private searchStr: String = "";
+  private searchCategories: String[] = [];
+
+  public displayNoteList: Note[]; // Array containing all notes to be displayed
+  private noteList: Note[]; // Array containing all notes that are stored
+
   @ViewChild(TextInputComponent) textInput:TextInputComponent;
   @ViewChild(CategoriesListComponent) categoryInput:CategoriesListComponent;
 
-  private currentCategoryList: String[] = [];
   constructor(private globalVar: GlobalVarsService) { }
   
   ngOnInit(): void {
@@ -25,18 +32,23 @@ export class NotesScreenComponent implements OnInit {
   }
 
   setNotesList(): void{
+    // Read the note notelist from vars
     this.noteList = JSON.parse(this.globalVar.getVar("noteList"));
+    this.displayNoteList = this.noteList;
   }
 
   updateCategoryList(event: String[]):void{
+    // Update the current category list when it changes
     this.currentCategoryList = event;
   }
 
   updateNoteContent(event: String): void{
+    // Update stored note content on keypress
     this.currentNoteContent = event;
   }
 
   newNote(event: Event): void{
+    // Add new note to the list and save the current list to global var
     event.preventDefault();
     this.currentNoteTitle = (document.getElementById('newNoteTitle') as HTMLInputElement).value;
     setTimeout(()=>{ // Allow for some time for events to properly fire
@@ -49,31 +61,71 @@ export class NotesScreenComponent implements OnInit {
         "categoryList": this.currentCategoryList
       });
       this.globalVar.setVar("noteList", JSON.stringify(this.noteList));
-      console.log(this.noteList);
+      setTimeout(()=>{
+        // Remove content from form elems
+        (document.getElementById('newNoteTitle') as HTMLInputElement).value = "";
+        this.textInput.setContent("");
+        this.categoryInput.setTaglist([]);
+        this.refreshDisplayNotes();
+      })
     }, 50)
   }
 
   deleteNote(note: Note){
+    // Remove selected note
     for(var i=0; i<this.noteList.length; i++){
       if(this.noteList[i] == note){
         this.noteList.splice(i, 1);
         this.globalVar.setVar("noteList", JSON.stringify(this.noteList));
+        this.refreshDisplayNotes();
         break;
       }
     }
   }
-  editNote(note: Note){
 
+  editNote(note: Note){
+    // Set titleInput, categoryList and noteContentInput to the editable note
     document.getElementById('newNoteContainer')?.classList.add('extended');
     (document.getElementById('newNoteTitle') as HTMLInputElement).value = (note.title as string);
     this.textInput.setContent(note.content);
     this.categoryInput.setTaglist(note.categoryList);
     window.scroll({top: 0, left: 0, behavior: "smooth"});
     setTimeout(()=>{
-      this.deleteNote(note);
-
+      this.deleteNote(note); // Remove the note to limit possibility of note being saved twice
     }, 150)
+  }
 
+  updateSearchString(input: HTMLInputElement){
+    setTimeout(()=>{
+      this.searchStr = input.value
+      this.refreshDisplayNotes();
+    }, 50)
+  }
+  
+  updateSearchCategories(event: String[]){
+    this.searchCategories = event;
+    this.refreshDisplayNotes();
+  }
+
+  refreshDisplayNotes():void{
+
+    this.displayNoteList = [];
+    let noteFits: boolean = true;
+    for(var i=0; i<this.noteList.length; i++){
+      // Check to ensure at least part of the title is present
+      if(this.searchStr.toLowerCase().includes(this.noteList[i]["title"].toLowerCase() as string) || 
+        this.noteList[i]["title"].toLowerCase().includes(this.searchStr.toLowerCase() as string)){
+        noteFits = true;
+        for(var j=0; j<this.searchCategories.length; j++){
+          if(!this.noteList[i]["categoryList"].includes(this.searchCategories[j])){
+            noteFits = false;
+          }
+        }
+        if(noteFits){
+          this.displayNoteList.push(this.noteList[i]);
+        }
+      }
+    }
   }
 
 }

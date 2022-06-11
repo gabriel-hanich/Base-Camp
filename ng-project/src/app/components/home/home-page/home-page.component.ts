@@ -1,5 +1,5 @@
 import { DOCUMENT } from '@angular/common';
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, EventEmitter, Inject, OnInit } from '@angular/core';
 import { KtdGridLayout, ktdTrackById } from '@katoid/angular-grid-layout';
 import { GlobalVarsService } from 'src/app/services/global-vars.service';
 import { widget } from 'src/models';
@@ -20,28 +20,30 @@ export class HomePageComponent implements OnInit {
   public compactType: 'vertical' | 'horizontal' | null = null;
 
   public newWidgetType = "timetableDay";
-  public editableWidgets = false;
+  public editableWidgets = true;
+
+  public timeEmitter: EventEmitter<String> = new EventEmitter<String>();
 
   constructor(@Inject(DOCUMENT) public document: Document, private globalVars: GlobalVarsService) { }
 
   ngOnInit(): void {
-  this.updateTime();
-  this.renderBoards();
-
-
-  const loginTime = new Date();
-  if(loginTime.getHours() < 10){
-    this.greetingText = "Good Morning"
-  }else if(loginTime.getHours() < 15){
-    this.greetingText = "Hello"
-  }else if(loginTime.getHours() < 18){
-    this.greetingText = "Good Afternoon"
-  }else{
-    this.greetingText = "Good Evening"
-  }
-  setInterval(()=>{
     this.updateTime();
-  }, 1000);
+    this.renderBoards();
+
+
+    const loginTime = new Date();
+    if(loginTime.getHours() < 10){
+      this.greetingText = "Good Morning"
+    }else if(loginTime.getHours() < 15){
+      this.greetingText = "Hello"
+    }else if(loginTime.getHours() < 18){
+      this.greetingText = "Good Afternoon"
+    }else{
+      this.greetingText = "Good Evening"
+    }
+    setInterval(()=>{
+      this.updateTime();
+    }, 1000);
   }
 
   updateTime(): void{
@@ -80,28 +82,38 @@ export class HomePageComponent implements OnInit {
         });
       }
     }
-    console.log(newLayout);
   }
 
   addNewWidget():void{
     let lastLayout = this.layoutData[this.layoutData.length - 1];
+
+    let height: number = 6;
+    let width: number = 3;
+
+    if(this.newWidgetType === "timeBtn"){
+      height = 1;
+      width = 1;
+    }else if(this.newWidgetType === "note"){
+      width = 4;
+    }
+
     if(this.layoutData.length != 0){ // If this ISN'T the first widget on screen
       this.layoutData.push({
         id: (lastLayout.id + 1),
-        x: (lastLayout.x + 1 + lastLayout.width),
+        x: (lastLayout.x + lastLayout.width + 1),
         y: 0,
-        height: 6,
-        width: 2,
-        presetType: (this.newWidgetType as "timetableDay" | "news" | "note" | "studyNote"),
+        height: height,
+        width: width,
+        presetType: (this.newWidgetType as "timetableDay" | "news" | "note" | "studyNote" | "timeBtn"),
       });
     }else{
       this.layoutData.push({
         id: 0,
         x: 0,
         y: 0,
-        height: 6,
-        width: 2,
-        presetType: (this.newWidgetType as "timetableDay" | "news" | "note" | "studyNote"),
+        height: height,
+        width: width,
+        presetType: (this.newWidgetType as "timetableDay" | "news" | "note" | "studyNote" | "timeBtn"),
       });
     }
     this.globalVars.setVar("widgetsLayout", JSON.stringify(this.layoutData));
@@ -137,8 +149,10 @@ export class HomePageComponent implements OnInit {
         this.layoutData[i].width = this.layout[i].w;
       }
       this.globalVars.setVar("widgetsLayout", JSON.stringify(this.layoutData));
-      console.log(this.layoutData);
-      console.log(this.layout);
     }, 150)
+  }
+
+  toggleTimeDisplay():void{
+    this.timeEmitter.emit("Pressed");
   }
 }

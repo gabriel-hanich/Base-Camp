@@ -21,7 +21,6 @@ export class SettingsScreenComponent implements OnInit {
     if(event.pageX / window.innerWidth < 0.1 || event.pageX / window.innerWidth > 0.9){
       if((event.target as unknown as HTMLElement).id == "background"){
         this.closeCurrentPopup();
-        console.log(event)
       }
     }
   }

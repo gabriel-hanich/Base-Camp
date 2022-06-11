@@ -4,7 +4,7 @@ import { HomePageComponent } from './components/home/home-page/home-page.compone
 import { NewsScreenComponent } from './components/news/news-screen/news-screen.component';
 import { NotesScreenComponent } from './components/notes/notes-screen/notes-screen.component';
 import { SettingsScreenComponent } from './components/settings/settings-screen/settings-screen.component';
-import { SetupTimetableScreenComponent } from './components/setup-timetable/setup-timetable-screen/setup-timetable-screen.component';
+import { SetupTimetableScreenComponent } from './components/timetable/setup-timetable-screen/setup-timetable-screen.component';
 import { TimetableTableComponent } from './components/timetable/timetable-table/timetable-table.component';
 
 const routes: Routes = [

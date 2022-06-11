@@ -1,9 +1,10 @@
-.row{
+.note{
     &-container{
         width: 100%;
         height: 100%;
     }
 }
+
 .settings{
     &-container{
         width: 100%;
@@ -11,25 +12,27 @@
 
         position: absolute;
         top: -25%;
-        left: calc(0% - 15px);
+        left: 0%;
+
         background-color: var(--bottom-bg-color);
 
-        transition: all 0.5s ease;
-        
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         align-items: center;
-        gap: 15px;
-        margin-left: 15px;
+        gap: 0px;
+
+        transition: all 0.5s ease;
         z-index: 5 !important;
     }
-}
-
-.content{
-    &-container{
+    &-group{
         width: 100%;
-        height: 100%;
-        z-index: 3 !important;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 10px;
+
+        margin: 0px;
     }
 }
 
@@ -38,5 +41,6 @@
 }
 
 .title-text{
+    margin-left: 15px;
     font-weight: 200;
 }

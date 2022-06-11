@@ -1,0 +1,27 @@
+<div class="note-container">
+    <div class="settings-container" [ngClass]="{cover: displaySettings}">
+        <div class="settings-group">
+            <h4 class="title-text">Show</h4>
+            <mat-form-field appearance="fill">
+                <mat-select [value]="showSetting" (valueChange)="updateShowSetting($event)">
+                    <mat-option [value]="'newest'" class="mat-option">Newest</mat-option>
+                    <mat-option [value]="'set'" class="mat-option">Specific Note</mat-option>
+                    <mat-option [value]="'tag'" class="mat-option">By Tag</mat-option>
+                    <mat-option [value]="'random'" class="mat-option">Random</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="settings-group" *ngIf="showSetting == 'set'">
+            <h4 class="title-text">Note Title</h4>
+            <mat-form-field appearance="fill">
+                <mat-select [value]="noteList[0]['title']" (valueChange)="updateSearchTitle($event)">
+                    <mat-option [value]="note['title']" class="mat-option" *ngFor="let note of noteList">{{note['title']}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="settings-group" *ngIf="showSetting == 'tag'">
+            <h4 class="title-text">Note Tag</h4>
+            <app-categories-list [defaultText]="'Search Tag'" (categoryList)="updateSearchCategory($event)" [id]="'home'"></app-categories-list>
+        </div>
+    </div>
+</div>
