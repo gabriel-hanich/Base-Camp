@@ -20,7 +20,7 @@ export class HomePageComponent implements OnInit {
   public compactType: 'vertical' | 'horizontal' | null = null;
 
   public newWidgetType = "timetableDay";
-  public editableWidgets = true;
+  public editableWidgets = false;
 
   public timeEmitter: EventEmitter<String> = new EventEmitter<String>();
 

@@ -40,19 +40,19 @@
         [id]="'searchList'"></app-categories-list>
 </div>
 
-<div class="noteList-container">
-    <div class="noteList-item-container" *ngFor="let note of displayNoteList">
-        <h1 class="noteList-item-heading tag heading-tag">{{note.title}}</h1>
-        <div class="noteList-item-tags-container">
+<div class="note-container">
+    <div class="note-item-container" *ngFor="let note of displayNoteList">
+        <h1 class="note-item-heading tag heading-tag">{{note.title}}</h1>
+        <div class="note-item-tags-container">
             <p class="tag">{{note.timeCreated | date}}</p>
             <p class="tag">By {{note.author}}</p>
             <p class="tag" *ngFor="let tag of note.categoryList">{{tag}}</p>
         </div>
-        <div class="noteContentContainer" [innerHTML]="note.content">
+        <div class="note-content" [innerHTML]="note.content">
         </div>
-        <div class="noteList-item-bottomBar">
-            <img src="../../../../assets/close.svg" alt="Delete Note" class="noteList-item-bottomBar-img white" (click)="deleteNote(note)">
-            <img src="../../../../assets/edit.svg" alt="Edit Note" class="noteList-item-bottomBar-img white" (click)="editNote(note)">
+        <div class="note-item-bottomBar">
+            <img src="../../../../assets/close.svg" alt="Delete Note" class="note-item-bottomBar-img white" (click)="deleteNote(note)">
+            <img src="../../../../assets/edit.svg" alt="Edit Note" class="note-item-bottomBar-img white" (click)="editNote(note)">
         </div>
 
     </div>

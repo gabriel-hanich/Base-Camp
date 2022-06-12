@@ -5,8 +5,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { KtdGridModule } from '@katoid/angular-grid-layout';
-import { MatSelectModule } from '@angular/material/select';
 import { TINYMCE_SCRIPT_SRC, EditorModule } from "@tinymce/tinymce-angular";
+
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 import { HomePageComponent } from './components/home/home-page/home-page.component';
 import { SidebarComponentComponent } from './components/ui-components/sidebar/sidebar-component/sidebar-component.component';
@@ -19,7 +22,6 @@ import { NewsScreenComponent } from './components/news/news-screen/news-screen.c
 import { LoadingWheelComponent } from './components/ui-components/loading-wheel/loading-wheel.component';
 import { IpChangerComponent } from './components/settings/ip-changer/ip-changer.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations' ;
-import { MatFormFieldModule } from '@angular/material/form-field';
 import { SetupTimetableScreenComponent } from './components/timetable/setup-timetable-screen/setup-timetable-screen.component';
 import { TimetableDayComponent } from './components/timetable/timetable-day/timetable-day.component';
 import { ToggleSwitchComponent } from './components/ui-components/toggle-switch/toggle-switch.component';
@@ -60,8 +62,9 @@ import { NoteWidgetComponent } from './components/widgets/note-widget/note-widge
     NoopAnimationsModule,
     MatFormFieldModule,
     MatSelectModule,
+    MatAutocompleteModule,
     KtdGridModule,
-    EditorModule
+    EditorModule,
   ],
   providers: [{ provide: TINYMCE_SCRIPT_SRC, useValue: 'tinymce/tinymce.min.js'}],
   bootstrap: [AppComponent]

@@ -80,7 +80,7 @@
     }
 }
 
-.noteList{
+.note{
     &-container{
         width: 95%;
         height: fit-content;
@@ -154,7 +154,7 @@
 
 
 
-.noteContentContainer {
+.note-content {
     ::ng-deep {
         img{
             width: 100%;

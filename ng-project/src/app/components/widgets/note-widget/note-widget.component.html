@@ -1,6 +1,6 @@
 <div class="note-container">
-    <div class="settings-container" [ngClass]="{cover: displaySettings}">
-        <div class="settings-group">
+    <div class="widget-settings-container" [ngClass]="{widgetCover: displaySettings}">
+        <div class="widget-settings-group">
             <h4 class="title-text">Show</h4>
             <mat-form-field appearance="fill">
                 <mat-select [value]="showSetting" (valueChange)="updateShowSetting($event)">
@@ -11,7 +11,7 @@
                 </mat-select>
             </mat-form-field>
         </div>
-        <div class="settings-group" *ngIf="showSetting == 'set'">
+        <div class="widget-settings-group" *ngIf="showSetting == 'set'">
             <h4 class="title-text">Note Title</h4>
             <mat-form-field appearance="fill">
                 <mat-select [value]="noteList[0]['title']" (valueChange)="updateSearchTitle($event)">
@@ -19,9 +19,22 @@
                 </mat-select>
             </mat-form-field>
         </div>
-        <div class="settings-group" *ngIf="showSetting == 'tag'">
+        <div class="widget-settings-group" *ngIf="showSetting == 'tag'">
             <h4 class="title-text">Note Tag</h4>
             <app-categories-list [defaultText]="'Search Tag'" (categoryList)="updateSearchCategory($event)" [id]="'home'"></app-categories-list>
         </div>
     </div>
+
+    <div class="note-container">
+        <div class="note-item-container" *ngFor="let note of displayNoteList">
+            <h1 class="note-item-heading tag heading-tag">{{note.title}}</h1>
+            <div class="note-item-tags-container">
+                <p class="tag">{{note.timeCreated | date}}</p>
+                <p class="tag">By {{note.author}}</p>
+                <p class="tag" *ngFor="let tag of note.categoryList">{{tag}}</p>
+            </div>
+            <div class="note-content" [innerHTML]="note.content"></div>    
+        </div>
+    </div>
+
 </div>

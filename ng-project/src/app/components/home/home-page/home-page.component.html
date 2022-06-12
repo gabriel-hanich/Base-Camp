@@ -24,7 +24,7 @@
             <div class="widgets-content-container">
                 <app-timetable-column *ngIf='item.presetType == "timetableDay"' [displaySettings]="editableWidgets" [id]=item.id [toggleEmitter]="timeEmitter"></app-timetable-column>
                 <app-day-spinner *ngIf='item.presetType == "timeBtn"' (btnPress)="toggleTimeDisplay()"></app-day-spinner>
-                <app-note-widget *ngIf="item.presetType == 'note'" [displaySettings]="editableWidgets"></app-note-widget>
+                <app-note-widget *ngIf="item.presetType == 'note'" [displaySettings]="editableWidgets" [id]="item.id"></app-note-widget>
             </div>
         </ktd-grid-item>
     </ktd-grid>
