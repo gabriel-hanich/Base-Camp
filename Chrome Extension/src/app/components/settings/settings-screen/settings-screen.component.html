@@ -8,7 +8,7 @@
 </div>
 
 <div class="options-container">
-    <div class="options-item-container component-container" *ngIf="screenWidth > 500" id="fileOption" (click)="expandPopUp('fileOption')">
+    <div class="options-item-container" *ngIf="screenWidth > 500" id="fileOption" (click)="expandPopUp('fileOption')">
         <div class="heading-container ">
             <h2 class="heading-text">Timetable Settings</h2>
         </div>
@@ -19,7 +19,7 @@
             <app-new-file></app-new-file>
         </div>
     </div>
-    <div class="options-item-container component-container" #newsSource id="newsOption" (click)="expandPopUp('newsOption')">
+    <!-- <div class="options-item-container" #newsSource id="newsOption" (click)="expandPopUp('newsOption')">
         <div class="heading-container ">
             <h2 class="heading-text">Change the web adress were news is sourced</h2>
         </div>
@@ -29,5 +29,5 @@
         <div class="content-container">
             <app-ip-changer></app-ip-changer>
         </div>
-    </div>
+    </div> -->
 </div>

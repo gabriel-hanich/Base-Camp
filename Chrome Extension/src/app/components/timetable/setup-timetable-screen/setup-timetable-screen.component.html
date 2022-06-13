@@ -1,7 +1,7 @@
 <div class="heading-component-container">
     <app-heading-component 
         line1Text="Setup your timetable"
-        line2Text="Follow the below steps to properly setup timetable data">
+        line2Text="Follow the below steps to setup timetable data">
     </app-heading-component>
 </div>
 
@@ -22,16 +22,14 @@
     </div>
     <div class="section-item">
         <div class="subheading-container">
-            <h2 class="subeading-text">What week is it this week?</h2>
-            <h4 class="subeading-text">(If its the weekend, Sunday represents the start of the new week)</h4>
+            <h2 class="subheading-text">What week is it this week?</h2>
         </div>
         <div class="toggle-container">
             <app-toggle-switch label1="Week A" label2="Week B" defaultVal="{{currentWeekOption}}" elemID="current" (state)="updateWeekLetter($event)" id="currentToggle"></app-toggle-switch>
         </div>
 
         <div class="subheading-container">
-            <h2 class="subeading-text">What week number is it this Week?</h2>
-            <h4 class="subeading-text">(If its the weekend, Sunday represents the start of the new week)</h4>
+            <h2 class="subheading-text">What week number is it this Week?</h2>
         </div>
         <form class="weekNumber-form" (submit)="updateWeekNumber($event)">
             <input class="weekNumber-input" type="number" id="weekNumberInput" [value]="currentWeek">

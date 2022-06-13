@@ -8,55 +8,17 @@ import { Period, widget } from 'src/models';
   styleUrls: ['./timetable-column.component.scss']
 })
 export class TimetableColumnComponent implements OnInit {
-  @Input() displaySettings: boolean;
-  @Input() id: number;
   @Input() toggleEmitter: EventEmitter<String>;
+  @Input() currentDate: String;
 
-  public currentDate = "today";
   public timetableData: Period[] = [];
   public isCurrentWeek: boolean = false; // If the week being displayed is the same as the current week
-  private widgetData: widget; // The Widget obj
-  private widgetIndex: number;  // The index of the widget obj in the array
   
   public titleText: String;
-
-  private additionalData: Map<String, String>;
 
   constructor(private globalVars: GlobalVarsService) { }
 
   ngOnInit(): void {
-    let totalWidgetData: widget[] = JSON.parse(this.globalVars.getVar("widgetsLayout"));
-    for(var i=0; i<totalWidgetData.length; i++){
-      if(totalWidgetData[i].id == this.id){
-        this.widgetData = totalWidgetData[i];
-        this.widgetIndex = i;
-      }
-    }
-    if(this.widgetData.additionalData){
-      this.additionalData = new Map<String, String>(JSON.parse(this.widgetData.additionalData as string));
-      this.currentDate = this.additionalData.get("date") as string;
-    }else{
-      this.additionalData = new Map<String, String>();
-      this.updateGlobalScope();
-    }
-    
-    if(!this.currentDate){
-      this.currentDate = "today";
-    }
-    this.getTimetableData();
-
-  }
-  updateGlobalScope():void{
-    let totalWidgetData: widget[] = JSON.parse(this.globalVars.getVar("widgetsLayout"));
-    this.widgetData.additionalData = JSON.stringify(Array.from(this.additionalData.entries()));
-    totalWidgetData[this.widgetIndex] = this.widgetData;
-
-    this.globalVars.setVar("widgetsLayout", JSON.stringify(totalWidgetData));
-  }
-  
-  updateDate():void{
-    this.additionalData.set("date", this.currentDate);
-    this.updateGlobalScope();
     this.getTimetableData();
   }
 
@@ -90,16 +52,7 @@ export class TimetableColumnComponent implements OnInit {
           break;
         }
       }
-    }else if(this.currentDate[this.currentDate.length - 1] === "B"){
-      displayWeek = "b";
-      for(var i=0; i<7; i++){
-        displayDate.setDate(displayDate.getDate() + 1);
-        if(this.currentDate.includes(dayList[displayDate.getDay()])){
-          break;
-        }
-      }
     }
-
 
     if((wk1IsWkA && displayWeek == "a") || (!wk1IsWkA && displayWeek == "b")){ // If the data to be shown comes from week 1
       for(var i=0; i<week1Data.length; i++){

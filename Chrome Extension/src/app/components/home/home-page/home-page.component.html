@@ -7,12 +7,12 @@
 </div>
 <div class="widgets-container">
     <div class="widgets-content-container main-col">
-        <app-timetable-column [displaySettings]="editableWidgets" [id]="1" [toggleEmitter]="timeEmitter"></app-timetable-column>
+        <app-timetable-column [currentDate]='"today"' [id]='1' [toggleEmitter]="timeEmitter"></app-timetable-column>
     </div>
     <div class="widgets-content-container">
         <app-day-spinner  (btnPress)="toggleTimeDisplay()"></app-day-spinner>
     </div>
     <div class="widgets-content-container main-col">
-        <app-timetable-column [displaySettings]="editableWidgets" [id]="2" [toggleEmitter]="timeEmitter"></app-timetable-column>
+        <app-timetable-column [currentDate]='"tomorrow"' [id]='1' [toggleEmitter]="timeEmitter"></app-timetable-column>
     </div>
 </div>

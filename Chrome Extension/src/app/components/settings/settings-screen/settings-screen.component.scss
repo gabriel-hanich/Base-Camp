@@ -6,7 +6,7 @@
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        margin-top: 150px;
+        margin-top: 85px;
         gap: 45px;
         align-items: center;
         justify-content: center;
@@ -14,10 +14,11 @@
 
     &-item{
         &-container{
-            width: 30%;
-            min-width: 300px;
-            height: 350px;
+            width: 40%;
+            height: 200px;
             transition: all 1s ease;
+            background-color: var(--bottom-bg-color);
+            border-radius: 15px 0px 15px 0px;
         }
     }
 }
@@ -36,7 +37,7 @@
     }
 
     &-img{
-        height: 100%;
+        height: 50%;
         aspect-ratio: 1/1;
         margin: auto;
         padding-left: 15px;
@@ -49,7 +50,7 @@
         height: 0px;
         margin: auto;
         transition: all 1s ease;
-        margin-top: 50px;
+        margin-top: -10px;
         overflow: hidden;
     }
 }
