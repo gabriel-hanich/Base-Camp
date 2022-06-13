@@ -38,6 +38,14 @@
         [defaultText]="'Search Tag'" 
         (categoryList)="updateSearchCategories($event)"
         [id]="'searchList'"></app-categories-list>
+        <mat-form-field appearance="fill" class="search-sort">
+            <mat-label>Sort By</mat-label>
+            <mat-select [value]="'newest'" (valueChange)="updateSortType($event)">
+                <mat-option [value]="'newest'" class="mat-option">Newest First</mat-option>
+                <mat-option [value]="'oldest'" class="mat-option">Oldest First</mat-option>
+                <mat-option [value]="'alphabetical'" class="mat-option">Alphabetical</mat-option>
+            </mat-select>
+        </mat-form-field>
 </div>
 
 <div class="note-container">
@@ -54,6 +62,5 @@
             <img src="../../../../assets/close.svg" alt="Delete Note" class="note-item-bottomBar-img white" (click)="deleteNote(note)">
             <img src="../../../../assets/edit.svg" alt="Edit Note" class="note-item-bottomBar-img white" (click)="editNote(note)">
         </div>
-
     </div>
 </div>

@@ -1,3 +1,4 @@
+
 <div class="heading-component-container">
     <app-heading-component 
         line1Text="Your Timetable"
@@ -15,7 +16,12 @@
     </div>
     <div class="week-table-container">
         <div class="week-day-container" *ngFor="let dayData of weekAData">
-            <app-timetable-day class="week-day-component" [timetableData]=dayData  [isCurrentWeek]=isWeekA [displayEmitter]="timeEmitter"></app-timetable-day>
+            <app-timetable-day 
+                class="week-day-component" 
+                [timetableData]=dayData 
+                [isCurrentWeek]=isWeekA
+                [displayEmitter]="timeEmitter"
+                [doTimes]="true"></app-timetable-day>
         </div>
     </div>
 </div>
@@ -25,7 +31,12 @@
     </div>
     <div class="week-table-container">
         <div class="week-day-container" *ngFor="let dayData of weekBData">
-            <app-timetable-day class="week-day-component" [timetableData]=dayData [isCurrentWeek]=isWeekB [displayEmitter]="timeEmitter"></app-timetable-day>
+            <app-timetable-day
+                class="week-day-component"
+                [timetableData]=dayData
+                [isCurrentWeek]=isWeekB
+                [displayEmitter]="timeEmitter"
+                [doTimes]="true"></app-timetable-day>
         </div>
     </div>
 </div>

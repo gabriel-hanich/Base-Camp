@@ -10,7 +10,9 @@ export class TimetableDayComponent implements OnInit {
   @Input() timetableData: Period[]; 
   @Input() isCurrentWeek: boolean;
   @Input() titleText: String;
+  @Input() doTimes: boolean;
   @Input() displayEmitter: EventEmitter<String>;
+
 
   public dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   public dayName: string; 
@@ -22,7 +24,7 @@ export class TimetableDayComponent implements OnInit {
 
   constructor() { }
   
-  ngOnInit(): void {
+  ngOnInit(): void 
     // Process whether or not the period/day should be highlighted
     let today = new Date();
     for(var i=0; i<this.timetableData.length; i++){

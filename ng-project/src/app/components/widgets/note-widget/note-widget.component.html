@@ -11,7 +11,7 @@
                 </mat-select>
             </mat-form-field>
         </div>
-        <div class="widget-settings-group" *ngIf="showSetting == 'set'">
+        <div class="widget-settings-group" *ngIf="showSetting == 'set'" >
             <h4 class="title-text">Note Title</h4>
             <mat-form-field appearance="fill">
                 <mat-select [value]="noteList[0]['title']" (valueChange)="updateSearchTitle($event)">

@@ -14,7 +14,8 @@
             <h4 class="table-text table-text-location">{{ period.location }}</h4>
             <h4 class="table-text table-text-teacher">{{ period.teacher.toLowerCase() }}</h4>
         </div>
-        <div class="table-box table-box-contents timeBox hide" [ngClass]="{'highlight': period.isCurrent === true}">
+        
+        <div class="table-box table-box-contents timeBox hide" [ngClass]="{'highlight': period.isCurrent === true}" *ngIf="doTimes">
             <h4 class="table-text table-text-classname" *ngIf="period.startDate.getHours() < 12">
                 Start: {{ period.startDate.getHours() }}:{{ ("0" + period.startDate.getMinutes()).slice(-2) }}am
             </h4>

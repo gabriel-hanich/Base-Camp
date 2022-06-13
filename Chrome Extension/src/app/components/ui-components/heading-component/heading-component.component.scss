@@ -1,0 +1,13 @@
+.component{
+    &-container{
+        animation: scale-in-center 0.65s ease;
+    }
+}
+
+.heading{
+    &-text{
+        animation: tracking-in-expand 0.65s ease;
+        margin-top: 0px !important;
+        margin-bottom: 0px;
+    }
+}

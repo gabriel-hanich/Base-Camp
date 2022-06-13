@@ -1,0 +1,27 @@
+<div class="input-container">
+    <editor
+        id="editor"
+        plugins="Image"
+        (onSelectionChange)="onKeyPress($event)"
+        (onInit)="initEditor($event)"
+        [init]="{
+            base_url: '/tinymce', 
+            placeholder: innerText,
+            suffix: '.min',
+            menubar: false,
+            skin: 'oxide-dark',
+            content_css: 'dark',
+            outputFormat: 'html',
+            plugins: 'image lists fullscreen table emoticons ',
+            fullscreen_native: true,
+            toolbar: [
+                { name: 'history', items: [ 'undo', 'redo', 'fullscreen'] },
+                { name: 'styles', items: [ 'styles' ] },
+                { name: 'insert', items: ['image', 'media', 'table']},
+                { name: 'formatting', items: [ 'bold', 'italic', 'underline' ] },
+                { name: 'alignment', items: [ 'alignleft', 'aligncenter', 'alignright', 'alignjustify' ] },
+                { name: 'lists', items: ['bullist', 'numlist']}
+            ]
+            }"
+    ></editor>
+</div>
