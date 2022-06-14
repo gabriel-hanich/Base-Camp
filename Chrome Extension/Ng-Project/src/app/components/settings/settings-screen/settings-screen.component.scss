@@ -96,6 +96,12 @@
     opacity: 0%;
 }
 
+.versionNum{
+    position: fixed;
+    bottom: 0%;
+    right: 5%;
+}
+
 @keyframes moveUpFadeIn {
     0% {
         transform: translateY(100px);

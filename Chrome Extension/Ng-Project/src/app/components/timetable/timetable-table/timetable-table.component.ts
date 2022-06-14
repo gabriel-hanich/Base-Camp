@@ -8,14 +8,16 @@ import { Period } from 'src/models';
   styleUrls: ['./timetable-table.component.scss']
 })
 export class TimetableTableComponent implements OnInit {
-  public currentDay: string = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"][new Date().getDay()];
+  private dayList: string[] = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"]
+  public currentDay: string = this.dayList[new Date().getDay()];
   public currentWeek: string = this.globalVars.getVar("weekLetter").toUpperCase();
 
   public weekAData: Array<Period[]> = [];
   public weekBData: Array<Period[]> = [];
 
-  public isWeekA = this.currentWeek == "A";
-  public isWeekB = this.currentWeek == "B";
+  public displayData: Period[] = [];
+  private displayDay: String = 'monday';
+  private displayWeek: String = 'a';
 
   public timeEmitter: EventEmitter<String> = new EventEmitter<String>();
 
@@ -46,8 +48,34 @@ export class TimetableTableComponent implements OnInit {
         this.weekBData[i][k]["endDate"] = new Date(this.weekBData[i][k]["endDate"]);
       }
     }
+    this.updateDisplayData();
   }
 
+  setDisplayDay(day: string): void{
+    this.displayDay = day;
+    this.updateDisplayData();
+  }
+
+  setDisplayWeek(week: string): void{
+    this.displayWeek = week;
+    this.updateDisplayData();
+  }
+
+  updateDisplayData():void{
+    let wkData: Period[][];
+    if(this.displayWeek == 'a'){
+      wkData = this.weekAData;
+      this.displayData = this.weekAData[this.dayList.indexOf(this.displayDay as string) - 1];
+    }else{
+      wkData = this.weekBData;
+      this.displayData = this.weekBData[this.dayList.indexOf(this.displayDay as string) - 1];
+    }
+    for(var i=0; i<wkData.length; i++){
+      if(this.dayList[wkData[i][0].startDate.getDay()] == this.displayDay){
+        this.displayData = wkData[i]
+      }
+    }
+  }
   
   showTimes():void{
     this.timeEmitter.emit("WOOO");

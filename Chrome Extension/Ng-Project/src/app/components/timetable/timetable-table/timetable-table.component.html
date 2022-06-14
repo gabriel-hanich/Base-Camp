@@ -1,0 +1,43 @@
+<div class="page-container">
+    <div class="heading-component-container">
+        <app-heading-component 
+            line1Text="Your Timetable"
+            line2Text="{{ currentDay }} Week {{ currentWeek }}">
+        </app-heading-component>
+    </div>
+    
+    <div class="display-container">
+        <h2>Display</h2>
+        <mat-form-field appearance="fill" class="display-field">
+            <mat-select class="display-selector" [value]="'monday'" (valueChange)="setDisplayDay($event)">
+                <mat-option [value]="'monday'">Monday</mat-option>
+                <mat-option [value]="'tuesday'">Tuesday</mat-option>
+                <mat-option [value]="'wednesday'">Wednesday</mat-option>
+                <mat-option [value]="'thursday'">Thursday</mat-option>
+                <mat-option [value]="'friday'">Friday</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <h2>Of week</h2>
+        <mat-form-field appearance="fill" class="display-field">
+            <mat-select class="display-selector" [value]="'a'" (valueChange)="setDisplayWeek($event)">
+                <mat-option [value]="'a'">A</mat-option>
+                <mat-option [value]="'b'">B</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <div class="time-container">
+        <button class="time-btn animated-hover" (click)="showTimes()">Show Times</button>
+    </div>
+
+    <div class="week-day-container">
+        <app-timetable-day 
+            class="week-day-component" 
+            [timetableData]='displayData' 
+            [isCurrentWeek]='false'
+            [displayEmitter]="timeEmitter"
+            [doTimes]="true">
+        </app-timetable-day>
+    </div>
+</div>
+

@@ -1,7 +1,8 @@
 <div class="table-container">
     <div class="table-box heading-box" [ngClass]="{'highlight': isToday === true}">
         <div>
-            <h1 class="table-text heading-text">{{titleText}} | {{ dayNames[timetableData[0].startDate.getDay()] }}</h1>
+            <h1 class="table-text heading-text" *ngIf="titleText">{{titleText}} | {{ dayNames[timetableData[0].startDate.getDay()] }}</h1>
+            <h1 class="table-text heading-text" *ngIf="!titleText">{{ dayNames[timetableData[0].startDate.getDay()] }}</h1>
         </div>
     </div>
     <div class="table-row" *ngFor="let period of timetableData">
