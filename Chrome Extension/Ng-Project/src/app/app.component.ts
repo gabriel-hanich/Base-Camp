@@ -9,6 +9,6 @@ export class AppComponent {
   title = 'Base Camp';
 
   onActivate():void{ // Every time the user visits a new page, scroll to the top leftz
-    document.getElementById("sideBar")?.classList.add("sidebar-retracted");
+    document.getElementById("sideBar")?.classList.remove("sidebar-extended");
   }
 }

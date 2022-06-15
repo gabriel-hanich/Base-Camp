@@ -13,20 +13,20 @@ export class SidebarToggleComponent implements OnInit {
   }
 
   toggleSideBar(): void{
-    document.getElementById("sideBar")?.classList.toggle("sidebar-retracted")
+    document.getElementById("sideBar")?.classList.toggle("sidebar-extended")
   }
 
   @HostListener('document:keydown', ['$event'])
   onKeydownHandler(event: KeyboardEvent) {
     if(event.key == "Escape"){
-      document.getElementById("sideBar")?.classList.add("sidebar-retracted");
+      document.getElementById("sideBar")?.classList.remove("sidebar-extended");
     }
   }
   
   @HostListener('document:click', ['$event'])
   onClickHandler(event: MouseEvent){
     if(event.pageX / window.innerWidth > 0.2){
-      document.getElementById("sideBar")?.classList.add("sidebar-retracted");
+      document.getElementById("sideBar")?.classList.remove("sidebar-extended");
     }
   }
 
