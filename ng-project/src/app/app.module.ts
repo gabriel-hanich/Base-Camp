@@ -20,7 +20,6 @@ import { HeadingComponentComponent } from './components/ui-components/heading-co
 import { NewFileComponent } from './components/settings/new-file/new-file.component';
 import { NewsScreenComponent } from './components/news/news-screen/news-screen.component';
 import { LoadingWheelComponent } from './components/ui-components/loading-wheel/loading-wheel.component';
-import { IpChangerComponent } from './components/settings/ip-changer/ip-changer.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations' ;
 import { SetupTimetableScreenComponent } from './components/timetable/setup-timetable-screen/setup-timetable-screen.component';
 import { TimetableDayComponent } from './components/timetable/timetable-day/timetable-day.component';
@@ -31,6 +30,7 @@ import { TextInputComponent } from './components/ui-components/text-input/text-i
 import { CategoriesListComponent } from './components/ui-components/categories-list/categories-list.component';
 import { DaySpinnerComponent } from './components/widgets/day-spinner/day-spinner.component';
 import { NoteWidgetComponent } from './components/widgets/note-widget/note-widget.component';
+import { AdressChangerComponent } from './components/settings/adress-changer/adress-changer.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +44,6 @@ import { NoteWidgetComponent } from './components/widgets/note-widget/note-widge
     NewFileComponent,
     NewsScreenComponent,
     LoadingWheelComponent,
-    IpChangerComponent,
     SetupTimetableScreenComponent,
     TimetableDayComponent,
     ToggleSwitchComponent,
@@ -53,7 +52,8 @@ import { NoteWidgetComponent } from './components/widgets/note-widget/note-widge
     TextInputComponent,
     CategoriesListComponent,
     DaySpinnerComponent,
-    NoteWidgetComponent
+    NoteWidgetComponent,
+    AdressChangerComponent
   ],
   imports: [
     BrowserModule,

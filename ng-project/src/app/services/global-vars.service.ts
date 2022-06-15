@@ -19,6 +19,7 @@ export class GlobalVarsService {
     this.setVar("userName", "Gabriel");
     this.setVar("newsAdress", "http://localhost:3000/");
     this.setVar("widgetsLayout", JSON.stringify([]));
+    this.setVar("doCloudSync", JSON.stringify(false));
     this.setVar("noteList", JSON.stringify([]));
   }
 
