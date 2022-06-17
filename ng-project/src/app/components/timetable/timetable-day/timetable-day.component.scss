@@ -42,6 +42,7 @@
         text-align: center;
         text-transform: capitalize;
         overflow-x: hidden;
+        height: 100%;
 
 
         &-heading{
@@ -96,4 +97,14 @@
     }
 }
   
-  
+@media screen and(max-height:900px) {
+    .table-box{
+        height: 70px;
+    }
+    .heading-text{
+        font-size: 1.5rem;
+    }
+    .table-text{
+        margin-top: 5px;
+    }
+}

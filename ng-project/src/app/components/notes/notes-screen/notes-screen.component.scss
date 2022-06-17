@@ -186,7 +186,8 @@
 }
 
 .heading-tag{
-    height: 35px !important;
+    height: fit-content !important;
+    min-height: 35px !important;
 
 }
 

@@ -112,6 +112,21 @@ h3.heading-text{
     }
 }
 
+@media screen and(max-height: 900px){
+    .heading-component-container{
+        height: 100px;
+    }
+    h1.heading-text{
+        font-size: 2rem;
+    }
+    h2.heading-text{
+        font-size: 1.5rem;
+    }
+    h3.heading-text{
+        font-size: 1.25rem;
+    }
+}
+
 .animated-hover{
     transition: all 0.25s ease !important;
     cursor: pointer;

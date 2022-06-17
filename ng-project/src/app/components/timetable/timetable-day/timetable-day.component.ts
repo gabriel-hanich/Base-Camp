@@ -24,7 +24,7 @@ export class TimetableDayComponent implements OnInit {
 
   constructor() { }
   
-  ngOnInit(): void 
+  ngOnInit(): void {
     // Process whether or not the period/day should be highlighted
     let today = new Date();
     for(var i=0; i<this.timetableData.length; i++){

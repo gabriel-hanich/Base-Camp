@@ -63,3 +63,9 @@
 .highlight{
     background-color: var(--mid-bg-color);
 }
+
+@media screen and(max-width:1600px) {
+    .week-table-container{
+        width: 99%;
+    }
+}

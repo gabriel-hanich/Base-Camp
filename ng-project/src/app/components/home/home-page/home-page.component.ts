@@ -96,7 +96,7 @@ export class HomePageComponent implements OnInit {
       height = 1;
       width = 1;
     }else if(this.newWidgetType === "note"){
-      width = 4;
+      width = 3;
     }
 
     if(this.layoutData.length != 0){ // If this ISN'T the first widget on screen
@@ -139,7 +139,8 @@ export class HomePageComponent implements OnInit {
 
   toggleWidgetEditing():void{
     this.editableWidgets = !this.editableWidgets;
-    this.document.getElementById("adjustContainer")?.classList.toggle('pulledUp');
+    document.getElementById("adjustContainer")?.classList.toggle('pulledUp');
+    console.log(this.document.getElementById("adjustContainer"));
   }
 
   saveLayout(currentLayout: KtdGridLayout):void{

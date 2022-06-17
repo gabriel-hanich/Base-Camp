@@ -86,3 +86,9 @@
 
     }
 }
+
+@media screen and(max-height: 900px) {
+    .subheading-container{
+        height: 180px;
+    }   
+}
