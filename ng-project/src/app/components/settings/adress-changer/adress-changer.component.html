@@ -1,0 +1,17 @@
+<div class="steps-container">
+    <h3 class="heading-text">Note: This is a somewhat advanced setting <br><br>
+        Paste your MongoDB Atlas URI Below (has to have full read and write permissions).
+        Ensure you disable network protection and allow all IP's to connect </h3>
+    <div class="form-container">
+        <app-toggle-switch 
+            [label1]="'Enable Cloud Sync'" 
+            [label2]="'Disable Cloud Sync'"
+            [defaultVal]="defaultToggleVal"
+            (state)="updateCloudState($event)"
+            [elemID]="'syncToggle'"></app-toggle-switch>
+        <form (submit)="updateAddress($event)" class="form dull" [ngClass]="{'dull': !doCloudSync}">
+            <input type="text" [value]="currentAdress" class="form-input" id="addressInput">
+            <button class="form-btn animated-hover">{{ submitText }}</button>
+        </form>
+    </div>
+</div>
