@@ -39,7 +39,6 @@ export class NoteWidgetComponent implements OnInit {
       }
     }
     if(this.widget.additionalData){
-      console.log("WOOO");
       this.additionalData = new Map<String, String>(JSON.parse(this.widget.additionalData as string));
 
       this.showSetting = this.additionalData.get("showSetting") as String;

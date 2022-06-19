@@ -32,7 +32,10 @@ export interface Note{
     title: String;
     content: String;
     author: String;
-    isArchived: Boolean;
     timeCreated: number;
     categoryList: String[]
+}
+
+export interface StudyNote extends Note{
+    subject: String;
 }

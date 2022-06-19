@@ -57,7 +57,6 @@ export class NotesScreenComponent implements OnInit {
         "title": this.currentNoteTitle,
         "content": this.currentNoteContent,
         "author": this.globalVar.getVar('userName'),
-        "isArchived": false,
         "timeCreated": new Date().getTime(),
         "categoryList": this.currentCategoryList
       });

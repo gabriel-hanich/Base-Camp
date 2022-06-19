@@ -1,0 +1,65 @@
+<div class="page-container">
+    <div class="background" id="background"></div>
+
+
+    <div class="heading-component-container">
+        <app-heading-component 
+            line1Text="Your Study Notes">
+        </app-heading-component>
+    </div>
+    
+    <div class="filter-container">
+        <h2 class="filter-text heading-text">Sort by</h2>
+        <mat-form-field appearance="fill" class="filter-field">
+            <mat-select class="filter-selector" [value]="'newest'" (valueChange)="setSortType($event)">
+                <mat-option [value]="'newest'">Newest</mat-option>
+                <mat-option [value]="'oldest'">Oldest</mat-option>
+                <mat-option [value]="'search'">Search</mat-option>
+                <mat-option [value]="'subject'">By Subject</mat-option>
+                <mat-option [value]="'tag'">By Tag</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <div *ngIf="sortType == 'search'">
+            <input 
+                type="text"
+                id="searchTextInput"
+                class="filter-input animated-hover"
+                (keyup)="setSearchText()"
+            >
+        </div>
+        <mat-form-field appearance="fill" class="filter-field" *ngIf="sortType == 'subject'">
+            <label>Subject</label>
+            <mat-select [value]="totalSubjectsList[0]" (valueChange)="setSubject($event)">
+                <mat-option 
+                    *ngFor="let subject of totalSubjectsList"
+                    [value]="subject">{{subject}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <div *ngIf="sortType == 'tag'">
+            <app-categories-list
+                    class="filter-tags"
+                    [defaultText]="''"
+                    [id]="'filterTagsInput'"
+                    [doAutoFill] = "false"
+                    (categoryList)="setCategoriesList($event)"></app-categories-list>
+        </div>
+    </div>
+    
+    <div class="note-container">
+        <div class="note-item-container" *ngFor="let note of displayNotesList" id="{{note.timeCreated}}">
+            <h1 class="note-item-heading tag heading-tag">{{note.title}}</h1>
+            <div class="note-item-tags-container">
+                <p class="tag">{{note.timeCreated | date}}</p>
+                <p class="tag">By {{note.author}}</p>
+                <p class="tag" *ngFor="let tag of note.categoryList">{{tag}}</p>
+            </div>
+            <div class="note-content" [innerHTML]="note.content" *ngIf="noteIsFullScreen">
+            </div>
+            <div class="note-item-bottomBar">
+                <img src="../../../../assets/trash.svg" alt="Delete Note" class="note-item-bottomBar-img white" (click)="deleteNote(note)">
+                <img src="../../../../assets/full-screen.svg" alt="Delete Note" class="note-item-bottomBar-img white" (click)="fullScreenNote(note)">
+                <!-- <img src="../../../../assets/edit.svg" alt="Edit Note" class="note-item-bottomBar-img white" (click)="editNote(note)"> -->
+            </div>
+        </div>
+    </div>
+</div>

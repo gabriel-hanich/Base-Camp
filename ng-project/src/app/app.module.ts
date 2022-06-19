@@ -31,6 +31,9 @@ import { CategoriesListComponent } from './components/ui-components/categories-l
 import { DaySpinnerComponent } from './components/widgets/day-spinner/day-spinner.component';
 import { NoteWidgetComponent } from './components/widgets/note-widget/note-widget.component';
 import { AdressChangerComponent } from './components/settings/adress-changer/adress-changer.component';
+import { StudyNotesPageComponent } from './components/study-notes/study-notes-page/study-notes-page.component';
+import { NewStudyNoteComponent } from './components/study-notes/new-study-note/new-study-note.component';
+import { ViewStudyNotesComponent } from './components/study-notes/view-study-notes/view-study-notes.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +56,10 @@ import { AdressChangerComponent } from './components/settings/adress-changer/adr
     CategoriesListComponent,
     DaySpinnerComponent,
     NoteWidgetComponent,
-    AdressChangerComponent
+    AdressChangerComponent,
+    StudyNotesPageComponent,
+    NewStudyNoteComponent,
+    ViewStudyNotesComponent
   ],
   imports: [
     BrowserModule,

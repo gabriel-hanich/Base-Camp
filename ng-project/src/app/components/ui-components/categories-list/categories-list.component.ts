@@ -10,6 +10,7 @@ import { Note } from 'src/models';
 export class CategoriesListComponent implements OnInit {
   @Input() defaultText: String;
   @Input() id: String;
+  @Input() doAutoFill: Boolean = true;
   @Output() categoryList: EventEmitter<String[]> = new EventEmitter<String[]>();
   public tagList: number[] = []; 
   public tagData: String[] = [];
@@ -20,16 +21,17 @@ export class CategoriesListComponent implements OnInit {
   constructor(private globalVars: GlobalVarsService) { }
 
   ngOnInit(): void {
-    let notesList: Note[] = JSON.parse(this.globalVars.getVar("noteList"));
-    for(var i=0; i<notesList.length; i++){
-      for(var k=0; k<notesList[i]['categoryList'].length; k++){
-        if(!this.totalTagList.includes(notesList[i]['categoryList'][k])){
-          this.totalTagList.push(notesList[i]['categoryList'][k]);
+    if(this.doAutoFill){
+      let notesList: Note[] = JSON.parse(this.globalVars.getVar("noteList"));
+      for(var i=0; i<notesList.length; i++){
+        for(var k=0; k<notesList[i]['categoryList'].length; k++){
+          if(!this.totalTagList.includes(notesList[i]['categoryList'][k])){
+            this.totalTagList.push(notesList[i]['categoryList'][k]);
+          }
         }
       }
+      this.filteredTagList = this.totalTagList;
     }
-    this.filteredTagList = this.totalTagList;
-
   }
 
   setTaglist(tagList: String[]): void{
