@@ -38,4 +38,5 @@ export interface Note{
 
 export interface StudyNote extends Note{
     subject: String;
+    isFullScreen?: boolean;
 }

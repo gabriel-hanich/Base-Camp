@@ -1,5 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { GlobalVarsService } from 'src/app/services/global-vars.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-settings-screen',
@@ -9,6 +10,10 @@ import { GlobalVarsService } from 'src/app/services/global-vars.service';
 export class SettingsScreenComponent implements OnInit {
   public screenWidth: number = screen.width;
   public hasSettings: boolean = true;
+
+  public deviceType: String = environment.device;
+  public build: String = environment.build;
+  public version: String = environment.version;
 
   constructor() { }
 

@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { GlobalVarsService } from 'src/app/services/global-vars.service';
 import { Period, StudyNote } from 'src/models';
+import { CategoriesListComponent } from '../../ui-components/categories-list/categories-list.component';
+import { TextInputComponent } from '../../ui-components/text-input/text-input.component';
 
 @Component({
   selector: 'app-new-study-note',
@@ -11,11 +13,14 @@ import { Period, StudyNote } from 'src/models';
 export class NewStudyNoteComponent implements OnInit {
   public totalSubjectsList: String[] = [];
 
-  private currentSubject: String = "";
+  public currentSubject: String = "";
   private categoriesList: String[] = [];
   private currentContent: String = "";
+  private noteIndex: number = -1; // Tracks the current index of the note
 
-  constructor(private globalVars: GlobalVarsService, private router: Router) { }
+  @ViewChild(CategoriesListComponent) categoryInput:CategoriesListComponent;
+  @ViewChild(TextInputComponent) textInput:TextInputComponent;
+  constructor(private globalVars: GlobalVarsService, private router: Router, private route: ActivatedRoute) { }
   
   ngOnInit(): void {
     // Get a list containing the names of each subject present in the user's timetable
@@ -36,6 +41,29 @@ export class NewStudyNoteComponent implements OnInit {
       return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
     });
     this.currentSubject = this.totalSubjectsList[0];
+
+    // Allow time for page to render before defining categoryInput
+    let categoryInput = this.categoryInput;
+    let textInput = this.textInput;
+    setTimeout(()=>{
+      categoryInput = this.categoryInput;
+      textInput = this.textInput;
+    }, 450)
+
+    this.route.params.subscribe((params)=>{
+      if(Object.keys(params).length !== 0 ){
+        let currentNote: StudyNote = JSON.parse(this.globalVars.getVar("studyNoteList"))[params['index'] as number];
+        console.log(currentNote);
+        (document.getElementById("titleInput") as HTMLInputElement).value = currentNote["title"] as string;
+        this.currentSubject = currentNote["subject"]; 
+        this.noteIndex = params['index'];
+        setTimeout(()=>{ // Allow time for page to render before forcing categoryInput to set content
+          categoryInput.setTaglist(currentNote["categoryList"]);
+          textInput.setContent(currentNote["content"]);
+        }, 500)
+
+      }
+    });
   }
 
   updateSubject(subject: String): void{
@@ -50,16 +78,22 @@ export class NewStudyNoteComponent implements OnInit {
   }
 
   addNote():void{
-    let currentStudyNotes: StudyNote[] = JSON.parse(this.globalVars.getVar("studyNoteList"));
     let currentTitle = (document.getElementById("titleInput") as HTMLInputElement).value;
-    currentStudyNotes.push({
+    let currentStudyNotes: StudyNote[] = JSON.parse(this.globalVars.getVar("studyNoteList"));
+    let thisNote: StudyNote = {
       "title": currentTitle,
       "content": this.currentContent,
       "author": this.globalVars.getVar("userName"),
       "timeCreated": new Date().getTime(),
       "categoryList": this.categoriesList,
       "subject": this.currentSubject
-    })
+    }
+    if(this.noteIndex == -1 || this.noteIndex - 1 > currentStudyNotes.length){
+      currentStudyNotes.push(thisNote)
+    }else{
+      currentStudyNotes[this.noteIndex] = thisNote;
+    }
+
     this.globalVars.setVar("studyNoteList", JSON.stringify(currentStudyNotes));
     setTimeout(()=>{
       this.router.navigate(["study_notes"])

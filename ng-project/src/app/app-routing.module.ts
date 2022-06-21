@@ -36,6 +36,10 @@ const routes: Routes = [
     "component": NewStudyNoteComponent
   },
   {
+    "path": "study_notes/new/:index",
+    "component": NewStudyNoteComponent
+  },
+  {
     "path": "study_notes/view",
     "component": ViewStudyNotesComponent
   },

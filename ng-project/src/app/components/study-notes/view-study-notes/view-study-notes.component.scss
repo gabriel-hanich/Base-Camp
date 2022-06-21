@@ -33,17 +33,20 @@
 .note{
     &-container{
         justify-content: center !important;
-        width: 80% !important;
+        width: 90% !important;
     }
     &-item-container{
         transition: all 1s ease !important;
-        width: 10vw !important;
-        height: 25vh !important;
+        width: 25% !important;
+        min-height: 25vh !important;
+        height: fit-content;
+        // max-height: 35vh;
+        overflow-y: hidden !important;
         max-width: none !important;
     }
     &-content{
         animation: delay-visible 1.2s linear !important;
-        max-height: 75%;
+        height: 75%;
         overflow-y: scroll;
     }
 }
@@ -53,6 +56,7 @@
     height: 90vh !important;
     width: 90vw !important;
     max-width: none !important;
+    min-height: none !important;
     position: absolute;
     top: 2.5%;
     left: 5%;

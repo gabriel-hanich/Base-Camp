@@ -72,16 +72,16 @@ export class ViewStudyNotesComponent implements OnInit {
     this.displayNotesList = [];
     switch(this.sortType){
       case "newest": {
-        this.totalNotesList.sort((a: StudyNote, b: StudyNote)=>{
+        this.displayNotesList = this.totalNotesList;
+        this.displayNotesList.sort((a: StudyNote, b: StudyNote)=>{
           return (a.timeCreated > b.timeCreated) ? -1 : (a.timeCreated < b.timeCreated) ? 1 : 0;
         });
-        this.displayNotesList = this.totalNotesList;
         break;
       } case "oldest":{
-        this.totalNotesList.sort((a: StudyNote, b: StudyNote)=>{
+        this.displayNotesList = this.totalNotesList;
+        this.displayNotesList.sort((a: StudyNote, b: StudyNote)=>{
           return (a.timeCreated < b.timeCreated) ? -1 : (a.timeCreated > b.timeCreated) ? 1 : 0;
         });
-        this.displayNotesList = this.totalNotesList;
         break;
       } case "search": {
         for(var i=0; i<this.totalNotesList.length; i++){
@@ -121,21 +121,38 @@ export class ViewStudyNotesComponent implements OnInit {
     }
   }
   fullScreenNote(note: Note):void{
+    
+
     let noteElemList = document.getElementsByClassName("note-item-container");
-    for(var i=0; i<noteElemList.length; i++){
+    for(var i=0; i<noteElemList.length; i++){ // If the note container stores the same data as the selected note
       if(noteElemList[i].id == note.timeCreated.toString()){
-        noteElemList[i].classList.toggle("fullScreen");
+        noteElemList[i].classList.toggle("fullScreen"); // Full screen the elem
         this.noteIsFullScreen = noteElemList[i].classList.contains("fullScreen")
       }
     }
-    if(!this.noteIsFullScreen){
+    // Get every note container obj
+    for(var i=0; i<this.displayNotesList.length; i++){
+      if(this.displayNotesList[i]['timeCreated'] == note['timeCreated']){
+        this.displayNotesList[i]["isFullScreen"] = this.noteIsFullScreen;
+      }else{
+        this.displayNotesList[i]["isFullScreen"] = false;
+      }
+    }
+    if(this.noteIsFullScreen){
+      document.getElementById("background")?.classList.add("dim");
+    }else{
       document.getElementById("background")?.classList.remove("dim");
     }
-    setTimeout(()=>{
-      if(this.noteIsFullScreen){
-        document.getElementById("background")?.classList.add("dim");
+  }
+
+  editNote(note: Note):void{
+    // Re-load the stored study notes
+    this.totalNotesList = JSON.parse(this.globalVars.getVar("studyNoteList"));
+    for(var i=0; i<this.totalNotesList.length; i++){ // Find the index of the note within the locally stored studyNotes
+      if(this.totalNotesList[i]['timeCreated'] == note['timeCreated']){
+        this.router.navigate(["study_notes/new", i]); // Redirect to edit page
       }
-    }, 1000)
+    }
   }
 
   @HostListener('document:click', ['$event'])
