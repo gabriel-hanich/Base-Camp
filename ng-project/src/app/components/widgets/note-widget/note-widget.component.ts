@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { GlobalVarsService } from 'src/app/services/global-vars.service';
+import { GlobalVarsService } from 'src/app/services/globals/global-vars.service';
 import { Note, widget } from 'src/models';
 import { CategoriesListComponent } from '../../ui-components/categories-list/categories-list.component';
 

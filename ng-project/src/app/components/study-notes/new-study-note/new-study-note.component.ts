@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { GlobalVarsService } from 'src/app/services/global-vars.service';
+import { GlobalVarsService } from 'src/app/services/globals/global-vars.service';
 import { Period, StudyNote } from 'src/models';
 import { CategoriesListComponent } from '../../ui-components/categories-list/categories-list.component';
 import { TextInputComponent } from '../../ui-components/text-input/text-input.component';

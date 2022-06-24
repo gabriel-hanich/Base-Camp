@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { GlobalVarsService } from 'src/app/services/global-vars.service';
+import { GlobalVarsService } from 'src/app/services/globals/global-vars.service';
 import { Period } from "src/models"
 
 @Component({

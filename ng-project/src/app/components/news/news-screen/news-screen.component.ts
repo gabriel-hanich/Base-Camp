@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Article } from 'src/models';
 import { GetNewsDataService } from 'src/app/services/getNewsData/get-news-data.service';
-import { GlobalVarsService } from 'src/app/services/global-vars.service';
+import { GlobalVarsService } from 'src/app/services/globals/global-vars.service';
 
 @Component({
   selector: 'app-news-screen',

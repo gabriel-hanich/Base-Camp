@@ -1,6 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { GlobalVarsService } from 'src/app/services/global-vars.service';
+import { GlobalVarsService } from 'src/app/services/globals/global-vars.service';
 import { Note, Period, StudyNote } from 'src/models';
 
 @Component({

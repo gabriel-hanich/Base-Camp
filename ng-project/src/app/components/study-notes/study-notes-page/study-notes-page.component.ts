@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { GlobalVarsService } from 'src/app/services/global-vars.service';
-import { Period, StudyNote } from 'src/models';
 
 @Component({
   selector: 'app-study-notes-page',

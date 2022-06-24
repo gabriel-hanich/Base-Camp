@@ -22,7 +22,6 @@
     "@angular/router": "~13.2.0",
     "@katoid/angular-grid-layout": "^1.2.0",
     "@tinymce/tinymce-angular": "^6.0.1",
-    "apollo-angular": "^3.0.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

@@ -1,0 +1,50 @@
+<div class="section-container">
+    <h3 class="heading-text">Sync your User Data to the cloud</h3>
+    <div class="toggle-container">
+        <app-toggle-switch 
+            [label1]="'Enable Cloud Sync'" 
+            [label2]="'Disable Cloud Sync'"
+            [defaultVal]="defaultToggleVal"
+            (state)="updateCloudState($event)"
+            [elemID]="'syncToggle'"></app-toggle-switch>
+    </div>
+</div>
+<div class="section-container large">
+    <h3 class="heading-text">User Settings</h3>
+    <form class="form-container" #userForm (submit)="updateUserSettings($event)">
+        <p class="form-text">Your Name</p>
+        <input type="text" name="Name" id="nameInput" class="form-input" placeholder="Name" [value]="userName">
+        <p class="form-text" [ngClass]="{'dull': doCloudSync == false}">Your Email</p>
+        <input type="text"
+            name="Email" 
+            id="emailInput"
+            class="form-input" 
+            placeholder="Email" 
+            [ngClass]="{'dull': doCloudSync == false}"
+            [disabled]="!doCloudSync"
+            [value]="email">
+        <p class="form-text" [ngClass]="{'dull': doCloudSync == false}">Your Password</p>
+        <input type="password"
+            name="Password"
+            id="passwordInput" 
+            class="form-input" 
+            placeholder="Password" 
+            [ngClass]="{'dull': doCloudSync == false}"
+            [disabled]="!doCloudSync"
+            [value]="'x'.repeat(passwordLength)">
+        <p class="form-text" [ngClass]="{'dull': doCloudSync == false}">Confirm Password</p>
+        <input type="password"
+            name="Password" 
+            id="confirmPasswordInput"
+            class="form-input"
+            placeholder="Password"
+            [ngClass]="{'dull': doCloudSync == false}"
+            [disabled]="!doCloudSync"
+            [value]="'x'.repeat(passwordLength)">
+    </form>
+    <button class="form-btn animated-hover" (click)="updateUserSettings($event)">Submit</button>
+
+    <div class="error-container" id="errorBox">
+        <h3 class="error-text">{{errorMsg}}</h3>
+    </div>
+</div>

@@ -1,7 +1,6 @@
-import { Component, HostListener, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { GlobalVarsService } from 'src/app/services/global-vars.service';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { GlobalVarsService } from 'src/app/services/globals/global-vars.service';
 
 @Component({
   selector: 'app-new-file',

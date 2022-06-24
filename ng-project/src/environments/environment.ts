@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  version: "0.11",
+  version: "0.12",
   build: "dev",
   device: "angular"
 };

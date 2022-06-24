@@ -30,10 +30,10 @@ import { TextInputComponent } from './components/ui-components/text-input/text-i
 import { CategoriesListComponent } from './components/ui-components/categories-list/categories-list.component';
 import { DaySpinnerComponent } from './components/widgets/day-spinner/day-spinner.component';
 import { NoteWidgetComponent } from './components/widgets/note-widget/note-widget.component';
-import { AdressChangerComponent } from './components/settings/adress-changer/adress-changer.component';
 import { StudyNotesPageComponent } from './components/study-notes/study-notes-page/study-notes-page.component';
 import { NewStudyNoteComponent } from './components/study-notes/new-study-note/new-study-note.component';
 import { ViewStudyNotesComponent } from './components/study-notes/view-study-notes/view-study-notes.component';
+import { UserSettingsComponent } from './components/settings/user-settings/user-settings.component';
 
 @NgModule({
   declarations: [
@@ -56,10 +56,10 @@ import { ViewStudyNotesComponent } from './components/study-notes/view-study-not
     CategoriesListComponent,
     DaySpinnerComponent,
     NoteWidgetComponent,
-    AdressChangerComponent,
     StudyNotesPageComponent,
     NewStudyNoteComponent,
-    ViewStudyNotesComponent
+    ViewStudyNotesComponent,
+    UserSettingsComponent
   ],
   imports: [
     BrowserModule,
