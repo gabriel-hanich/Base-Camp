@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { ConnectionsService } from '../connections/connections.service';
 
 
 @Injectable({
@@ -9,15 +10,30 @@ export class GlobalVarsService {
   private globalVars: Map<string, string> = new Map();
   private hasFoundWk: boolean = false;  
 
-  constructor() { 
+  constructor(private connections: ConnectionsService) { 
     if(localStorage.getItem("globals") != undefined){
       this.globalVars = new Map(JSON.parse(localStorage.getItem("globals") as string));
-      // Calculate whether it is wk A or B
     }else{
       this.setDefaultVals();
     }
-    this.setVar("lastSignInTime", JSON.stringify(new Date().getTime()));
+    // Calculate whether it is wk A or B
     this.calcCurrentWk();
+    if(JSON.parse(this.getVar("doCloudSync"))){
+      // Get the current RSA public key from the server
+      this.connections.getPublicKey().then((res)=>{
+        this.setVar("serverPublicKey", res as string);
+      });
+      // Read current user data from the server
+      if(this.getVar("passwordToken") != "empty"){
+        this.connections.getUserData(this.getVar("userEmail"), this.getVar("passwordToken")).subscribe((res)=>{
+          let cloudKeys = Object.keys(res[0]);
+          for(var i=0; i<cloudKeys.length; i++){
+            this.setVar(cloudKeys[i], res[0][cloudKeys[i]]);
+          }
+        });
+      }
+    }
+    this.setVar("lastSignInTime", JSON.stringify(new Date().getTime()));
   }
 
   private calcCurrentWk():void{
@@ -29,7 +45,6 @@ export class GlobalVarsService {
       inBetweenDays = this.getDaysArray(lastSignIn.getTime(), today.getTime());
     }
 
-    console.log(inBetweenDays);
     for(var i=0; i<inBetweenDays.length; i++){
       if(inBetweenDays[i].getDay() == 0){ // If there has been a sunday between the last sign in and the current date`
         // Invert the week letter

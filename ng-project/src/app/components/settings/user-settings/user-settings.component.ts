@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ConnectionsService } from 'src/app/services/connections/connections.service';
 import { GlobalVarsService } from 'src/app/services/globals/global-vars.service';
 
 @Component({
@@ -16,7 +17,7 @@ export class UserSettingsComponent implements OnInit {
 
   public errorMsg: String = "";
 
-  constructor(private globalVars: GlobalVarsService) {  }
+  constructor(private globalVars: GlobalVarsService, private connections: ConnectionsService) {  }
 
   ngOnInit(): void {
     this.doCloudSync = JSON.parse(this.globalVars.getVar("doCloudSync"));
@@ -35,6 +36,9 @@ export class UserSettingsComponent implements OnInit {
   
   updateCloudState(state: String):void{
     this.doCloudSync = state === "Enable Cloud Sync"
+    if(this.doCloudSync){
+      this.connections.getPublicKey(); // Get the public key if the connection is toggled on
+    }
     this.globalVars.setVar("doCloudSync", JSON.stringify(this.doCloudSync));
   }
 
@@ -59,6 +63,11 @@ export class UserSettingsComponent implements OnInit {
         this.showErrorMsg(2500);
         this.globalVars.setVar("userEmail", this.email as string);
         this.globalVars.setVar("passwordLength", password.length.toString());
+
+        this.connections.createNewUser(this.userName, this.email, password, this.globalVars.getVar("serverPublicKey")).subscribe((res)=>{
+          console.log(res);
+          this.globalVars.setVar("passwordToken", (res as string))
+        });
       }
     }
   }

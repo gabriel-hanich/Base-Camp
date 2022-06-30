@@ -30,17 +30,16 @@
             class="form-input" 
             placeholder="Password" 
             [ngClass]="{'dull': doCloudSync == false}"
-            [disabled]="!doCloudSync"
-            [value]="'x'.repeat(passwordLength)">
+            [disabled]="!doCloudSync">
         <p class="form-text" [ngClass]="{'dull': doCloudSync == false}">Confirm Password</p>
         <input type="password"
+            #confirmInput
             name="Password" 
             id="confirmPasswordInput"
             class="form-input"
             placeholder="Password"
             [ngClass]="{'dull': doCloudSync == false}"
-            [disabled]="!doCloudSync"
-            [value]="'x'.repeat(passwordLength)">
+            [disabled]="!doCloudSync">
     </form>
     <button class="form-btn animated-hover" (click)="updateUserSettings($event)">Submit</button>
 
