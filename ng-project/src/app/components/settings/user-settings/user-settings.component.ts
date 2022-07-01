@@ -47,7 +47,6 @@ export class UserSettingsComponent implements OnInit {
     this.userName = (document.getElementById("nameInput") as HTMLInputElement).value;
     this.globalVars.setVar("userName", this.userName as string);
     if(this.doCloudSync){
-      let doSave: boolean = true;
       this.email = (document.getElementById("emailInput") as HTMLInputElement).value;
       // Ensure entered passwords match
       let password = (document.getElementById("passwordInput") as HTMLInputElement).value;
@@ -55,18 +54,22 @@ export class UserSettingsComponent implements OnInit {
       if(password != confirmedPassword){
         this.showErrorMsg(7500);
         this.errorMsg = "The passwords you entered do not match";
-        doSave = false;
-      }
-      // Ensure no other account is in the DB with the same user name
-      if(doSave){
-        this.errorMsg = "Saved :)";
-        this.showErrorMsg(2500);
-        this.globalVars.setVar("userEmail", this.email as string);
-        this.globalVars.setVar("passwordLength", password.length.toString());
-
-        this.connections.createNewUser(this.userName, this.email, password, this.globalVars.getVar("serverPublicKey")).subscribe((res)=>{
-          console.log(res);
-          this.globalVars.setVar("passwordToken", (res as string))
+      }else{
+        // Ensure no other account is in the DB with the same user name
+        this.connections.validateUserEmail(this.email).subscribe((isUniqueEmail)=>{
+          if(isUniqueEmail){
+            this.globalVars.setVar("userEmail", this.email as string);
+            this.globalVars.setVar("passwordLength", password.length.toString());
+  
+            this.connections.createNewUser(this.userName, this.email, password, this.globalVars.getVar("serverPublicKey")).subscribe((res)=>{
+              this.errorMsg = "Saved :)";
+              this.showErrorMsg(2500);
+              this.globalVars.setVar("passwordToken", (res as string))
+            });
+          }else{
+            this.errorMsg = "An account already exists with this email";
+            this.showErrorMsg(2500);
+          }
         });
       }
     }

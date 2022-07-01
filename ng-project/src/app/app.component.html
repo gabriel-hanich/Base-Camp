@@ -1,4 +1,4 @@
-<router-outlet (activate)="onActivate()"></router-outlet>
+<router-outlet (activate)="onActivate()" *ngIf="isAccurate"></router-outlet>
 <div class="menu-container">
     <app-sidebar-toggle></app-sidebar-toggle>
 </div>

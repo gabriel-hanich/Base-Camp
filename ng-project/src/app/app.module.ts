@@ -34,6 +34,7 @@ import { StudyNotesPageComponent } from './components/study-notes/study-notes-pa
 import { NewStudyNoteComponent } from './components/study-notes/new-study-note/new-study-note.component';
 import { ViewStudyNotesComponent } from './components/study-notes/view-study-notes/view-study-notes.component';
 import { UserSettingsComponent } from './components/settings/user-settings/user-settings.component';
+import { InitUserComponent } from './components/setup/init-user/init-user.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { UserSettingsComponent } from './components/settings/user-settings/user-
     StudyNotesPageComponent,
     NewStudyNoteComponent,
     ViewStudyNotesComponent,
-    UserSettingsComponent
+    UserSettingsComponent,
+    InitUserComponent
   ],
   imports: [
     BrowserModule,

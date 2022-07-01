@@ -8,7 +8,7 @@ import { ConnectionsService } from '../connections/connections.service';
 export class GlobalVarsService {
 
   private globalVars: Map<string, string> = new Map();
-  private hasFoundWk: boolean = false;  
+  private isAccurate: boolean = false;  
 
   constructor(private connections: ConnectionsService) { 
     if(localStorage.getItem("globals") != undefined){
@@ -19,19 +19,21 @@ export class GlobalVarsService {
     // Calculate whether it is wk A or B
     this.calcCurrentWk();
     if(JSON.parse(this.getVar("doCloudSync"))){
-      // Get the current RSA public key from the server
-      this.connections.getPublicKey().then((res)=>{
-        this.setVar("serverPublicKey", res as string);
-      });
+      this.isAccurate = false;
       // Read current user data from the server
-      if(this.getVar("passwordToken") != "empty"){
-        this.connections.getUserData(this.getVar("userEmail"), this.getVar("passwordToken")).subscribe((res)=>{
-          let cloudKeys = Object.keys(res[0]);
-          for(var i=0; i<cloudKeys.length; i++){
-            this.setVar(cloudKeys[i], res[0][cloudKeys[i]]);
-          }
-        });
-      }
+      this.getPublicKey().then(()=>{
+        console.log("AA")
+        if(this.getVar("passwordToken") != "empty"){
+          this.connections.getUserData(this.getVar("userEmail"), this.getVar("passwordToken")).subscribe((res)=>{
+            console.log(res);
+            let cloudKeys = Object.keys(res[0]);
+            for(var i=0; i<cloudKeys.length; i++){
+              this.setVar(cloudKeys[i], res[0][cloudKeys[i]]);
+            }
+            this.isAccurate = true;
+          });
+        }
+      });
     }
     this.setVar("lastSignInTime", JSON.stringify(new Date().getTime()));
   }
@@ -56,7 +58,7 @@ export class GlobalVarsService {
         }
       }
     }
-    this.hasFoundWk = true
+    this.isAccurate = true
   }
 
   private getDaysArray(start: number, end:number): Date[] {
@@ -67,8 +69,7 @@ export class GlobalVarsService {
   };
   
   private setDefaultVals(){
-    this.setVar("userName", "Gabriel");
-    this.setVar("newsAdress", "http://localhost:3000/");
+    console.log("DEFAULT SET");
     this.setVar("widgetsLayout", JSON.stringify([]));
     this.setVar("doCloudSync", JSON.stringify(false));
     this.setVar("noteList", JSON.stringify([]));
@@ -81,6 +82,20 @@ export class GlobalVarsService {
     console.log("SAVING")
   }
 
+  hasAccurateData():boolean{
+    return this.isAccurate;
+  }
+
+  getPublicKey(): Promise<void>{
+    return new Promise<void>((resolve, reject)=>{
+        // Get the current RSA public key from the server
+        this.connections.getPublicKey().then((res)=>{
+          this.setVar("serverPublicKey", res as string);
+          resolve();
+        });
+    });
+  }
+
   setVar(key: string, val: string){
     this.globalVars.set(key, val);
     setTimeout(()=>{
@@ -89,7 +104,7 @@ export class GlobalVarsService {
   }
 
   getVar(key: string): string {
-    if(!this.hasFoundWk){ // If the app hasn't already found the current week, wait for 150ms to allow it time
+    if(!this.isAccurate){ // If the app hasn't already found the current week, wait for 150ms to allow it time
       setTimeout(()=>{}, 150)
     }
     if(this.globalVars.get(key)){

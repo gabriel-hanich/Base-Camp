@@ -32,4 +32,15 @@ export class ConnectionsService {
   getUserData(email: String, passwordToken: String): Observable<any>{
     return this.httpClient.post(environment.apiURL + "/userData/read", {"email": email.toString(), "pwdToken": passwordToken});
   }
+
+  validateUserEmail(email: String): Observable<boolean>{
+    return this.httpClient.post<boolean>(environment.apiURL + "/userData/validateEmail", {"email": email})
+  }
+
+  login(email: string, password: string, publicKey: string){
+    // Encrypt the password using the public key
+    const rsa = Forge.pki.publicKeyFromPem(publicKey);
+    let pwd = window.btoa(rsa.encrypt(password.toString()));
+    return this.httpClient.post(environment.apiURL + "/userData/logIn", {"email": email.toString(), "pwd": pwd});
+  }
 }
