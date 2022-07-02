@@ -18,7 +18,7 @@ export class SetupTimetableScreenComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit(): void {
-    if(this.globalVars.getVar("wk1Data") == "empty"){ // If user has no currently stored timetable data
+    if(this.globalVars.getVar("wk1Data") == "empty" || this.globalVars.getVar("wk1Data") == "[]"){ // If user has no currently stored timetable data
       if(this.globalVars.getVar("timetableRaw") == "empty"){ // If user has not uploaded file
         this.router.navigate(["settings"]);
       }
