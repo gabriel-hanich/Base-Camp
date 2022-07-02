@@ -13,7 +13,8 @@ export class NewFileComponent implements OnInit {
   constructor(private globalVars: GlobalVarsService, private router: Router) { }
 
   ngOnInit(): void {
-    if(this.globalVars.getVar("wk1Data") != "empty"){
+    console.log(this.globalVars.getVar("wk1Data"))
+    if(this.globalVars.getVar("wk1Data") != "empty" && this.globalVars.getVar("wk1Data") != "[]"){
       this.hasTimetable = true;
     }
   }

@@ -84,7 +84,6 @@ export class NoteWidgetComponent implements OnInit {
   
   updateSearchCategory(categoryList: String[]): void{
     this.searchNoteCategoryList = categoryList;
-    console.log("UPDATE");
     this.updateDisplayNote();
     this.additionalData.set("searchNoteCategoryList", JSON.stringify(categoryList));
   }
@@ -101,7 +100,6 @@ export class NoteWidgetComponent implements OnInit {
         return 0;
       })[0]];
     }else if(this.showSetting == "set"){
-      console.log(this.searchNoteName);
       for(var i=0; i<this.noteList.length; i++){
         if(this.noteList[i]["title"] == this.searchNoteName){
           this.displayNoteList = [this.noteList[i]];

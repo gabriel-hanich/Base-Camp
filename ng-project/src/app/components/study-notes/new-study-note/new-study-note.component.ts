@@ -24,7 +24,10 @@ export class NewStudyNoteComponent implements OnInit {
   
   ngOnInit(): void {
     // Get a list containing the names of each subject present in the user's timetable
-    let totalWkData: Array<Period[][]> = [JSON.parse(this.globalVars.getVar("wk1Data")), JSON.parse(this.globalVars.getVar("wk2Data"))];
+    let totalWkData: Array<Period[][]> = []
+    try{
+      totalWkData = [JSON.parse(this.globalVars.getVar("wk1Data")), JSON.parse(this.globalVars.getVar("wk2Data"))];
+    }catch(SyntaxError){}
     for(var i=0; i<totalWkData.length; i++){
       for(var j=0; j<totalWkData[i].length; j++){
         for(var k=0; k<totalWkData[i][j].length; k++){
@@ -53,7 +56,6 @@ export class NewStudyNoteComponent implements OnInit {
     this.route.params.subscribe((params)=>{
       if(Object.keys(params).length !== 0 ){
         let currentNote: StudyNote = JSON.parse(this.globalVars.getVar("studyNoteList"))[params['index'] as number];
-        console.log(currentNote);
         (document.getElementById("titleInput") as HTMLInputElement).value = currentNote["title"] as string;
         this.currentSubject = currentNote["subject"]; 
         this.noteIndex = params['index'];

@@ -15,7 +15,7 @@ export class HomePageComponent implements OnInit {
   public timeText: string = "00:00";
 
   public layout: KtdGridLayout = [];
-  public layoutData: widget[] = JSON.parse(this.globalVars.getVar("widgetsLayout"));
+  public layoutData: widget[] = [];
   public trackById = ktdTrackById;
   public compactType: 'vertical' | 'horizontal' | null = null;
 
@@ -29,6 +29,11 @@ export class HomePageComponent implements OnInit {
   constructor(@Inject(DOCUMENT) public document: Document, private globalVars: GlobalVarsService) { }
 
   ngOnInit(): void {
+    try{
+      this.layoutData = JSON.parse(this.globalVars.getVar("widgetsLayout"));
+    }catch(SyntaxError){
+      this.layoutData = [];
+    }
     this.updateTime();
     this.renderBoards();
 
@@ -140,7 +145,6 @@ export class HomePageComponent implements OnInit {
   toggleWidgetEditing():void{
     this.editableWidgets = !this.editableWidgets;
     document.getElementById("adjustContainer")?.classList.toggle('pulledUp');
-    console.log(this.document.getElementById("adjustContainer"));
   }
 
   saveLayout(currentLayout: KtdGridLayout):void{

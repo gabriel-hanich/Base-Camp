@@ -34,7 +34,11 @@ export class NotesScreenComponent implements OnInit {
 
   setNotesList(): void{
     // Read the note notelist from vars
-    this.noteList = JSON.parse(this.globalVar.getVar("noteList"));
+    try{
+      this.noteList = JSON.parse(this.globalVar.getVar("noteList"));
+    }catch(SyntaxError){
+      this.noteList = [];
+    }
     this.displayNoteList = this.noteList;
   }
 

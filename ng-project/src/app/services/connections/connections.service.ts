@@ -43,4 +43,8 @@ export class ConnectionsService {
     let pwd = window.btoa(rsa.encrypt(password.toString()));
     return this.httpClient.post(environment.apiURL + "/userData/logIn", {"email": email.toString(), "pwd": pwd});
   }
+
+  setUserData(email: string, passwordToken: string, valueKey: string, value: string){
+    return this.httpClient.post(environment.apiURL + "/userData/set", {"email": email.toString(), "pwdToken": passwordToken, "valKey": valueKey, "val": value});
+  }
 }

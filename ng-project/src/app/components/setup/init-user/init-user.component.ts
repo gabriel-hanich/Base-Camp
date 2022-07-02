@@ -9,7 +9,7 @@ import { GlobalVarsService } from 'src/app/services/globals/global-vars.service'
   styleUrls: ['./init-user.component.scss']
 })
 export class InitUserComponent implements OnInit {
-  public state: String = 'signup'
+  public state: String = 'init'
   public doCloudSync: boolean = true;
   
   public statusMsg: String;
@@ -17,6 +17,7 @@ export class InitUserComponent implements OnInit {
   constructor(private connections: ConnectionsService, private globalVars: GlobalVarsService, private router: Router) { }
 
   ngOnInit(): void {
+    // this.globalVars.wipeStorage();
   }
 
   updateCloudState(state: String):void{
@@ -31,14 +32,17 @@ export class InitUserComponent implements OnInit {
       const email = (document.getElementById("emailInput") as HTMLInputElement).value;
       const pwd = (document.getElementById("passwordInput") as HTMLInputElement).value;
   
-      // Get the public key and store it
+      this.globalVars.setVar("userEmail", email);
       this.connections.login(email, pwd, this.globalVars.getVar("serverPublicKey")).subscribe((res: any)=>{
-        
         if(res["worked"]){
           this.globalVars.setVar("passwordToken", res["payload"]["Data"]);
-          setTimeout(()=>{
-            this.router.navigate([""]);
-          }, 250)
+          setTimeout(() => {
+            this.globalVars.syncFromCloud().then(()=>{
+              setTimeout(()=>{
+                this.router.navigate([""]);
+              }, 250)
+            });
+          }, 250);
         }
         if(!res["worked"]){
           this.statusMsg = "Either your username or password is incorrect"
@@ -59,7 +63,6 @@ export class InitUserComponent implements OnInit {
         let password = (document.getElementById("passwordInput") as HTMLInputElement).value;
         let confirmedPassword = (document.getElementById("confirmPasswordInput") as HTMLInputElement).value;
         if(password != confirmedPassword){
-          console.log("MISMATCH")
           this.showStatusMsg(7500);
           this.statusMsg = "The passwords you entered do not match";
         }else{
