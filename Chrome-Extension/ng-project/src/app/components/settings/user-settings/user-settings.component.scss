@@ -1,6 +1,6 @@
 .section{
     &-container{
-        width: 100%;
+        width: 90%;
         height: 40%;
         border-radius: 15px 0px 15px 0px;
         margin: auto;
@@ -24,7 +24,6 @@
         margin: auto;
         display: grid;
         grid-template-columns: 1fr 2fr;
-        row-gap: 0px;
         grid-template-rows: auto auto auto;
 
     }
@@ -32,7 +31,7 @@
     &-input{
         transition: all 0.3s ease;
         margin: 0px;
-        border: 1px red solid;
+        margin-top: 5px;
         height: 40px;
         background-color: var(--bottom-bg-color);
         border: none;
@@ -97,4 +96,15 @@
         }
     }
 
+}
+
+.wipe-btn{
+    background-color: #99282a;
+    border: none;
+    position: relative;
+    bottom: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%;
+    height: 40px;
 }

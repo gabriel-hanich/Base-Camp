@@ -1,6 +1,6 @@
 {
     "manifest_version": 3,
-    "version": "0.1",
+    "version": "0.13",
     "name": "Base Camp",
     "description": "Your Base for all school applications",
     "action": {

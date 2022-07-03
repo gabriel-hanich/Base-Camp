@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ConnectionsService } from 'src/app/services/connections/connections.service';
 import { GlobalVarsService } from 'src/app/services/globals/global-vars.service';
 
@@ -17,7 +18,7 @@ export class UserSettingsComponent implements OnInit {
 
   public errorMsg: String = "";
 
-  constructor(private globalVars: GlobalVarsService, private connections: ConnectionsService) {  }
+  constructor(private globalVars: GlobalVarsService, private connections: ConnectionsService, private router: Router) {  }
 
   ngOnInit(): void {
     this.doCloudSync = JSON.parse(this.globalVars.getVar("doCloudSync"));
@@ -55,6 +56,15 @@ export class UserSettingsComponent implements OnInit {
     setTimeout(()=>{
       document.getElementById("errorBox")?.classList.remove("showError");
     }, delay)
+  }
+
+  wipeApp():void{
+    if(confirm("Are you sure you want to wipe the app.\nThis will NOT delete data on the cloud, however will erase ALL your data if cloud sync is disabled")){
+      localStorage.clear();
+      setTimeout(()=>{
+        this.router.navigate(["setup/user"]);
+      }, 50)
+    }
   }
   
 }

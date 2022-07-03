@@ -98,5 +98,24 @@ export class InitUserComponent implements OnInit {
     }, delay)
   }
 
+  createLocalUser(event: Event): void{
+    event.preventDefault();
+    let name: string = (document.getElementById("localNameInput") as HTMLInputElement).value;
+    // Init user with default/empty values
+    this.globalVars.setVar("userName", name);
+    this.globalVars.setVar("doCloudSync", JSON.stringify(false));
+    this.globalVars.setVar("wk1Data", JSON.stringify([]));
+    this.globalVars.setVar("wk2Data", JSON.stringify([]));
+    this.globalVars.setVar("wk1IsWkA", JSON.stringify(false));
+    this.globalVars.setVar("noteList", JSON.stringify([]));
+    this.globalVars.setVar("studyNoteList", JSON.stringify([]));
+    this.globalVars.setVar("widgetsLayout", JSON.stringify([]));
+    this.globalVars.setVar("lastSignInTime", JSON.stringify(new Date().getTime()));
+
+    setTimeout(()=>{
+      this.router.navigate(["/"]);
+    }, 250)
+  }
+
 
 }

@@ -90,4 +90,17 @@
             <h3 class="msg-text">{{statusMsg}}</h3>
         </div>
     </div>
+
+     <!-- Container for if the user does not enable cloud sync -->
+     <div class="heading-container" *ngIf="state == 'user' && doCloudSync == false">
+        <div class="heading-arrow-container">
+            <img src="../../../../assets/scroll.svg" alt="Go Back"class="heading-arrow-img white" (click)="state = 'cloud'; doCloudSync = true">
+        </div>
+        <h1 class="heading-text">Great! Please enter your name below</h1>
+        <form class="form-container" #userForm (submit)="createLocalUser($event)">
+            <p class="form-text">Your Name</p>
+            <input type="text" name="Name" id="localNameInput" class="form-input" placeholder="Name">
+        </form>
+        <button class="heading-text heading-btn animated-hover form-btn" (click)="createLocalUser($event)">Submit</button>
+    </div>
 </div>

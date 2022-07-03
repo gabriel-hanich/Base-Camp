@@ -19,7 +19,7 @@
 
 .form{
     &-container{
-        height: 45%;
+        height: 25%;
         width: 85%;
         margin: auto;
         display: grid;
@@ -32,7 +32,6 @@
     &-input{
         transition: all 0.3s ease;
         margin: 0px;
-        border: 1px red solid;
         height: 40px;
         background-color: var(--bottom-bg-color);
         border: none;
@@ -96,4 +95,15 @@
         }
     }
 
+}
+
+.wipe-btn{
+    background-color: #99282a;
+    border: none;
+    position: relative;
+    bottom: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%;
+    height: 40px;
 }

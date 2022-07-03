@@ -11,7 +11,7 @@ export class GlobalVarsService {
   private isAccurate: boolean = false;  
 
   constructor(private connections: ConnectionsService) { 
-    if(localStorage.getItem("globals") != undefined){
+    if(localStorage.getItem("globals") != null){
       this.globalVars = new Map(JSON.parse(localStorage.getItem("globals") as string));
        // Calculate whether it is wk A or B
        if(JSON.parse(this.getVar("doCloudSync"))){
