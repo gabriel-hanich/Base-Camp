@@ -1,0 +1,96 @@
+.filter{
+    &-container{
+        height: 30%;
+        width: 80%;
+        margin: auto;
+        margin-top: 45px;
+        background-color: var(--bottom-bg-color);
+        border-radius: 15px 0px 15px 0px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+    }
+    &-text{
+        margin-left: 10px;
+    }
+    &-field{
+        margin-left: 10px;
+        width: 65%;
+    }
+    &-input{
+        flex: 0.65;
+        margin-left: 10px;
+        width: 100%;
+        background-color: var(--mid-bg-color);
+        border: none;
+        height: 50px;
+        font-size: 1.5rem;
+
+        border-radius: 15px 0px 15px 0px;
+        cursor: text !important;
+    }
+}
+
+.note{
+    &-container{
+        justify-content: center !important;
+        width: 90% !important;
+        margin-top: 50px !important;
+    }
+    &-item-container{
+        transition: all 1s ease !important;
+        width: 85% !important;
+        min-height: 25vh !important;
+        height: fit-content;
+        overflow-y: hidden !important;
+        max-width: none !important;
+    }
+    &-content{
+        animation: delay-visible 1.2s linear !important;
+        height: 40%;
+        overflow-y: scroll;
+    }
+}
+
+
+.fullScreen{
+    height: 90vh !important;
+    width: 90vw !important;
+    max-width: none !important;
+    min-height: none !important;
+    position: absolute;
+    top: 1%;
+    left: 1%;
+    z-index: 5 !important;
+}
+
+.background{
+    height: 0%;
+    width: 0%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    background-color: rgba($color: #000000, $alpha: 0.85);
+
+    transition: all 1s ease;
+}
+
+.dim{
+    height: 100vh;
+    width: 100vw;
+    z-index: 4 !important;
+}
+
+@keyframes delay-visible {
+    0%{
+        opacity: 0%;
+    }
+    75%{
+        opacity: 0%;
+    }
+    100%{
+        opacity: 100%;
+    }
+}
