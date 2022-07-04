@@ -1,7 +1,7 @@
 .filter{
     &-container{
         height: 30%;
-        width: 80%;
+        width: 95%;
         margin: auto;
         margin-top: 45px;
         background-color: var(--bottom-bg-color);
@@ -16,7 +16,7 @@
     }
     &-field{
         margin-left: 10px;
-        width: 65%;
+        width: 35%;
     }
     &-input{
         flex: 0.65;

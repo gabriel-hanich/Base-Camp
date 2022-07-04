@@ -27,7 +27,7 @@
         </div>
         <mat-form-field appearance="fill" class="filter-field" *ngIf="sortType == 'subject'">
             <label>Subject</label>
-            <mat-select [value]="totalSubjectsList[0]" (valueChange)="setSubject($event)">
+            <mat-select class="filter-selector" [value]="totalSubjectsList[2]" (valueChange)="setSubject($event)">
                 <mat-option 
                     *ngFor="let subject of totalSubjectsList"
                     [value]="subject">{{subject}}</mat-option>

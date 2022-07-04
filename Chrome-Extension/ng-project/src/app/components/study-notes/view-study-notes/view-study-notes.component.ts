@@ -40,7 +40,7 @@ export class ViewStudyNotesComponent implements OnInit {
        var textB = b.toUpperCase();
        return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
      });
-     this.sortSubject = this.totalSubjectsList[0];
+     this.sortSubject = this.totalSubjectsList[1];
 
      this.totalNotesList = JSON.parse(this.globalVars.getVar("studyNoteList"));
      this.updateDisplayNotes();

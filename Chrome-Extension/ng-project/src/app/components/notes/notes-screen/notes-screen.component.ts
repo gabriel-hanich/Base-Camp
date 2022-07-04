@@ -30,6 +30,7 @@ export class NotesScreenComponent implements OnInit {
   
   ngOnInit(): void {
     this.setNotesList();
+    this.refreshDisplayNotes();
   }
 
   setNotesList(): void{
@@ -75,14 +76,26 @@ export class NotesScreenComponent implements OnInit {
     }, 50)
   }
 
-  deleteNote(note: Note){
-    // Remove selected note
-    for(var i=0; i<this.noteList.length; i++){
-      if(this.noteList[i] == note){
-        this.noteList.splice(i, 1);
-        this.globalVar.setVar("noteList", JSON.stringify(this.noteList));
-        this.refreshDisplayNotes();
-        break;
+  deleteNote(note: Note, doCheck: boolean){
+    if(!doCheck){
+      // Remove selected note
+      for(var i=0; i<this.noteList.length; i++){
+        if(this.noteList[i] == note){
+          this.noteList.splice(i, 1);
+          this.globalVar.setVar("noteList", JSON.stringify(this.noteList));
+          this.refreshDisplayNotes();
+          break;
+        }
+      }
+    }else if(confirm("Are you sure you want to DELETE this note?")){
+      // Remove selected note
+      for(var i=0; i<this.noteList.length; i++){
+        if(this.noteList[i] == note){
+          this.noteList.splice(i, 1);
+          this.globalVar.setVar("noteList", JSON.stringify(this.noteList));
+          this.refreshDisplayNotes();
+          break;
+        }
       }
     }
   }
@@ -95,7 +108,7 @@ export class NotesScreenComponent implements OnInit {
     this.categoryInput.setTaglist(note.categoryList);
     window.scroll({top: 0, left: 0, behavior: "smooth"});
     setTimeout(()=>{
-      this.deleteNote(note); // Remove the note to limit possibility of note being saved twice
+      this.deleteNote(note, false); // Remove the note to limit possibility of note being saved twice
     }, 150)
   }
 

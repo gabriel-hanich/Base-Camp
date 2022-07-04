@@ -60,7 +60,7 @@
             <div class="note-content" [innerHTML]="note.content">
             </div>
             <div class="note-item-bottomBar">
-                <img src="../../../../assets/trash.svg" alt="Delete Note" class="note-item-bottomBar-img white" (click)="deleteNote(note)">
+                <img src="../../../../assets/trash.svg" alt="Delete Note" class="note-item-bottomBar-img white" (click)="deleteNote(note, true)">
                 <img src="../../../../assets/edit.svg" alt="Edit Note" class="note-item-bottomBar-img white" (click)="editNote(note)">
             </div>
         </div>
