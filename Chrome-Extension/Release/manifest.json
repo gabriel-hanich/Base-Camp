@@ -4,9 +4,9 @@
     "name": "Base Camp",
     "description": "Your Base for all school applications",
     "action": {
-      "default_icon": "./favicon.ico",
+      "default_icon": "icon.png",
       "default_popup": "index.html",
       "default_title": "School Time"
     },
-  "icons": { "128": "./favicon.ico" }
+  "icons": { "128": "icon.png" }
 }
