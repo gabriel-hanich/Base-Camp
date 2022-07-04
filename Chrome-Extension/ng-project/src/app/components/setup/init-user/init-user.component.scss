@@ -115,17 +115,21 @@
 .showError{
     transform: translateX(0);
 }
-
-
 @keyframes hide{
     0%{
-        opacity: 0%;
+        opacity: 0;
     }
     99%{
-        opacity: 0%;
+        opacity: 0;
     }
     100%{
-        opacity: 100%;
+        opacity: 1;
     }
+}
 
+
+.iconImg{
+    animation: scale-in-center 1.2s ease !important;
+    height: 40%;
+    aspect-ratio: 1/1;
 }

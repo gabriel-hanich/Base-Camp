@@ -1,5 +1,6 @@
 <div class="setup-container">
-    <div class="heading-container" *ngIf="state == 'init'">
+    <div class="heading-container large" *ngIf="state == 'init'">
+        <img src="../../../../assets/app-icon.svg" alt="" class="iconImg">
         <h1 class="heading-text">Welcome to Base Camp</h1>
         <h2 class="heading-text">Lets get set up</h2>
         <button class="heading-text heading-btn animated-hover" (click)="state = 'cloud'">Setup</button>
