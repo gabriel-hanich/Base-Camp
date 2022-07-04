@@ -38,7 +38,7 @@
             <img src="../../../../assets/scroll.svg" alt="Go Back"class="heading-arrow-img white" (click)="state = 'user'">
         </div>
         <h1 class="heading-text">Please enter your details below</h1>
-        <form class="form-container" #userForm (submit)="updateUserSettings($event)">
+        <form class="form-container" #userForm (submit)="createUserAccount($event)">
             <p class="form-text">Your Name</p>
             <input type="text" name="Name" id="nameInput" class="form-input" placeholder="Name">
             <p class="form-text">Your Email</p>
@@ -61,7 +61,7 @@
                 class="form-input"
                 placeholder="Password">
         </form>
-        <button class="heading-text heading-btn animated-hover form-btn" (click)="updateUserSettings($event)">Submit</button>
+        <button class="heading-text heading-btn animated-hover form-btn" (click)="createUserAccount($event)">Submit</button>
         
         <div class="msg-container" id="msgBox">
             <h3 class="msg-text">{{statusMsg}}</h3>

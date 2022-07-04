@@ -28,12 +28,16 @@ export class TimetableColumnComponent implements OnInit {
     this.timetableData = [];
 
     var displayDate = new Date();
+    let week1Data: Array<Period[]> = [];
+    let week2Data: Array<Period[]> = [];
+    let wk1IsWkA: boolean = true;
+    try{
+      week1Data = JSON.parse(this.globalVars.getVar("wk1Data"));
+      week2Data = JSON.parse(this.globalVars.getVar("wk2Data"));
+      wk1IsWkA = JSON.parse(this.globalVars.getVar("wk1IsWkA"))
+    }catch(SyntaxError){}
 
-    let week1Data: Array<Period[]> = JSON.parse(this.globalVars.getVar("wk1Data"));
-    let week2Data: Array<Period[]> = JSON.parse(this.globalVars.getVar("wk2Data"));
     let displayWeek = this.globalVars.getVar("weekLetter");
-    let wk1IsWkA: boolean = JSON.parse(this.globalVars.getVar("wk1IsWkA"));
-
     let dayList = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"]
 
     if(this.currentDate === "today"){

@@ -26,7 +26,7 @@ export class InitUserComponent implements OnInit {
   
   loginUser(event: Event){
     event.preventDefault();
-    this.globalVars.setVar("doCloudSync", JSON.stringify(this.doCloudSync));
+    this.globalVars.setVar("doCloudSync", JSON.stringify(true));
     // Get the public key
     this.globalVars.getPublicKey().then(()=>{
       const email = (document.getElementById("emailInput") as HTMLInputElement).value;
@@ -53,11 +53,11 @@ export class InitUserComponent implements OnInit {
     });
   }
 
-  updateUserSettings(event: Event):void{
+  createUserAccount(event: Event):void{
     event.preventDefault();
+    this.globalVars.setVar("doCloudSync", JSON.stringify(true), false);
     this.globalVars.getPublicKey().then(()=>{
       const userName = (document.getElementById("nameInput") as HTMLInputElement).value;
-      this.globalVars.setVar("userName", userName as string);
       if(this.doCloudSync){
         var email = (document.getElementById("emailInput") as HTMLInputElement).value;
         // Ensure entered passwords match
@@ -70,16 +70,19 @@ export class InitUserComponent implements OnInit {
           // Ensure no other account is in the DB with the same user name
           this.connections.validateUserEmail(email).subscribe((isUniqueEmail)=>{
             if(isUniqueEmail){
-              this.globalVars.setVar("userEmail", email as string);
-              this.globalVars.setVar("passwordLength", password.length.toString());
+              this.globalVars.setVar("userEmail", email as string, false);
+              this.globalVars.setVar("passwordLength", password.length.toString(), false);
     
               this.connections.createNewUser(userName, email, password, this.globalVars.getVar("serverPublicKey")).subscribe((res)=>{
+                this.globalVars.setVar("passwordToken", (res as string), false);
                 this.statusMsg = "Saved :)";
                 this.showStatusMsg(2500);
-                this.globalVars.setVar("passwordToken", (res as string));
                 setTimeout(()=>{
-                  this.router.navigate([""]);
-                }, 3000)
+                  this.globalVars.syncFromCloud();
+                  setTimeout(()=>{
+                    this.router.navigate([""]);
+                  }, 3000)
+                }, 250)
               });
             }else{
               this.statusMsg = "An account already exists with this email";

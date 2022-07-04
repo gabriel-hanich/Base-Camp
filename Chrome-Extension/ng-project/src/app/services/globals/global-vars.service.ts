@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { ConnectionsService } from '../connections/connections.service';
 
@@ -13,20 +14,19 @@ export class GlobalVarsService {
   constructor(private connections: ConnectionsService) { 
     if(localStorage.getItem("globals") != null){
       this.globalVars = new Map(JSON.parse(localStorage.getItem("globals") as string));
-       // Calculate whether it is wk A or B
-       if(JSON.parse(this.getVar("doCloudSync"))){
-         this.syncFromCloud().then(()=>{
-           this.setVar("lastSignInTime", JSON.stringify(new Date().getTime()));
-           this.isAccurate = true
-         });
-        }else{
-          this.isAccurate = true;
-        }
-      this.calcCurrentWk();
+      // Calculate whether it is wk A or B
+      if(JSON.parse(this.getVar("doCloudSync"))){
+        this.syncFromCloud().then(()=>{
+          this.setVar("lastSignInTime", JSON.stringify(new Date().getTime()));
+          this.isAccurate = true
+          this.calcCurrentWk();
+        });
       }else{
         this.isAccurate = true;
       }
-    
+    }else{
+      this.isAccurate = true;
+    }
   }
 
   private calcCurrentWk():void{

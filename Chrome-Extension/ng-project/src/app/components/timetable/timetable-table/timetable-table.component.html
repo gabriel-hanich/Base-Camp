@@ -30,7 +30,7 @@
         <button class="time-btn animated-hover" (click)="showTimes()">Show Times</button>
     </div>
 
-    <div class="week-day-container">
+    <div class="week-day-container" *ngIf="hasTimetableData">
         <app-timetable-day 
             class="week-day-component" 
             [timetableData]='displayData' 

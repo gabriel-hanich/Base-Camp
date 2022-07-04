@@ -19,6 +19,8 @@ export class TimetableTableComponent implements OnInit {
   private displayDay: String = 'monday';
   private displayWeek: String = 'a';
 
+  public hasTimetableData: boolean = false;
+
   public timeEmitter: EventEmitter<String> = new EventEmitter<String>();
 
   constructor(private globalVars: GlobalVarsService) { }
@@ -31,12 +33,15 @@ export class TimetableTableComponent implements OnInit {
 
     // Get the timetable data
     // Determine whether wk1 is A or B
-    if(this.globalVars.getVar("wk1IsWkA") == "true"){
-      this.weekAData = JSON.parse(this.globalVars.getVar("wk1Data"));
-      this.weekBData = JSON.parse(this.globalVars.getVar("wk2Data"));
-    }else{
-      this.weekAData = JSON.parse(this.globalVars.getVar("wk2Data"));
-      this.weekBData = JSON.parse(this.globalVars.getVar("wk1Data"));
+    if(this.globalVars.getVar("wk1Data") != "[]"){
+      if(this.globalVars.getVar("wk1IsWkA") == "true"){
+        this.weekAData = JSON.parse(this.globalVars.getVar("wk1Data"));
+        this.weekBData = JSON.parse(this.globalVars.getVar("wk2Data"));
+      }else{
+        this.weekAData = JSON.parse(this.globalVars.getVar("wk2Data"));
+        this.weekBData = JSON.parse(this.globalVars.getVar("wk1Data"));
+      }
+      this.hasTimetableData = true
     }
 
     for(var i=0; i<this.weekAData.length; i++){

@@ -27,7 +27,7 @@
 
 .calibration{
     &-container{
-        width: 85%;
+        width: 55%;
         height: auto;
         margin: auto;
         margin-top: 5px;
@@ -36,24 +36,26 @@
 
 .toggle{
     &-container{
-        width: 85%;
+        width: 45%;
         height: 50px;
         margin: auto;
         margin-top: 0px;
+        margin-bottom: 25px;
     }
 }
 .section{
     &-container{
         width: 100%;
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         flex-wrap: wrap;
-        justify-content: center;
+        align-items: center;
         padding-bottom: 50px;
+        gap: 10px;
         
     }
     &-item{
-        width: 45%;
+        width: 85%;
         border-radius: 15px 0px 15px 0px;
         background-color: rgba(0, 0, 0, 0.1);
         padding: 15px;
@@ -63,7 +65,8 @@
 
 .weekNumber{
     &-form{
-        width: 80%;
+        width: 40%;
+        margin-top: 20px;
         height: 50px;
         margin: auto;
     }
