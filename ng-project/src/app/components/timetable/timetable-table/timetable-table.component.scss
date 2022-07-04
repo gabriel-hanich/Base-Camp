@@ -1,3 +1,24 @@
+.time{
+    &-container{
+        width: fit-content;
+        height: fit-content;
+        margin: auto;
+
+        margin-top: 25px;
+    }
+    &-btn{
+        width: 150px;
+        height: 55px;
+        background-color: var(--mid-bg-color);
+        cursor: pointer;
+        border: none;
+        border-radius: 15px 0px 15px 0px;
+
+    }
+}
+
+
+
 .week{
     &-container{
         width: 100%;
@@ -41,4 +62,10 @@
 
 .highlight{
     background-color: var(--mid-bg-color);
+}
+
+@media screen and(max-width:1600px) {
+    .week-table-container{
+        width: 99%;
+    }
 }

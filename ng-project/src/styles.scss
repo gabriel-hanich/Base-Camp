@@ -48,7 +48,7 @@ $ng-project-theme: mat.define-light-theme((
     --mid-bg-color: #5158bb;
     --top-bg-color: #0496ff;
 
-    --submit-color: #3c9920;
+    --accent-color: #383170;
 }
 
 body{
@@ -112,13 +112,28 @@ h3.heading-text{
     }
 }
 
+@media screen and(max-height: 900px){
+    .heading-component-container{
+        height: 100px;
+    }
+    h1.heading-text{
+        font-size: 2rem;
+    }
+    h2.heading-text{
+        font-size: 1.5rem;
+    }
+    h3.heading-text{
+        font-size: 1.25rem;
+    }
+}
+
 .animated-hover{
     transition: all 0.25s ease !important;
     cursor: pointer;
 
     &:hover{
         transform: translateX(-2px) translateY(-2px);
-        box-shadow: 4px 4px 4px #000;
+        box-shadow: 4px 4px 4px #000 !important;
     }
 }
 .mat-option{
@@ -128,6 +143,167 @@ h3.heading-text{
     &:hover{
         box-shadow: inset 220px 0 0 0 var(--top-bg-color);
     }
+}
+
+.widget{
+    &-settings{
+        &-container{
+            width: 100%;
+            height: 25%;
+    
+            position: absolute;
+            top: -30%;
+            left: 0%;
+    
+            background-color: var(--bottom-bg-color);
+    
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0px;
+    
+            transition: all 0.5s ease;
+            z-index: 5 !important;
+    
+            box-shadow: 5px 5px 5px #000;
+        }
+        &-group{
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 10px;
+    
+            margin: 0px;
+        }
+    }
+    &Cover{
+        top: 0%;
+    }
+}
+
+.note{
+    &-container{
+        width: 85%;
+        height: fit-content;
+        margin: auto;
+        margin-top: 100px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 35px;
+
+    }
+    &-item{
+        &-container{
+            width: fit-content;
+            height: fit-content;
+            background-color: var(--bottom-bg-color);
+            border-radius: 15px 0px 15px 0px;
+
+            padding: 10px 20px;
+            min-width: 400px;
+            max-width: 45%;
+            box-shadow: 5px 5px 5px #000;
+
+            transition: all 0.5s ease;
+        }
+
+        &-heading{
+            text-align: center;
+            background-color: rgba($color: #ffffff, $alpha: 0.15);
+            margin: auto;
+            padding: 10px 30px !important;
+        }
+        &-tags{
+            &-container{
+                width: 100%;
+                margin: auto;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                align-items: left;
+                gap: 10px;
+            }
+        }
+        &-bottomBar{
+            height: 50px;
+            transition: all 0.5s ease;
+            
+            margin-top: 50px;
+
+            display: flex;
+            flex-direction: row;
+            gap: 5px;
+            align-items: center;
+    
+            &:hover{
+                background-color: rgba($color: #000000, $alpha: 0.25);
+            }
+    
+            &-img{
+                height: 65%;
+                width: auto;
+                cursor: pointer;
+                margin-left: 15px;
+            }
+    }
+    }
+
+}
+
+
+
+.note-content {
+    ::ng-deep {
+        img{
+            width: 100%;
+            height: auto;
+            max-height: 350px;
+        }
+        table{
+            border: none !important;    
+        }
+        tr:nth-child(even) {
+            background-color: rgba($color: #000000, $alpha: 0.15);
+        }
+        td, th{
+            width: fit-content;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-left: 50px;
+            padding-right: 50px;
+
+            border: 1px black solid;
+        }
+        p{
+            font-size: 1.2rem;
+        }
+    }
+}
+
+
+
+.tag{
+    background-color: rgba($color: #ffffff, $alpha: 0.15);
+    width: fit-content;
+    padding: 10px 5px;
+    border-radius: 50px;
+    height: fit-content;
+    width: fit-content;
+    min-width: 100px;
+    text-align: center;
+    height: 20px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+.tagText{
+    margin-top: 0px;
+}
+
+.heading-tag{
+    height: fit-content;
 }
 
 @keyframes scale-in-center {
@@ -166,7 +342,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
         width: 55%;
     }
 }
-@media screen and(max-width: 500px){
+@media screen and(max-width: 650px){
+
     .heading-component-container{
         width: 95%;
         height: 200px;

@@ -12,7 +12,7 @@
         position: absolute;
         top: -25%;
         left: calc(0% - 15px);
-        background-color: var(--mid-bg-color);
+        background-color: var(--bottom-bg-color);
 
         transition: all 0.5s ease;
         
@@ -33,6 +33,6 @@
     }
 }
 
-.cover{
-    top: 0%;
+.title-text{
+    font-weight: 200;
 }

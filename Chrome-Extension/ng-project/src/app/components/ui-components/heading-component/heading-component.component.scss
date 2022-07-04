@@ -1,0 +1,16 @@
+.component{
+    &-container{
+        animation: scale-in-center 0.65s ease;
+        height: 100%;
+        width: 100%;
+        background-color: var(--bottom-bg-color);
+    }
+}
+
+.heading{
+    &-text{
+        animation: tracking-in-expand 0.65s ease;
+        margin-top: 0px !important;
+        margin-bottom: 0px;
+    }
+}

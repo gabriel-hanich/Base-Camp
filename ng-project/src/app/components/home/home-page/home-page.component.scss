@@ -27,6 +27,8 @@
             left: 50%;
             transform: translateX(-50%);
             z-index: 1 !important;
+            overflow-y: hidden;
+            overflow-x: hidden;
         }
     }
 } 
@@ -82,7 +84,7 @@
     }
 }
 .pulledUp{
-    bottom: 0%;
+    bottom: 0% !important;
 }
 
 .title{
@@ -102,4 +104,12 @@
 
 .cover{
     top: 0%;
+}
+@media screen and(max-height: 900px){ 
+    .adjust{
+        &-container{
+            bottom: -30%;
+            height: 30%;
+        }
+    }   
 }

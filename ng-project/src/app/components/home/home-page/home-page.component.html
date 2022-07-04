@@ -7,7 +7,7 @@
     </div>
     <div class="widgets-container">
     <ktd-grid 
-        [cols]="10"
+        [cols]="colCount"
         [rowHeight]="100"
         [layout]="layout"
         [compactType]="compactType"
@@ -22,7 +22,9 @@
                 <img src="../../../../assets/close.svg" alt="Settings" class="white edit-img" (click)="deleteWidget(item.id)"> 
             </div>
             <div class="widgets-content-container">
-                <app-timetable-column [displaySettings]="editableWidgets" [id]=item.id></app-timetable-column>
+                <app-timetable-column *ngIf='item.presetType == "timetableDay"' [displaySettings]="editableWidgets" [id]=item.id [toggleEmitter]="timeEmitter"></app-timetable-column>
+                <app-day-spinner *ngIf='item.presetType == "timeBtn"' (btnPress)="toggleTimeDisplay()"></app-day-spinner>
+                <app-note-widget *ngIf="item.presetType == 'note'" [displaySettings]="editableWidgets" [id]="item.id"></app-note-widget>
             </div>
         </ktd-grid-item>
     </ktd-grid>
@@ -38,8 +40,9 @@
                 <mat-label>Type</mat-label>
                 <mat-select class="adjust-new-select" [(value)]="newWidgetType">
                   <mat-option [value]="'timetableDay'" class="mat-option">Timetable Day</mat-option>
-                  <mat-option [value]="'news'" class="mat-option">News Feed</mat-option>
+                  <mat-option [value]="'timeBtn'" class="mat-option">Time Button</mat-option>
                   <mat-option [value]="'note'" class="mat-option">Note</mat-option>
+                  <mat-option [value]="'news'" class="mat-option">News Feed</mat-option>
                   <mat-option [value]="'studyNote'" class="mat-option">Study Note</mat-option>
                 </mat-select>
             </mat-form-field>

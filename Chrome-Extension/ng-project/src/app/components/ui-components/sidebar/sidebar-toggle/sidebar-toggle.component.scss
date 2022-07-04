@@ -1,0 +1,16 @@
+.component{
+    &-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
+}
+
+
+.menu{
+    &-img{
+        width: 85%;
+        height: 85%;
+    }
+}

@@ -95,6 +95,13 @@
     opacity: 0%;
 }
 
+.version-number{
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+    text-transform: capitalize;
+}
+
 @keyframes moveUpFadeIn {
     0% {
         transform: translateY(100px);
