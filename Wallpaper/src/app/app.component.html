@@ -1,8 +1,0 @@
-<router-outlet (activate)="onActivate()" *ngIf="isAccurate"></router-outlet>
-<div class="menu-container">
-    <app-sidebar-toggle></app-sidebar-toggle>
-</div>
-<app-sidebar-component></app-sidebar-component>
-<div class="loading-container" *ngIf="!isAccurate">
-    <app-loading-wheel></app-loading-wheel>
-</div>
