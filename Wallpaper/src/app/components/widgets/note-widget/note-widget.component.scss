@@ -1,0 +1,25 @@
+.note{
+    &-container{
+        width: 100%;
+        height: 100%;
+    }
+}
+
+
+
+.title-text{
+    margin-left: 15px;
+    font-weight: 200;
+}
+
+.note{
+    &-container{
+        margin-top: 0px !important;
+        overflow-x: hidden;
+    }
+    &-item{
+        &-heading{
+            transform: translateX(-15px);
+        }
+    }
+}

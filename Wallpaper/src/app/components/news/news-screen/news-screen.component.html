@@ -1,0 +1,22 @@
+<div class="heading-component-container">
+    <app-heading-component 
+        line1Text="News"
+        line2Text="">
+    </app-heading-component>
+</div>
+
+<div class="loading-container" id="loadingWheel">
+    <app-loading-wheel></app-loading-wheel>
+</div>
+
+<div class="news-list-container">
+    <div class="news-item component-container" *ngFor="let article of articleList">
+        <a href="{{article['link']}}" class="news-item-link" target="_blank">
+            <img src="{{article['imgLink']}}" alt="News Image" class="news-item-img">
+        </a>
+        <div class="news-item-text-container">
+            <h1 class="news-item-text-headline">{{article["headline"]}}</h1>
+            <h2 class="news-item-text-byline">{{article["author"] || "No Author"}} - {{ article["publishDate"] | date}} </h2>
+        </div>
+    </div>
+</div>

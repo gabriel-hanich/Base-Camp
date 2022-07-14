@@ -1,0 +1,16 @@
+<div class="background-container">
+    <div class="logo-container">
+        <img src="../../../../assets/app-icon.svg" alt="App Icon" class="logo-img">
+    </div>
+    <h1 class="heading-text">Oops, we cannot connect to the server</h1>
+    <h2 class="heading-text">Data will be stored locally until a connection can be re-established</h2>
+    <div class="toggle-container">
+        <app-toggle-switch 
+                [label1]="'Show this message every time'" 
+                [label2]="label2Msg"
+                [defaultVal]="'label1'"
+                (state)="updateMsgStatus($event)"
+                [elemID]="'initSyncToggle'"></app-toggle-switch>
+    </div>
+    <button class="go-btn animated-hover" (click)="state.emit()">Ok</button>
+</div>
