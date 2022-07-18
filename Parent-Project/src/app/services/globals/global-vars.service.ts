@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { ConnectionsService } from '../connections/connections.service';
 
@@ -10,18 +11,23 @@ export class GlobalVarsService {
   private globalVars: Map<string, string> = new Map();
   private isAccurate: boolean = false;  
 
-  constructor(private connections: ConnectionsService) { 
+  constructor(private connections: ConnectionsService, private router: Router) { 
     if(localStorage.getItem("globals") != undefined){
       this.globalVars = new Map(JSON.parse(localStorage.getItem("globals") as string));
        // Calculate whether it is wk A or B
-       if(JSON.parse(this.getVar("doCloudSync"))){
-         this.syncFromCloud().then(()=>{
-           this.setVar("lastSignInTime", JSON.stringify(new Date().getTime()));
-           this.isAccurate = true
-         });
-        }else{
-          this.isAccurate = true;
-        }
+       try{
+        if(JSON.parse(this.getVar("doCloudSync"))){
+          this.syncFromCloud().then(()=>{
+            this.setVar("lastSignInTime", JSON.stringify(new Date().getTime()));
+            this.isAccurate = true
+          });
+         }else{
+           this.isAccurate = true;
+         }
+       }catch(SyntaxError){
+        this.router.navigate(["setup/user"])
+        this.isAccurate = true
+       }
       this.calcCurrentWk();
       }else{
         this.isAccurate = true;

@@ -18,7 +18,6 @@ import { TimetableTableComponent } from './components/timetable/timetable-table/
 import { SettingsScreenComponent } from './components/settings/settings-screen/settings-screen.component';
 import { HeadingComponentComponent } from './components/ui-components/heading-component/heading-component.component';
 import { NewFileComponent } from './components/settings/new-file/new-file.component';
-import { NewsScreenComponent } from './components/news/news-screen/news-screen.component';
 import { LoadingWheelComponent } from './components/ui-components/loading-wheel/loading-wheel.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations' ;
 import { SetupTimetableScreenComponent } from './components/timetable/setup-timetable-screen/setup-timetable-screen.component';
@@ -46,7 +45,6 @@ import { InitUserComponent } from './components/setup/init-user/init-user.compon
     SettingsScreenComponent,
     HeadingComponentComponent,
     NewFileComponent,
-    NewsScreenComponent,
     LoadingWheelComponent,
     SetupTimetableScreenComponent,
     TimetableDayComponent,

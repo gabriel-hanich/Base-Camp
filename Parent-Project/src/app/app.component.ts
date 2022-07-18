@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { GlobalVarsService } from './services/globals/global-vars.service';
 
 @Component({
@@ -10,10 +11,13 @@ export class AppComponent implements OnInit{
   title = 'Base Camp';
   public isAccurate = false;
 
-  constructor(private globalVars: GlobalVarsService){}
+  constructor(private globalVars: GlobalVarsService, private router: Router){}
 
   ngOnInit(){
-    var checkData = setInterval(()=>{
+    if(!localStorage.getItem("globals")){ // Send the user to the setup page if they have never logged in b4
+      this.router.navigate(["setup/user"])
+    }
+    var checkData = setInterval(()=>{ // Only load the page once accurate data has been recieved from the cloud
       this.isAccurate = this.globalVars.hasAccurateData();
       if(this.isAccurate){
         clearInterval(checkData);

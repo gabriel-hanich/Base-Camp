@@ -30,6 +30,7 @@ export class NotesScreenComponent implements OnInit {
   
   ngOnInit(): void {
     this.setNotesList();
+    this.refreshDisplayNotes();
   }
 
   setNotesList(): void{

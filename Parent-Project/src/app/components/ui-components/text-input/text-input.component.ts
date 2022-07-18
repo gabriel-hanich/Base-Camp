@@ -8,6 +8,7 @@ import { GlobalVarsService } from 'src/app/services/globals/global-vars.service'
 })
 export class TextInputComponent implements OnInit {
   @Input() initText: string;
+  @Input() customId: string;
   @Output() userInput: EventEmitter<String> = new EventEmitter<String>();
 
   public editor: any;

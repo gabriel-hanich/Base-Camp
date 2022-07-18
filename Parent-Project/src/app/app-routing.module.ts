@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomePageComponent } from './components/home/home-page/home-page.component';
-import { NewsScreenComponent } from './components/news/news-screen/news-screen.component';
 import { NotesScreenComponent } from './components/notes/notes-screen/notes-screen.component';
 import { SettingsScreenComponent } from './components/settings/settings-screen/settings-screen.component';
 import { InitUserComponent } from './components/setup/init-user/init-user.component';
@@ -19,10 +18,6 @@ const routes: Routes = [
   {
     "path": "settings",
     "component": SettingsScreenComponent
-  },
-  {
-    "path": "news",
-    "component": NewsScreenComponent
   },
   {
     "path": "timetable",

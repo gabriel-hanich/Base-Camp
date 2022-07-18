@@ -21,7 +21,7 @@
                 ">Save</button>
         </span>
         <app-categories-list class="newNote-categories" [defaultText]="'New Tag'" (categoryList)="updateCategoryList($event)" [id]="'newNote'"></app-categories-list>
-        <app-text-input (userInput)="updateNoteContent($event)" class="newNote-rich"></app-text-input>
+        <app-text-input (userInput)="updateNoteContent($event)" customId="noteEditor" class="newNote-rich"></app-text-input>
     </form>
 </div>
 

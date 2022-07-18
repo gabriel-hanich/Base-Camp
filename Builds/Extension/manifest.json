@@ -2,7 +2,7 @@
     "manifest_version": 3,
     "version": "0.14",
     "name": "Base Camp",
-    "description": "Your Base for all school applications",
+    "description": "Is app",
     "action": {
       "default_icon": "icon.png",
       "default_popup": "index.html",
