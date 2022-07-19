@@ -47,6 +47,7 @@ export class AppComponent implements OnInit{
   }
 
   onActivate():void{ // Every time the user visits a new page, scroll to the top left
+    document.getElementById("sideBar")?.classList.remove("sidebar-extended")
     window.scroll({ 
       top: 0, 
       left: 0, 

@@ -18,27 +18,25 @@ export class SetupTimetableScreenComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit(): void {
-    if(this.globalVars.getVar("wk1Data") == "empty" || this.globalVars.getVar("wk1Data") == "[]"){ // If user has no currently stored timetable data
-      if(this.globalVars.getVar("timetableRaw") == "empty"){ // If user has not uploaded file
-        this.router.navigate(["settings"]);
-      }
-      this.cleanData(); // Convert raw text file into timetable data
-    }else{ 
-      // Init calibration data
-      this.initCalibrationData();
-      if(this.globalVars.getVar("wk1IsWkA") == "true"){
-        this.defaultCalibrationOption = "label1";
-      }else if(this.globalVars.getVar("wk1IsWkA") == "false"){
-        this.defaultCalibrationOption = "label2";
-      }
-      // Init current week letter and number
-      if(this.globalVars.getVar("weekLetter") === "a"){
-        this.currentWeekOption = "label1";
-      }else if(this.globalVars.getVar("weekLetter") === "b"){
-        this.currentWeekOption = "label2";
-      }
-      this.currentWeek = parseInt(this.globalVars.getVar("weekNumber"));
+    if(this.globalVars.getVar("timetableRaw") == "empty" && (this.globalVars.getVar("wk1Data") == "empty" || this.globalVars.getVar("wk1Data") == "[]")){ 
+      // If user has not uploaded file
+      this.router.navigate(["settings"]);
     }
+    this.cleanData(); // Convert raw text file into timetable data
+    // Init calibration data
+    this.initCalibrationData();
+    if(this.globalVars.getVar("wk1IsWkA") == "true"){
+      this.defaultCalibrationOption = "label1";
+    }else if(this.globalVars.getVar("wk1IsWkA") == "false"){
+      this.defaultCalibrationOption = "label2";
+    }
+    // Init current week letter and number
+    if(this.globalVars.getVar("weekLetter") === "a"){
+      this.currentWeekOption = "label1";
+    }else if(this.globalVars.getVar("weekLetter") === "b"){
+      this.currentWeekOption = "label2";
+    }
+    this.currentWeek = parseInt(this.globalVars.getVar("weekNumber"));
   }
 
   cleanData():void{

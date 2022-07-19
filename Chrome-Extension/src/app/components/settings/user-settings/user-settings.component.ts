@@ -32,9 +32,11 @@ export class UserSettingsComponent implements OnInit {
     if(this.email == "empty"){
       this.email = "No Email Inputted";
     }
-    if(!JSON.parse(this.globalVars.getVar("showDisconnect"))){
-      this.defaultLabel = "label2";
-    }
+    try{
+      if(!JSON.parse(this.globalVars.getVar("showDisconnect"))){
+        this.defaultLabel = "label2";
+      }
+    }catch(SyntaxError){ }
   }
   
   updateCloudState(state: String):void{

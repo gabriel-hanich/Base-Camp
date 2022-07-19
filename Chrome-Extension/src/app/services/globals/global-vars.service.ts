@@ -78,7 +78,6 @@ export class GlobalVarsService {
               if(typeof res[0][cloudKeys[i]] == 'string'){
                 this.setVar(cloudKeys[i], res[0][cloudKeys[i]], false);
               }else{
-                console.log([cloudKeys[i], res[0][cloudKeys[i]]])
                 this.setVar(cloudKeys[i], JSON.stringify(res[0][cloudKeys[i]]), false);
               }
             }

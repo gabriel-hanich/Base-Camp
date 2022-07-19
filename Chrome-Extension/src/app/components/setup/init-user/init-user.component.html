@@ -29,8 +29,8 @@
             <img src="../../../../assets/scroll.svg" alt="Go Back"class="heading-arrow-img white" (click)="state = 'cloud'">
         </div>
         <h1 class="heading-text">Do you have an account already?</h1>
-        <button class="heading-text heading-btn animated-hover account-btn" (click)="state = 'login'">Log in</button>
-        <button class="heading-text heading-btn animated-hover account-btn" (click)="state = 'signup'">Sign up</button>
+        <button class="heading-text heading-btn animated-hover account-btn" (click)="state = 'login'">Yes<br>Log in</button>
+        <button class="heading-text heading-btn animated-hover account-btn" (click)="state = 'signup'">No<br>Sign up</button>
     </div>
 
     <div class="heading-container heading-container-large" *ngIf="state == 'signup'">

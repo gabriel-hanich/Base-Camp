@@ -45,8 +45,6 @@ export class ConnectionsService {
   }
 
   setUserData(email: string, passwordToken: string, valueKey: string, value: string){
-    console.log("SETTING USER " + valueKey + " TO ");
-    console.log(value);
     return this.httpClient.post(environment.apiURL + "/userData/set", {"email": email.toString(), "pwdToken": passwordToken, "valKey": valueKey, "val": value});
   }
 }
