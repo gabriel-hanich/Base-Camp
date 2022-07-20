@@ -16,6 +16,8 @@ export class AppComponent implements OnInit{
   ngOnInit(){
     if(!localStorage.getItem("globals")){ // Send the user to the setup page if they have never logged in b4
       this.router.navigate(["setup/user"])
+    }else{
+      this.router.navigate(["/"])
     }
     var checkData = setInterval(()=>{ // Only load the page once accurate data has been recieved from the cloud
       this.isAccurate = this.globalVars.hasAccurateData();
