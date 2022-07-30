@@ -1,20 +1,11 @@
 import { DOCUMENT } from '@angular/common';
-<<<<<<< Updated upstream:Parent-Project/src/app/components/home/home-page/home-page.component.ts
 import { Component, EventEmitter, Inject, OnInit } from '@angular/core';
 import { KtdGridLayout, ktdTrackById } from '@katoid/angular-grid-layout';
 import { GlobalVarsService } from 'src/app/services/globals/global-vars.service';
-=======
-<<<<<<< Updated upstream:ng-project/src/app/components/home/home-page/home-page.component.ts
-import { Component, Inject, OnInit } from '@angular/core';
-import { KtdGridLayout, ktdTrackById } from '@katoid/angular-grid-layout';
-import { GlobalVarsService } from 'src/app/services/global-vars.service';
-=======
 import { Component, EventEmitter, Inject, OnInit, ViewChild } from '@angular/core';
 import { KtdGridComponent, KtdGridLayout, ktdTrackById } from '@katoid/angular-grid-layout';
 import { debounceTime, filter, fromEvent, merge } from 'rxjs';
 import { GlobalVarsService } from 'src/app/services/globals/global-vars.service';
->>>>>>> Stashed changes:Parent-Project/src/app/components/home/home-page/home-page.component.ts
->>>>>>> Stashed changes:ng-project/src/app/components/home/home-page/home-page.component.ts
 import { widget } from 'src/models';
 
 @Component({
@@ -36,21 +27,15 @@ export class HomePageComponent implements OnInit {
   public newWidgetType = "timetableDay";
   public editableWidgets = false;
 
-<<<<<<< Updated upstream:Parent-Project/src/app/components/home/home-page/home-page.component.ts
   public timeEmitter: EventEmitter<String> = new EventEmitter<String>();
 
   public colCount: number = Math.round(screen.width / 130);
 
-=======
-<<<<<<< Updated upstream:ng-project/src/app/components/home/home-page/home-page.component.ts
-=======
   public timeEmitter: EventEmitter<String> = new EventEmitter<String>();
 
   public colCount: number = Math.round(screen.width / 130);
   resizeSubscription: any;
 
->>>>>>> Stashed changes:Parent-Project/src/app/components/home/home-page/home-page.component.ts
->>>>>>> Stashed changes:ng-project/src/app/components/home/home-page/home-page.component.ts
   constructor(@Inject(DOCUMENT) public document: Document, private globalVars: GlobalVarsService) { }
 
   ngOnInit(): void {
@@ -60,12 +45,6 @@ export class HomePageComponent implements OnInit {
       this.layoutData = [];
     }
     this.updateTime();
-<<<<<<< Updated upstream:Parent-Project/src/app/components/home/home-page/home-page.component.ts
-=======
-<<<<<<< Updated upstream:ng-project/src/app/components/home/home-page/home-page.component.ts
-  }, 1000);
-=======
->>>>>>> Stashed changes:ng-project/src/app/components/home/home-page/home-page.component.ts
     this.renderBoards();
 
 
@@ -82,8 +61,6 @@ export class HomePageComponent implements OnInit {
     setInterval(()=>{
       this.updateTime();
     }, 1000);
-<<<<<<< Updated upstream:Parent-Project/src/app/components/home/home-page/home-page.component.ts
-=======
 
     this.resizeSubscription = merge(
       fromEvent(window, 'resize'),
@@ -93,8 +70,6 @@ export class HomePageComponent implements OnInit {
     ).subscribe(() => {
         this.grid.resize();
     });
->>>>>>> Stashed changes:Parent-Project/src/app/components/home/home-page/home-page.component.ts
->>>>>>> Stashed changes:ng-project/src/app/components/home/home-page/home-page.component.ts
   }
 
   updateTime(): void{
@@ -136,14 +111,7 @@ export class HomePageComponent implements OnInit {
         });
       }
     }
-<<<<<<< Updated upstream:Parent-Project/src/app/components/home/home-page/home-page.component.ts
-=======
-<<<<<<< Updated upstream:ng-project/src/app/components/home/home-page/home-page.component.ts
     console.log(newLayout);
-=======
-    this.layout = newLayout
->>>>>>> Stashed changes:Parent-Project/src/app/components/home/home-page/home-page.component.ts
->>>>>>> Stashed changes:ng-project/src/app/components/home/home-page/home-page.component.ts
   }
 
   addNewWidget():void{

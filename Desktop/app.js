@@ -6,7 +6,6 @@ let mainWindow
 
 function createWindow () {
     mainWindow = new BrowserWindow({
-<<<<<<< Updated upstream
     width: 800,
     height: 600,
     webPreferences: {
@@ -14,18 +13,6 @@ function createWindow () {
     }
     })
 
-=======
-        width: 1280,
-        height: 807200,
-        webPreferences: {
-            nodeIntegration: true
-        },
-        autoHideMenuBar: true
-    })
-
-    mainWindow.setIcon("./Icon.png")
-
->>>>>>> Stashed changes
     const htmlRootDir = 'src/'
     const indexFile = 'index.html'
 

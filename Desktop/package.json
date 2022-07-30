@@ -1,22 +1,13 @@
 {
-<<<<<<< Updated upstream
-  "name": "desktop",
-  "version": "0.1.4",
-=======
   "name": "base_camp",
   "version": "0.1.4",
   "icon": "./favicon.ico",
->>>>>>> Stashed changes
   "description": "",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-<<<<<<< Updated upstream
-    "start": "electron ."
-=======
     "start": "electron .",
     "build-windows": "electron-packager ./ --platform=win32 --arch=x64 --icon=./favicon.ico --overwrite"
->>>>>>> Stashed changes
   },
   "author": "Gabriel",
   "license": "ISC",
