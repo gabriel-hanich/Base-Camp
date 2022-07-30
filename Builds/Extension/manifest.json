@@ -1,0 +1,20 @@
+{
+    "manifest_version": 3,
+    "version": "0.14",
+    "name": "Base Camp",
+    "description": "Is app",
+    "action": {
+<<<<<<< Updated upstream
+      "default_icon": "icon.png",
+      "default_popup": "index.html",
+      "default_title": "School Time"
+    },
+  "icons": { "128": "icon.png" }
+=======
+      "default_icon": "./assets/Icon.png",
+      "default_popup": "index.html",
+      "default_title": "School Time"
+    },
+  "icons": { "128": "./assets/Icon.png" }
+>>>>>>> Stashed changes
+}

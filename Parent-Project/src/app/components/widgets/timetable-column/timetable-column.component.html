@@ -1,0 +1,32 @@
+<div class="row-container">
+    <div class="widget-settings-container" [ngClass]="{widgetCover: displaySettings}">
+        <div class="widget-settings-group">
+            <h4 class="title-text">Displayed Date</h4>
+            <mat-form-field appearance="fill" class="adjust-new-field">
+                <mat-label>Day</mat-label>
+                <mat-select class="adjust-new-select" [(value)]="currentDate" (valueChange)="updateDate()">
+                    <mat-option [value]="'today'" class="mat-option">Today</mat-option>
+                    <mat-option [value]="'tomorrow'" class="mat-option">Tomorrow</mat-option>
+                    <mat-option [value]="'monA'" class="mat-option">Monday A</mat-option>
+                    <mat-option [value]="'tueA'" class="mat-option">Tuesday A</mat-option>
+                    <mat-option [value]="'wedA'" class="mat-option">Wednesday A</mat-option>
+                    <mat-option [value]="'thuA'" class="mat-option">Thursday A</mat-option>
+                    <mat-option [value]="'friA'" class="mat-option">Friday A</mat-option>
+                    <mat-option [value]="'monB'" class="mat-option">Monday B</mat-option>
+                    <mat-option [value]="'tueB'" class="mat-option">Tuesday B</mat-option>
+                    <mat-option [value]="'wedB'" class="mat-option">Wednesday B</mat-option>
+                    <mat-option [value]="'thuB'" class="mat-option">Thursday B</mat-option>
+                    <mat-option [value]="'friB'" class="mat-option">Friday B</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        </div>
+    <div class="content-container" *ngIf="timetableData.length > 0">
+        <app-timetable-day 
+            [timetableData]="timetableData"
+            [isCurrentWeek]="isCurrentWeek"
+            titleText="{{titleText}}" 
+            [displayEmitter]="toggleEmitter"
+            [doTimes]="true"></app-timetable-day>
+    </div>
+</div>

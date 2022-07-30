@@ -1,0 +1,110 @@
+.section{
+    &-container{
+        width: 90%;
+        height: 40%;
+        border-radius: 15px 0px 15px 0px;
+        margin: auto;
+        background-color: rgba(0, 0, 0, 0.3);
+        box-shadow: 5px 5px 5px #000;
+    }
+}
+
+.toggle{
+    &-container{
+        height: 45%;
+        width: 85%;
+        margin: auto;
+    }
+}
+
+.form{
+    &-container{
+        height: 45%;
+        width: 85%;
+        margin: auto;
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        grid-template-rows: auto auto auto;
+
+    }
+
+    &-input{
+        transition: all 0.3s ease;
+        margin: 0px;
+        margin-top: 5px;
+        height: 40px;
+        background-color: var(--bottom-bg-color);
+        border: none;
+    }
+    &-text{
+        transition: all 0.3s ease;
+    }
+    &-btn{
+        width: 50%;
+        height: 40px;
+        background-color: var(--mid-bg-color);
+        border-radius: 15px 0px 15px 0px;
+        border: none;
+        cursor: pointer;
+        margin-left: 100px;
+    }
+
+}
+
+.large{
+    height: 350px;
+    margin-top: 15px;
+}
+
+.heading-text{
+    text-align: center;
+}
+
+.error{
+    &-container{
+        height: 15%;
+        width: 100%;
+        background-color: var(--top-bg-color);
+        transform: translateX(-100vw);
+        transition: all 1s ease;
+
+        text-align: center;
+        border-radius: 15px 0px 15px 0px;
+    }
+    &-text{
+        font-size: 1.25rem;
+        font-weight: 400;
+    }
+}
+
+.showError{
+    transform: translateX(0);
+}
+
+.dull{
+    ::ng-deep{
+        cursor: default !important;
+        opacity: 0.3 !important;
+        &:hover{
+            transform: translate(0px) !important;
+            box-shadow: none !important;
+        }
+    }
+
+}
+
+.wipe-btn{
+    margin-top: 10px;
+    background-color: #99282a;
+    border: none;
+    width: 50%;
+    height: 40px;
+    margin-left: 100px;
+    border-radius: 0px 15px 0px 15px;
+}
+
+.toggle-container{
+    height: 40px;
+    width: 100%;
+    margin-bottom: 10px;
+}

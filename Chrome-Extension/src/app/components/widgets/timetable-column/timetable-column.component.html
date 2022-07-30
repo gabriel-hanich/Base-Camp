@@ -1,0 +1,10 @@
+<div class="row-container">
+    <div class="content-container" *ngIf="timetableData.length > 0">
+        <app-timetable-day 
+            [timetableData]="timetableData"
+            [isCurrentWeek]="isCurrentWeek"
+            titleText="{{titleText}}" 
+            [displayEmitter]="toggleEmitter"
+            [doTimes]="true"></app-timetable-day>
+    </div>
+</div>

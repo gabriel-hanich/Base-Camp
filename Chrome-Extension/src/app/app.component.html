@@ -1,0 +1,13 @@
+<router-outlet (activate)="onActivate()" *ngIf="isAccurate"></router-outlet>
+<div class="menu-container">
+    <app-sidebar-toggle></app-sidebar-toggle>
+</div>
+<app-sidebar-component></app-sidebar-component>
+<div class="loading-container" *ngIf="!isAccurate">
+    <app-loading-wheel></app-loading-wheel>
+</div>
+<!-- Only show the disconnect msg if the current data is accurate, the backend CANNOT connect, -->
+<!-- The user has opted to see the message AND it hasn't already been shown -->
+<div class="disconnect-container" *ngIf="doCloudSync && isAccurate && !canConnect && showDisconnect && !shownError">
+    <app-disconnect-warning></app-disconnect-warning>
+</div>

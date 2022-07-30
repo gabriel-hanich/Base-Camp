@@ -1,0 +1,41 @@
+.toggle{
+    &-container{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-self: center;
+    }
+}
+
+.label{
+    &-container{
+        flex: 0.45;
+        width: 100%;
+        height: 100%;
+        background-color: rgba($color: #fff, $alpha: 0.1);
+        text-align: center;
+        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        cursor: pointer;
+        transition: all 0.25s ease;
+    }
+}
+
+.left-label{
+    border-radius: 10px 0px 0px 10px;
+}
+.right-label{
+    border-radius: 0px 10px 10px 00px;
+}
+
+.clicked{
+    cursor: default;
+    background-color: var(--mid-bg-color);
+    box-shadow: 5px 5px 5px #050311;
+    transform: translateY(-2.5px) translateX(-2.5px);
+}

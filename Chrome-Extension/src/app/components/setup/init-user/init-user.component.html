@@ -1,0 +1,136 @@
+<div class="setup-container">
+    <div class="heading-container" *ngIf="state == 'init'">
+        <img src="../../../../assets/app-icon.svg" alt="" class="iconImg">
+        <h1 class="heading-text">Welcome to Base Camp</h1>
+        <h2 class="heading-text">Lets get set up</h2>
+        <button class="heading-text heading-btn animated-hover" (click)="state = 'cloud'">Setup</button>
+    </div>
+
+    <div class="heading-container" *ngIf="state == 'cloud'">
+        <div class="heading-arrow-container">
+            <img src="../../../../assets/scroll.svg" alt="Go Back"class="heading-arrow-img white" (click)="state = 'init'">
+        </div>
+        <h1 class="heading-text">Would you like to sync your data with the cloud?</h1>
+        <h3 class="heading-text">Enabling cloud sync would keep a remote backup of your data and allow you to share across various devices</h3>
+        <div class="heading-toggle">
+            <app-toggle-switch 
+                [label1]="'Enable Cloud Sync'" 
+                [label2]="'Disable Cloud Sync'"
+                [defaultVal]="'label1'"
+                (state)="updateCloudState($event)"
+                [elemID]="'initSyncToggle'"></app-toggle-switch>
+        </div>
+        <button class="heading-text heading-btn animated-hover" (click)="state='user'">Next</button>
+    </div>
+
+    <!-- Containers for if the user decides to enable cloud sync -->
+    <div class="heading-container" *ngIf="state == 'user' && doCloudSync == true">
+        <div class="heading-arrow-container">
+            <img src="../../../../assets/scroll.svg" alt="Go Back"class="heading-arrow-img white" (click)="state = 'cloud'">
+        </div>
+        <h1 class="heading-text">Do you have an account already?</h1>
+        <button class="heading-text heading-btn animated-hover account-btn" (click)="state = 'login'">Yes<br>Log in</button>
+<<<<<<< Updated upstream
+        <button class="heading-text heading-btn animated-hover account-btn" (click)="state = 'signup'">No<br>Sign up</button>
+=======
+        <button class="heading-text heading-btn animated-hover account-btn" (click)="state = 'privacyPolicy'">No<br>Sign up</button>
+    </div>
+
+    <div class="heading-container heading-container-large" *ngIf="state == 'privacyPolicy'">
+        <div class="heading-arrow-container">
+            <img src="../../../../assets/scroll.svg" alt="Go Back"class="heading-arrow-img white" (click)="state = 'user'">
+        </div>
+        <h1 class="heading-text">Please read and agree to the below privacy policy</h1>
+        <div class="policy-container">
+            <p class="policy-text">
+                Base Camp Privacy Policy 
+                <br>
+                <br>
+                This is a binding agreement between the user and the developer for utilisation of 'cloud sync' technologies built within 'Base Camp'.
+                <br>
+                <br>
+                Base Camp offers no guarantee about data security and potential data-erasure. Whilst every effort has been made to create a robust back-end, the developer offers no guarantees. Various pieces of user data is collected by the application, however this is kept to a minimum.
+                Additionally, 'Base Camp' offers no guarantee against data breaches. It is the user's responsibility NOT to upload potentially personal data. Whilst passwords are hashed using the highest standard of encryption, remaining user data (both uploaded directly by the user, and gained automatically) is stored in a plan-text format.
+                The developer provides no warantee on the software, and does not guarantee support for cloud services for any given amount of time.
+                <br>
+                <br>
+                Upon signing this agreement, I (the user) agree to the above terms and consent to collection, storage and access of user data. 
+            </p>
+        </div>
+
+        <button class="heading-text heading-btn animated-hover form-btn" (click)="state = 'signup'">I Agree to the above terms</button>
+>>>>>>> Stashed changes
+    </div>
+
+    <div class="heading-container heading-container-large" *ngIf="state == 'signup'">
+        <div class="heading-arrow-container">
+            <img src="../../../../assets/scroll.svg" alt="Go Back"class="heading-arrow-img white" (click)="state = 'user'">
+        </div>
+        <h1 class="heading-text">Please enter your details below</h1>
+        <form class="form-container" #userForm (submit)="updateUserSettings($event)">
+            <p class="form-text">Your Name</p>
+            <input type="text" name="Name" id="nameInput" class="form-input" placeholder="Name">
+            <p class="form-text">Your Email</p>
+            <input type="text"
+                name="Email" 
+                id="emailInput"
+                class="form-input" 
+                placeholder="Email" >
+            <p class="form-text">Your Password</p>
+            <input type="password"
+                name="Password"
+                id="passwordInput" 
+                class="form-input" 
+                placeholder="Password" >
+            <p class="form-text">Confirm Password</p>
+            <input type="password"
+                #confirmInput
+                name="Password" 
+                id="confirmPasswordInput"
+                class="form-input"
+                placeholder="Password">
+        </form>
+        <button class="heading-text heading-btn animated-hover form-btn" (click)="updateUserSettings($event)">Submit</button>
+        
+        <div class="msg-container" id="msgBox">
+            <h3 class="msg-text">{{statusMsg}}</h3>
+        </div>
+    </div>
+    <div class="heading-container" *ngIf="state == 'login'">
+        <div class="heading-arrow-container">
+            <img src="../../../../assets/scroll.svg" alt="Go Back"class="heading-arrow-img white" (click)="state = 'user'">
+        </div>
+        <h1 class="heading-text">Please enter your details below</h1>
+        <form class="form-container" #userForm (submit)="loginUser($event)">
+            <p class="form-text">Your Email</p>
+            <input type="text"
+                name="Email" 
+                id="emailInput"
+                class="form-input" 
+                placeholder="Email" >
+            <p class="form-text">Your Password</p>
+            <input type="password"
+            name="Password"
+            id="passwordInput" 
+            class="form-input" 
+            placeholder="Password" >
+        </form>
+        <button class="heading-text heading-btn animated-hover form-btn" (click)="loginUser($event)">Submit</button>
+        <div class="msg-container" id="msgBox">
+            <h3 class="msg-text">{{statusMsg}}</h3>
+        </div>
+    </div>
+
+     <!-- Container for if the user does not enable cloud sync -->
+     <div class="heading-container" *ngIf="state == 'user' && doCloudSync == false">
+        <div class="heading-arrow-container">
+            <img src="../../../../assets/scroll.svg" alt="Go Back"class="heading-arrow-img white" (click)="state = 'cloud'; doCloudSync = true">
+        </div>
+        <h1 class="heading-text">Great! Please enter your name below</h1>
+        <form class="form-container" #userForm (submit)="createLocalUser($event)">
+            <p class="form-text">Your Name</p>
+            <input type="text" name="Name" id="localNameInput" class="form-input" placeholder="Name">
+        </form>
+        <button class="heading-text heading-btn animated-hover form-btn" (click)="createLocalUser($event)">Submit</button>
+    </div>
+</div>

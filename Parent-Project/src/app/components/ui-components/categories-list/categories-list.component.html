@@ -1,0 +1,18 @@
+<div class="categories">
+    <div class="tag addTag">
+        <img src="../../../../assets/close.svg" alt="Add New tag" class="categories-img-del white removetag{{id}}" (click)="removeTag()">
+        <img src="../../../../assets/close.svg" alt="Add New tag" class="categories-img white addTag{{id}}" (click)="addTag(true)">
+    </div>
+    <div class="tag categoryTag categoryTag{{id}}" *ngFor="let category of tagList">
+        <input class="tagText newCategoryText categoryText{{id}}" 
+        [contentEditable]="true" 
+        (keyup)="readTagData(false)"
+        placeholder="{{defaultText}}"
+        [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="readTagData(false)">
+          <mat-option *ngFor="let tag of filteredTagList" [value]="tag">
+            {{tag}}
+          </mat-option>
+        </mat-autocomplete>
+    </div>
+</div>

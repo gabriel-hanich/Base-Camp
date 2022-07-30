@@ -1,0 +1,19 @@
+<div class="heading-component-container">
+    <app-heading-component 
+        line1Text="Your Study Notes">
+    </app-heading-component>
+</div>
+
+<div class="option-container">
+    <div class="option-item-container">
+        <h2>Create a new note</h2>
+        <img src="../../../../assets/new-file.svg" class="white option-img">
+        <button class="option-btn animated-hover" (click)="changePage('study_notes/new')">Create</button>
+    </div>
+    <div class="option-item-container">
+        <h2>View your Study Notes</h2>
+        <img src="../../../../assets/note.svg" class="white option-img">
+        <button class="option-btn animated-hover" (click)="changePage('study_notes/view')">View</button>
+    </div>
+</div>
+

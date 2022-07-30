@@ -1,0 +1,42 @@
+
+<div class="heading-component-container">
+    <app-heading-component 
+        line1Text="Your Timetable"
+        line2Text="{{ currentDay }} Week {{ currentWeek }}">
+    </app-heading-component>
+</div>
+
+<div class="time-container">
+    <button class="time-btn animated-hover" (click)="showTimes()">Show Times</button>
+</div>
+
+<div class="week-container">
+    <div class="week-heading-container" [ngClass]="{'highlight': isWeekA === true}">
+        <h2 class="week-heading-text">Week A</h2>
+    </div>
+    <div class="week-table-container">
+        <div class="week-day-container" *ngFor="let dayData of weekAData">
+            <app-timetable-day 
+                class="week-day-component" 
+                [timetableData]=dayData 
+                [isCurrentWeek]=isWeekA
+                [displayEmitter]="timeEmitter"
+                [doTimes]="true"></app-timetable-day>
+        </div>
+    </div>
+</div>
+<div class="week-container">
+    <div class="week-heading-container" [ngClass]="{'highlight': isWeekB === true}">
+        <h2 class="week-heading-text">Week B</h2>
+    </div>
+    <div class="week-table-container">
+        <div class="week-day-container" *ngFor="let dayData of weekBData">
+            <app-timetable-day
+                class="week-day-component"
+                [timetableData]=dayData
+                [isCurrentWeek]=isWeekB
+                [displayEmitter]="timeEmitter"
+                [doTimes]="true"></app-timetable-day>
+        </div>
+    </div>
+</div>
