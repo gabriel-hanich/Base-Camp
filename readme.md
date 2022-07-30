@@ -1,6 +1,7 @@
 ![Base Camp Marqee](./Icons/Marquee.png)
 # Base Camp
-## Current Version - Beta 0.13 
+## Current Version - Release 0.14 
+### Download windows version [Here](https://drive.google.com/drive/folders/1WJgEaUQ1jElrgA25tK_vrT5sOQ__VBM_?usp=sharing)
 ***
 Base Camp is a multi-platform, open source software that allows students to record important data about school in a safe and private way. The app is currently available as a browser extension and desktop angular application. 
 
