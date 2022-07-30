@@ -101,6 +101,10 @@ export class NotesScreenComponent implements OnInit {
   }
 
   editNote(note: Note){
+<<<<<<< Updated upstream
+=======
+    document.getElementsByClassName("page-container")[0].scroll({top: 0, left: 0, behavior: 'smooth'})
+>>>>>>> Stashed changes
     // Set titleInput, categoryList and noteContentInput to the editable note
     document.getElementById('newNoteContainer')?.classList.add('extended');
     (document.getElementById('newNoteTitle') as HTMLInputElement).value = (note.title as string);

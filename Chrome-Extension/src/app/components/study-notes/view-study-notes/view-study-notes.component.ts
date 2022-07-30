@@ -114,9 +114,17 @@ export class ViewStudyNotesComponent implements OnInit {
   deleteNote(note: StudyNote){
     for(var i=0; i<this.totalNotesList.length; i++){
       if(this.totalNotesList[i] == note){
+<<<<<<< Updated upstream
         this.totalNotesList.splice(i, 1);
         this.globalVars.setVar("studyNoteList", JSON.stringify(this.totalNotesList));
         this.updateDisplayNotes();
+=======
+        if(confirm("Are you sure you want to DELETE this study note?")){
+          this.totalNotesList.splice(i, 1);
+          this.globalVars.setVar("studyNoteList", JSON.stringify(this.totalNotesList));
+          this.updateDisplayNotes();
+        }
+>>>>>>> Stashed changes
       }
     }
   }

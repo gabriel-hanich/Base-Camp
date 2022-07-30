@@ -1,7 +1,20 @@
 import { DOCUMENT } from '@angular/common';
+<<<<<<< Updated upstream:Parent-Project/src/app/components/home/home-page/home-page.component.ts
 import { Component, EventEmitter, Inject, OnInit } from '@angular/core';
 import { KtdGridLayout, ktdTrackById } from '@katoid/angular-grid-layout';
 import { GlobalVarsService } from 'src/app/services/globals/global-vars.service';
+=======
+<<<<<<< Updated upstream:ng-project/src/app/components/home/home-page/home-page.component.ts
+import { Component, Inject, OnInit } from '@angular/core';
+import { KtdGridLayout, ktdTrackById } from '@katoid/angular-grid-layout';
+import { GlobalVarsService } from 'src/app/services/global-vars.service';
+=======
+import { Component, EventEmitter, Inject, OnInit, ViewChild } from '@angular/core';
+import { KtdGridComponent, KtdGridLayout, ktdTrackById } from '@katoid/angular-grid-layout';
+import { debounceTime, filter, fromEvent, merge } from 'rxjs';
+import { GlobalVarsService } from 'src/app/services/globals/global-vars.service';
+>>>>>>> Stashed changes:Parent-Project/src/app/components/home/home-page/home-page.component.ts
+>>>>>>> Stashed changes:ng-project/src/app/components/home/home-page/home-page.component.ts
 import { widget } from 'src/models';
 
 @Component({
@@ -10,6 +23,7 @@ import { widget } from 'src/models';
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent implements OnInit {
+  @ViewChild(KtdGridComponent) grid: KtdGridComponent;
   public greetingText: string;
   public userName: string = this.globalVars.getVar("userName");
   public timeText: string = "00:00";
@@ -22,10 +36,21 @@ export class HomePageComponent implements OnInit {
   public newWidgetType = "timetableDay";
   public editableWidgets = false;
 
+<<<<<<< Updated upstream:Parent-Project/src/app/components/home/home-page/home-page.component.ts
   public timeEmitter: EventEmitter<String> = new EventEmitter<String>();
 
   public colCount: number = Math.round(screen.width / 130);
 
+=======
+<<<<<<< Updated upstream:ng-project/src/app/components/home/home-page/home-page.component.ts
+=======
+  public timeEmitter: EventEmitter<String> = new EventEmitter<String>();
+
+  public colCount: number = Math.round(screen.width / 130);
+  resizeSubscription: any;
+
+>>>>>>> Stashed changes:Parent-Project/src/app/components/home/home-page/home-page.component.ts
+>>>>>>> Stashed changes:ng-project/src/app/components/home/home-page/home-page.component.ts
   constructor(@Inject(DOCUMENT) public document: Document, private globalVars: GlobalVarsService) { }
 
   ngOnInit(): void {
@@ -35,6 +60,12 @@ export class HomePageComponent implements OnInit {
       this.layoutData = [];
     }
     this.updateTime();
+<<<<<<< Updated upstream:Parent-Project/src/app/components/home/home-page/home-page.component.ts
+=======
+<<<<<<< Updated upstream:ng-project/src/app/components/home/home-page/home-page.component.ts
+  }, 1000);
+=======
+>>>>>>> Stashed changes:ng-project/src/app/components/home/home-page/home-page.component.ts
     this.renderBoards();
 
 
@@ -51,6 +82,19 @@ export class HomePageComponent implements OnInit {
     setInterval(()=>{
       this.updateTime();
     }, 1000);
+<<<<<<< Updated upstream:Parent-Project/src/app/components/home/home-page/home-page.component.ts
+=======
+
+    this.resizeSubscription = merge(
+      fromEvent(window, 'resize'),
+      fromEvent(window, 'orientationchange')
+    ).pipe(
+        debounceTime(50)
+    ).subscribe(() => {
+        this.grid.resize();
+    });
+>>>>>>> Stashed changes:Parent-Project/src/app/components/home/home-page/home-page.component.ts
+>>>>>>> Stashed changes:ng-project/src/app/components/home/home-page/home-page.component.ts
   }
 
   updateTime(): void{
@@ -71,7 +115,9 @@ export class HomePageComponent implements OnInit {
 
   renderBoards():void{
     // Convert locally stored layoutData into KtdGridLayout
-    let newLayout = this.layout;
+    console.log("AA")
+    var newLayout = [];
+    console.log("BB")
     for(var i=0; i<this.layoutData.length; i++){
       let renderBoard = true; // Only render the board if it is new
       for(var k=0; k<newLayout.length; k++){
@@ -80,6 +126,7 @@ export class HomePageComponent implements OnInit {
         }
       }
       if(renderBoard){
+        console.log(this.layout)
         newLayout.push({
           "id" : this.layoutData[i].id.toString(),
           "x": this.layoutData[i].x,
@@ -89,6 +136,14 @@ export class HomePageComponent implements OnInit {
         });
       }
     }
+<<<<<<< Updated upstream:Parent-Project/src/app/components/home/home-page/home-page.component.ts
+=======
+<<<<<<< Updated upstream:ng-project/src/app/components/home/home-page/home-page.component.ts
+    console.log(newLayout);
+=======
+    this.layout = newLayout
+>>>>>>> Stashed changes:Parent-Project/src/app/components/home/home-page/home-page.component.ts
+>>>>>>> Stashed changes:ng-project/src/app/components/home/home-page/home-page.component.ts
   }
 
   addNewWidget():void{
@@ -125,7 +180,7 @@ export class HomePageComponent implements OnInit {
     }
     this.globalVars.setVar("widgetsLayout", JSON.stringify(this.layoutData));
     setTimeout(()=>{
-      window.location.reload();
+      this.renderBoards();
     }, 100);
   }
 
@@ -137,8 +192,9 @@ export class HomePageComponent implements OnInit {
       }
     }
     this.globalVars.setVar("widgetsLayout", JSON.stringify(newLayout));
+    this.layoutData = newLayout;
     setTimeout(()=>{
-      window.location.reload();
+      this.renderBoards();
     }, 100);
   }
 
@@ -149,6 +205,7 @@ export class HomePageComponent implements OnInit {
 
   saveLayout(currentLayout: KtdGridLayout):void{
     setTimeout(()=>{
+      console.log("SAVING LAYOUT")
       for(var i=0; i<currentLayout.length; i++){
         this.layoutData[i].x = currentLayout[i].x;
         this.layoutData[i].y = currentLayout[i].y;

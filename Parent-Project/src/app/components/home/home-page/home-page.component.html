@@ -13,8 +13,8 @@
         [compactType]="compactType"
         [preventCollision]="'True'"
         [scrollableParent]="'True' ? document : null"
-        (layoutUpdated)="saveLayout($event)"
         scrollSpeed="4"
+        id="widgetContainer"
         class="widgets-grid"> 
         <ktd-grid-item *ngFor="let item of layoutData" [id]="item.id.toString()" class="widgets-item" draggable="{{editableWidgets}}" resizable="{{false}}">
             <!-- CODE FOR WIDGET CONTENT -->
@@ -40,10 +40,19 @@
                 <mat-label>Type</mat-label>
                 <mat-select class="adjust-new-select" [(value)]="newWidgetType">
                   <mat-option [value]="'timetableDay'" class="mat-option">Timetable Day</mat-option>
+<<<<<<< Updated upstream:Parent-Project/src/app/components/home/home-page/home-page.component.html
                   <mat-option [value]="'timeBtn'" class="mat-option">Time Button</mat-option>
+=======
+<<<<<<< Updated upstream:ng-project/src/app/components/home/home-page/home-page.component.html
+                  <mat-option [value]="'news'" class="mat-option">News Feed</mat-option>
+>>>>>>> Stashed changes:ng-project/src/app/components/home/home-page/home-page.component.html
                   <mat-option [value]="'note'" class="mat-option">Note</mat-option>
                   <mat-option [value]="'news'" class="mat-option">News Feed</mat-option>
                   <mat-option [value]="'studyNote'" class="mat-option">Study Note</mat-option>
+=======
+                  <mat-option [value]="'timeBtn'" class="mat-option">Time Button</mat-option>
+                  <mat-option [value]="'note'" class="mat-option">Note</mat-option>
+>>>>>>> Stashed changes:Parent-Project/src/app/components/home/home-page/home-page.component.html
                 </mat-select>
             </mat-form-field>
             <button class="adjust-new-btn animated-hover" (click)="addNewWidget()">Add</button>

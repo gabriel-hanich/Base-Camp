@@ -92,7 +92,10 @@
     &-btn{
         margin-top: 0px;
         height: 15%;
+<<<<<<< Updated upstream
         transform: translateY(-20px);
+=======
+>>>>>>> Stashed changes
     }
 }
 .msg{
@@ -112,6 +115,25 @@
         font-weight: 400;
     }
 }
+<<<<<<< Updated upstream
+=======
+
+.policy{
+    &-container{
+        background-color: #fff;
+        width: 50%;
+        margin: auto;
+        height: 50%;
+        overflow-y: scroll;
+        margin-bottom: 10px;
+    }
+    &-text{
+        text-align: left;
+        color: #000 !important;
+    }
+}
+
+>>>>>>> Stashed changes
 .showError{
     transform: translateX(0);
 }

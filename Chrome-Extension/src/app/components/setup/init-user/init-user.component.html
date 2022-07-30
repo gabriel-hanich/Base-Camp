@@ -30,7 +30,36 @@
         </div>
         <h1 class="heading-text">Do you have an account already?</h1>
         <button class="heading-text heading-btn animated-hover account-btn" (click)="state = 'login'">Yes<br>Log in</button>
+<<<<<<< Updated upstream
         <button class="heading-text heading-btn animated-hover account-btn" (click)="state = 'signup'">No<br>Sign up</button>
+=======
+        <button class="heading-text heading-btn animated-hover account-btn" (click)="state = 'privacyPolicy'">No<br>Sign up</button>
+    </div>
+
+    <div class="heading-container heading-container-large" *ngIf="state == 'privacyPolicy'">
+        <div class="heading-arrow-container">
+            <img src="../../../../assets/scroll.svg" alt="Go Back"class="heading-arrow-img white" (click)="state = 'user'">
+        </div>
+        <h1 class="heading-text">Please read and agree to the below privacy policy</h1>
+        <div class="policy-container">
+            <p class="policy-text">
+                Base Camp Privacy Policy 
+                <br>
+                <br>
+                This is a binding agreement between the user and the developer for utilisation of 'cloud sync' technologies built within 'Base Camp'.
+                <br>
+                <br>
+                Base Camp offers no guarantee about data security and potential data-erasure. Whilst every effort has been made to create a robust back-end, the developer offers no guarantees. Various pieces of user data is collected by the application, however this is kept to a minimum.
+                Additionally, 'Base Camp' offers no guarantee against data breaches. It is the user's responsibility NOT to upload potentially personal data. Whilst passwords are hashed using the highest standard of encryption, remaining user data (both uploaded directly by the user, and gained automatically) is stored in a plan-text format.
+                The developer provides no warantee on the software, and does not guarantee support for cloud services for any given amount of time.
+                <br>
+                <br>
+                Upon signing this agreement, I (the user) agree to the above terms and consent to collection, storage and access of user data. 
+            </p>
+        </div>
+
+        <button class="heading-text heading-btn animated-hover form-btn" (click)="state = 'signup'">I Agree to the above terms</button>
+>>>>>>> Stashed changes
     </div>
 
     <div class="heading-container heading-container-large" *ngIf="state == 'signup'">

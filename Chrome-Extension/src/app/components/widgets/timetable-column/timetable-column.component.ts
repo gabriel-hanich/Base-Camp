@@ -41,9 +41,28 @@ export class TimetableColumnComponent implements OnInit {
       this.titleText = "Today" 
     }
     else if(this.currentDate === "tomorrow"){
+<<<<<<< Updated upstream
       displayDate.setDate(displayDate.getDate() + 1);
       this.isCurrentWeek = true;
       this.titleText = "Tomorrow"
+=======
+      // Show mondays timetable as 'tomorrows' on Friday and Saturday
+      if(displayDate.getDay() == 5 || displayDate.getDay() == 6){
+        displayDate.setDate(displayDate.getDate() + (8 - displayDate.getDay()))
+        console.log(displayDate.getDay() - 7)
+        this.titleText = "Monday next Week"
+        if(displayWeek == "A"){ // Invert the week as it is monday of NEXT week
+          displayWeek = "B"
+        }else{
+          displayWeek = "A"
+        }
+      }else{
+        displayDate.setDate(displayDate.getDate() + 1);
+        this.titleText = "Tomorrow"
+      }
+      this.isCurrentWeek = true;
+
+>>>>>>> Stashed changes
     }else if(this.currentDate[this.currentDate.length - 1] === "A"){
       displayWeek = "a";
       for(var i=0; i<7; i++){

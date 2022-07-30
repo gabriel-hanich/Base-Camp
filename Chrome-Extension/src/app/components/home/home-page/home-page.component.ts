@@ -22,7 +22,11 @@ export class HomePageComponent implements OnInit {
   ngOnInit(): void {
     this.updateTime();
 
+<<<<<<< Updated upstream
 
+=======
+    console.log(this.globalVars.getVar("wk1IsWkA"))
+>>>>>>> Stashed changes
     const loginTime = new Date();
     if(loginTime.getHours() < 10){
       this.greetingText = "Good Morning"

@@ -155,9 +155,18 @@ export class SetupTimetableScreenComponent implements OnInit {
         thisDayList.push(wk2Data[i]);
       }
     }
+<<<<<<< Updated upstream
     this.globalVars.setVar("wk1Data", JSON.stringify(sortedWk1Data));
     this.globalVars.setVar("wk2Data", JSON.stringify(sortedWk2Data));
     this.globalVars.setVar("wk1IsWkA", "unknown");
+=======
+    if(JSON.stringify(sortedWk1Data) != this.globalVars.getVar("wk1Data") && JSON.stringify(sortedWk2Data) != this.globalVars.getVar("wk2Data")){
+      // Only update the stored values if the calculated ones are different
+      this.globalVars.setVar("wk1Data", JSON.stringify(sortedWk1Data));
+      this.globalVars.setVar("wk2Data", JSON.stringify(sortedWk2Data));
+      this.globalVars.setVar("wk1IsWkA", "unknown");
+    }
+>>>>>>> Stashed changes
     this.initCalibrationData();
   }
 

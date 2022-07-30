@@ -112,6 +112,26 @@
         font-weight: 400;
     }
 }
+<<<<<<< Updated upstream
+=======
+
+.policy{
+    &-container{
+        background-color: #fff;
+        width: 80%;
+        margin: auto;
+        height: 60%;
+        overflow-y: scroll;
+        margin-bottom: 10px;
+    }
+    &-text{
+        text-align: left;
+        color: #000 !important;
+    }
+}
+
+
+>>>>>>> Stashed changes
 .showError{
     transform: translateX(0);
 }
