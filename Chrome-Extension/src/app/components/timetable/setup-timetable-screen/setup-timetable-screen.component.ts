@@ -21,10 +21,12 @@ export class SetupTimetableScreenComponent implements OnInit {
     if(this.globalVars.getVar("timetableRaw") == "empty" && (this.globalVars.getVar("wk1Data") == "empty" || this.globalVars.getVar("wk1Data") == "[]")){ 
       // If user has not uploaded file
       this.router.navigate(["settings"]);
+    }else if(this.globalVars.getVar("timetableRaw") != "empty"){ // Only convert raw text file if it is present
+      console.log("REE")
+      this.cleanData(); // Convert raw text file into timetable data
     }
-    this.cleanData(); // Convert raw text file into timetable data
-    // Init calibration data
     this.initCalibrationData();
+    // Init calibration data
     if(this.globalVars.getVar("wk1IsWkA") == "true"){
       this.defaultCalibrationOption = "label1";
     }else if(this.globalVars.getVar("wk1IsWkA") == "false"){

@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -19,7 +20,6 @@ import { SettingsScreenComponent } from './components/settings/settings-screen/s
 import { HeadingComponentComponent } from './components/ui-components/heading-component/heading-component.component';
 import { NewFileComponent } from './components/settings/new-file/new-file.component';
 import { LoadingWheelComponent } from './components/ui-components/loading-wheel/loading-wheel.component';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations' ;
 import { SetupTimetableScreenComponent } from './components/timetable/setup-timetable-screen/setup-timetable-screen.component';
 import { TimetableDayComponent } from './components/timetable/timetable-day/timetable-day.component';
 import { ToggleSwitchComponent } from './components/ui-components/toggle-switch/toggle-switch.component';
@@ -62,15 +62,15 @@ import { InitUserComponent } from './components/setup/init-user/init-user.compon
     InitUserComponent
   ],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    NoopAnimationsModule,
     MatFormFieldModule,
-    MatSelectModule,
     MatAutocompleteModule,
+    MatSelectModule,
     KtdGridModule,
-    EditorModule,
+    EditorModule
   ],
   providers: [{ provide: TINYMCE_SCRIPT_SRC, useValue: 'tinymce/tinymce.min.js'}],
   bootstrap: [AppComponent]

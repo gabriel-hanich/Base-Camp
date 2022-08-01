@@ -6,13 +6,15 @@ let mainWindow
 
 function createWindow () {
     mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
-    webPreferences: {
-        nodeIntegration: true
-    }
+        width: 1280,
+        height: 807200,
+        webPreferences: {
+            nodeIntegration: true
+        },
+        autoHideMenuBar: true
     })
-
+    
+    mainWindow.setIcon("./Icon.png")
     const htmlRootDir = 'src/'
     const indexFile = 'index.html'
 

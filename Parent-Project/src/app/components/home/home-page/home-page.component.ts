@@ -1,10 +1,7 @@
 import { DOCUMENT } from '@angular/common';
-import { Component, EventEmitter, Inject, OnInit } from '@angular/core';
-import { KtdGridLayout, ktdTrackById } from '@katoid/angular-grid-layout';
-import { GlobalVarsService } from 'src/app/services/globals/global-vars.service';
 import { Component, EventEmitter, Inject, OnInit, ViewChild } from '@angular/core';
 import { KtdGridComponent, KtdGridLayout, ktdTrackById } from '@katoid/angular-grid-layout';
-import { debounceTime, filter, fromEvent, merge } from 'rxjs';
+import { debounceTime, fromEvent, merge } from 'rxjs';
 import { GlobalVarsService } from 'src/app/services/globals/global-vars.service';
 import { widget } from 'src/models';
 
@@ -31,9 +28,7 @@ export class HomePageComponent implements OnInit {
 
   public colCount: number = Math.round(screen.width / 130);
 
-  public timeEmitter: EventEmitter<String> = new EventEmitter<String>();
 
-  public colCount: number = Math.round(screen.width / 130);
   resizeSubscription: any;
 
   constructor(@Inject(DOCUMENT) public document: Document, private globalVars: GlobalVarsService) { }
@@ -90,9 +85,7 @@ export class HomePageComponent implements OnInit {
 
   renderBoards():void{
     // Convert locally stored layoutData into KtdGridLayout
-    console.log("AA")
     var newLayout = [];
-    console.log("BB")
     for(var i=0; i<this.layoutData.length; i++){
       let renderBoard = true; // Only render the board if it is new
       for(var k=0; k<newLayout.length; k++){
@@ -101,7 +94,6 @@ export class HomePageComponent implements OnInit {
         }
       }
       if(renderBoard){
-        console.log(this.layout)
         newLayout.push({
           "id" : this.layoutData[i].id.toString(),
           "x": this.layoutData[i].x,
@@ -111,7 +103,7 @@ export class HomePageComponent implements OnInit {
         });
       }
     }
-    console.log(newLayout);
+    this.layout = newLayout
   }
 
   addNewWidget():void{
